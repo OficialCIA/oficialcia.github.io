@@ -1,117 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#c2e9fb">
-
-    <title>Kayque Olimpio</title>
-    <meta name="title" content="Página de Kayque Olimpio">
-    <meta name="description" content="Página de entrada de Kayque Olimpio, com um menu de navegação e links importantes.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <style>
-        body {
-            font-family: 'Quicksand', sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* Efeito de brilho na sombra do card */
-        .card-glow {
-            animation: pulse-glow 3s infinite alternate;
-        }
-
-        @keyframes pulse-glow {
-            from {
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 15px 5px rgba(88, 166, 255, 0.3);
-            }
-            to {
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 25px 10px rgba(88, 166, 255, 0.5);
-            }
-        }
-
-        /* Animação da carta de palhaço */
-        .joker-card {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: auto;
-            z-index: 10;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            animation: swing 4s ease-in-out infinite;
-            transform-origin: top center;
-            transition: transform 0.3s ease-out;
-        }
-        
-        @keyframes swing {
-            0%, 50%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(5deg); }
-            75% { transform: rotate(-5deg); }
-        }
-
-        /* Ação ao passar o mouse sobre a carta */
-        .joker-card:hover {
-            animation-play-state: paused;
-            transform: scale(1.1) rotateZ(5deg);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentação Pessoal - Dr.</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      color: white;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2em;
+    }
+    nav {
+      text-align: center;
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+    }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      margin-top: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    section h2 {
+      color: #4facfe;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background: #4facfe;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #00f2fe;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: white;
+      margin-top: 50px;
+    }
+  </style>
 </head>
+<body>
+  <header>
+    <h1>Dr. Seu Nome</h1>
+    <p>Bem-vindo ao meu site pessoal!</p>
+  </header>
 
-<body class="bg-gradient-to-b from-blue-50 to-blue-200 min-h-screen flex flex-col items-center justify-center p-4">
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#contato">Contato</a>
+  </nav>
 
-    <img src="https://img.icons8.com/ios-filled/50/joker-card.png" alt="Ícone de carta de palhaço" class="joker-card">
+  <section id="sobre">
+    <h2>Sobre mim</h2>
+    <p>Sou apaixonado por tecnologia, ciência e inovação. Este espaço é para compartilhar minhas ideias e projetos.</p>
+  </section>
 
-    <nav class="w-full max-w-lg mb-8">
-        <ul class="flex justify-center space-x-6 text-xl">
-            <li><a href="index.html" class="font-bold text-blue-500 hover:text-blue-600 transition-colors">Início</a></li>
-            <li><a href="about.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Sobre Mim</a></li>
-            <li><a href="projects.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Projetos</a></li>
-            <li><a href="drawings.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Desenhos</a></li>
-        </ul>
-    </nav>
+  <section id="projetos">
+    <h2>Projetos</h2>
+    <p>Aqui você pode listar seus principais trabalhos ou links para GitHub/LinkedIn.</p>
+    <a class="btn" href="https://github.com/seuusuario" target="_blank">Veja meu GitHub</a>
+  </section>
 
-    <main class="card-glow bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-lg text-center transform transition-all hover:scale-105 duration-300">
-        
-        <h1 class="text-5xl sm:text-6xl font-extrabold text-blue-500 mb-4 tracking-tight">Kayque Olimpio</h1>
-        
-        <p id="quote-text" class="text-gray-700 text-lg sm:text-xl leading-relaxed mb-6 font-medium min-h-[56px]">
-            </p>
-        
-        <a href="https://www.instagram.com/kayquewrld/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-blue-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 hover:bg-blue-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-            Meu Instagram
-        </a>
-    </main>
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Entre em contato comigo pelo e-mail: <strong>seuemail@exemplo.com</strong></p>
+  </section>
 
-    <script>
-        // Lógica para o efeito de digitação (typewriter)
-        const quoteElement = document.getElementById('quote-text');
-        const quote = '"A história de todas as sociedades até hoje existentes é a história das lutas de classes."';
-        
-        let i = 0;
-        let speed = 50; // Velocidade de digitação em milissegundos
-
-        function typeWriter() {
-            if (i < quote.length) {
-                quoteElement.textContent += quote.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
-            }
-        }
-
-        // Inicia o efeito de digitação quando a página carrega
-        window.onload = function() {
-            typeWriter();
-        };
-    </script>
-
+  <footer>
+    <p>&copy; 2026 Dr. Seu Nome - Todos os direitos reservados</p>
+  </footer>
 </body>
 </html>
