@@ -11,14 +11,19 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      scroll-behavior: smooth; /* scroll suave */
+      scroll-behavior: smooth;
+    }
+    main {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
     }
     section {
-      height: 100vh; /* cada seção ocupa a tela inteira */
+      height: 100vh;
+      scroll-snap-align: start;
       display: flex;
       align-items: center;
       justify-content: center;
-      scroll-snap-align: start;
       opacity: 0;
       transform: translateY(50px);
       transition: opacity 1s ease, transform 1s ease;
@@ -26,11 +31,6 @@
     section.visible {
       opacity: 1;
       transform: translateY(0);
-    }
-    main {
-      scroll-snap-type: y mandatory; /* snapping vertical */
-      overflow-y: scroll;
-      height: 100vh;
     }
   </style>
 </head>
