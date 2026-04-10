@@ -1,366 +1,160 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria dos Visitantes - Kayque Olimpio</title>
-    <meta name="title" content="Galeria dos Visitantes">
-    <meta name="description" content="Galeria onde usuários podem enviar e visualizar desenhos.">
-    <meta name="theme-color" content="#c2e9fb">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria dos Visitantes - Kayque Olimpio</title>
+  <meta name="description" content="Galeria onde usuários podem enviar e visualizar desenhos.">
+  <meta name="theme-color" content="#c2e9fb">
 
-    <style>
-        body {
-            font-family: 'Quicksand', sans-serif;
-        }
-    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body { font-family: 'Quicksand', sans-serif; }
+  </style>
 </head>
 <body class="bg-gradient-to-b from-blue-50 to-blue-200 min-h-screen flex flex-col items-center py-12 px-4">
 
-    <header class="w-full max-w-4xl mb-8">
-        <nav>
-            <ul class="flex justify-center space-x-6 text-xl">
-                <li><a href="index.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Início</a></li>
-                <li><a href="about.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Sobre Mim</a></li>
-                <li><a href="projects.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Projetos</a></li>
-                <li><a href="drawings.html" class="font-bold text-blue-500 hover:text-blue-600 transition-colors">Desenhos</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="w-full max-w-4xl mb-8">
+    <nav>
+      <ul class="flex justify-center space-x-6 text-xl">
+        <li><a href="index.html" class="font-bold text-gray-700 hover:text-blue-600">Início</a></li>
+        <li><a href="about.html" class="font-bold text-gray-700 hover:text-blue-600">Sobre Mim</a></li>
+        <li><a href="projects.html" class="font-bold text-gray-700 hover:text-blue-600">Projetos</a></li>
+        <li><a href="drawings.html" class="font-bold text-blue-500 hover:text-blue-600">Desenhos</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-4xl text-center flex flex-col items-center">
-        
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-500 mb-8 tracking-tight">Galeria dos Visitantes</h1>
+  <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-4xl text-center flex flex-col items-center">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-500 mb-8">Galeria dos Visitantes</h1>
 
-        <section class="w-full max-w-md bg-blue-50 p-6 rounded-lg shadow-inner mb-8" aria-labelledby="upload-title">
-            <h2 id="upload-title" class="text-2xl font-bold text-gray-800 mb-4">Adicionar um Desenho</h2>
-            <label for="file-upload-input" class="sr-only">Escolha um arquivo</label>
-            <input type="file" id="file-upload-input" accept="image/*" class="w-full text-gray-700 border border-gray-300 rounded-lg p-2 mb-4 cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200">
-            <button id="file-upload-btn" class="w-full bg-blue-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 hover:bg-blue-600 disabled:bg-gray-400">
-                Fazer Upload de Imagem
-            </button>
-            <p id="file-upload-status" class="mt-4 text-sm text-gray-600 hidden" aria-live="polite">Fazendo upload...</p>
-        </section>
+    <!-- Upload de arquivo -->
+    <section class="w-full max-w-md bg-blue-50 p-6 rounded-lg shadow-inner mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Adicionar um Desenho</h2>
+      <input type="file" id="file-upload-input" accept="image/*" class="w-full mb-4">
+      <button id="file-upload-btn" class="w-full bg-blue-500 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-600">
+        Fazer Upload de Imagem
+      </button>
+      <p id="file-upload-status" class="mt-4 text-sm text-gray-600 hidden">Fazendo upload...</p>
+    </section>
 
-        <section class="w-full max-w-2xl bg-blue-50 p-6 rounded-lg shadow-inner mb-8" aria-labelledby="draw-title">
-            <h2 id="draw-title" class="text-2xl font-bold text-gray-800 mb-4">Criar um Desenho</h2>
-            
-            <div class="flex flex-wrap items-center justify-center gap-4 mb-6">
-                <button id="tool-pencil" class="p-3 rounded-full text-white shadow-lg transition-colors duration-200 ring-2 ring-blue-700 bg-blue-500 hover:bg-blue-600">Lápis</button>
-                <button id="tool-eraser" class="p-3 rounded-full text-white shadow-lg transition-colors duration-200 bg-blue-500 hover:bg-blue-600">Borracha</button>
-                <label for="color-picker" class="sr-only">Seletor de Cor</label>
-                <input type="color" id="color-picker" value="#000000" class="w-12 h-12 p-1 rounded-full cursor-pointer border-2 border-gray-300">
-                <label for="brush-size" class="text-sm font-medium text-gray-700">Tamanho:</label>
-                <input type="range" id="brush-size" min="1" max="50" value="5" class="w-32 cursor-pointer">
-                <button id="clear-btn" class="p-3 rounded-full bg-red-500 text-white shadow-lg transition-colors duration-200 hover:bg-red-600">Limpar</button>
-            </div>
-            
-            <div class="border-2 border-blue-500 rounded-lg shadow-md w-full aspect-video max-w-full mb-4 overflow-hidden">
-                <canvas id="drawing-canvas" class="w-full h-full bg-white cursor-crosshair"></canvas>
-            </div>
+    <!-- Canvas -->
+    <section class="w-full max-w-2xl bg-blue-50 p-6 rounded-lg shadow-inner mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Criar um Desenho</h2>
+      <canvas id="drawing-canvas" class="w-full h-64 bg-white border-2 border-blue-500 rounded-lg"></canvas>
+      <button id="canvas-upload-btn" class="mt-4 w-full bg-green-500 text-white font-bold py-3 px-8 rounded-full hover:bg-green-600">
+        Salvar e Enviar
+      </button>
+      <p id="canvas-upload-status" class="mt-4 text-sm text-gray-600 hidden">Salvando desenho...</p>
+    </section>
 
-            <button id="canvas-upload-btn" class="w-full max-w-md bg-green-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 hover:bg-green-600 disabled:bg-gray-400">
-                Salvar e Enviar
-            </button>
-            <p id="canvas-upload-status" class="mt-4 text-sm text-gray-600 hidden" aria-live="polite">Salvando desenho...</p>
-        </section>
+    <!-- Galeria -->
+    <section class="w-full">
+      <h2 class="sr-only">Galeria de Desenhos Enviados</h2>
+      <div id="drawings-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <p id="loading-drawings" class="col-span-full text-gray-500">Carregando desenhos...</p>
+      </div>
+    </section>
+  </main>
 
-        <section class="w-full" aria-labelledby="gallery-title">
-            <h2 id="gallery-title" class="sr-only">Galeria de Desenhos Enviados</h2>
-            <div id="drawings-gallery" class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <p id="loading-drawings" class="col-span-full text-gray-500">Carregando desenhos...</p>
-            </div>
-        </section>
-    </main>
-
-    <div id="notification-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" role="alertdialog" aria-modal="true">
-        <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm mx-auto text-center">
-            <p id="notification-message" class="text-lg text-gray-800"></p>
-            <button id="notification-close-btn" class="mt-4 bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600">OK</button>
-        </div>
+  <!-- Modal -->
+  <div id="notification-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm mx-auto text-center">
+      <p id="notification-message" class="text-lg text-gray-800"></p>
+      <button id="notification-close-btn" class="mt-4 bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600">OK</button>
     </div>
+  </div>
 
-    <script type="module">
-        // Importações do Firebase
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
 
-        // *******************************************************************
-        // Lembre-se de usar GitHub Secrets para proteger suas chaves!
-const firebaseConfig = {
-  apiKey: "AIzaSyA6UJ3nC1WD0HQxbGBKm-L4Bmbk5_YdTNM",
-  authDomain: "kayque-e2385.firebaseapp.com",
-  projectId: "kayque-e2385",
-  storageBucket: "kayque-e2385.firebasestorage.app",
-  messagingSenderId: "719897671237",
-  appId: "1:719897671237:web:d9a1f4ad69a0e72ff3952c",
-  measurementId: "G-LEBFZLRYC6"
-        };
-        // *******************************************************************
+    // Configuração corrigida
+    const firebaseConfig = {
+      apiKey: "AIzaSyA6UJ3nC1WD0HQxbGBKm-L4Bmbk5_YdTNM",
+      authDomain: "kayque-e2385.firebaseapp.com",
+      projectId: "kayque-e2385",
+      storageBucket: "kayque-e2385.appspot.com", // CORRIGIDO
+      messagingSenderId: "719897671237",
+      appId: "1:719897671237:web:d9a1f4ad69a0e72ff3952c",
+      measurementId: "G-LEBFZLRYC6"
+    };
 
-        // Inicialização do Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
-        const storage = getStorage(app);
-        let userId = null;
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const storage = getStorage(app);
+    let userId = null;
 
-        // Elementos da UI
-        const canvas = document.getElementById('drawing-canvas');
-        const ctx = canvas.getContext('2d', { willReadFrequently: true });
-        const colorPicker = document.getElementById('color-picker');
-        const brushSizeInput = document.getElementById('brush-size');
-        const pencilToolBtn = document.getElementById('tool-pencil');
-        const eraserToolBtn = document.getElementById('tool-eraser');
-        const clearBtn = document.getElementById('clear-btn');
-        const canvasUploadBtn = document.getElementById('canvas-upload-btn');
-        const canvasUploadStatus = document.getElementById('canvas-upload-status');
-        const fileUploadInput = document.getElementById('file-upload-input');
-        const fileUploadBtn = document.getElementById('file-upload-btn');
-        const fileUploadStatus = document.getElementById('file-upload-status');
-        const drawingsGallery = document.getElementById('drawings-gallery');
-        const loadingDrawings = document.getElementById('loading-drawings');
-        const notificationModal = document.getElementById('notification-modal');
-        const notificationMessage = document.getElementById('notification-message');
-        const notificationCloseBtn = document.getElementById('notification-close-btn');
-        
-        // Variáveis de estado do Canvas
-        let isDrawing = false;
-        let lastX = 0;
-        let lastY = 0;
-        let currentTool = 'pencil';
+    // Modal
+    const notificationModal = document.getElementById('notification-modal');
+    const notificationMessage = document.getElementById('notification-message');
+    const notificationCloseBtn = document.getElementById('notification-close-btn');
+    function showModal(msg) {
+      notificationMessage.textContent = msg;
+      notificationModal.classList.remove('hidden');
+    }
+    notificationCloseBtn.addEventListener('click', () => notificationModal.classList.add('hidden'));
 
-        // --- LÓGICA DO MODAL DE NOTIFICAÇÃO ---
-        function showModal(message) {
-            notificationMessage.textContent = message;
-            notificationModal.classList.remove('hidden');
-        }
-        notificationCloseBtn.addEventListener('click', () => notificationModal.classList.add('hidden'));
-        
-        // --- LÓGICA DO CANVAS ---
-        function resizeCanvas() {
-            const oldData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            canvas.width = canvas.parentElement.clientWidth;
-            canvas.height = canvas.parentElement.clientHeight;
-            ctx.putImageData(oldData, 0, 0);
-            ctx.lineWidth = brushSizeInput.value;
-            ctx.lineCap = 'round';
-            ctx.strokeStyle = colorPicker.value;
-            ctx.globalCompositeOperation = currentTool === 'pencil' ? 'source-over' : 'destination-out';
-        }
-
-        function getEventCoordinates(event) {
-            const rect = canvas.getBoundingClientRect();
-            if (event.touches && event.touches.length > 0) {
-                return {
-                    x: event.touches[0].clientX - rect.left,
-                    y: event.touches[0].clientY - rect.top
-                };
-            }
-            return { x: event.clientX - rect.left, y: event.clientY - rect.top };
-        }
-
-        function startDrawing(e) {
-            e.preventDefault();
-            isDrawing = true;
-            const { x, y } = getEventCoordinates(e);
-            [lastX, lastY] = [x, y];
-        }
-
-        function draw(e) {
-            if (!isDrawing) return;
-            e.preventDefault();
-            const { x, y } = getEventCoordinates(e);
-            ctx.beginPath();
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-            [lastX, lastY] = [x, y];
-        }
-
-        function stopDrawing() {
-            isDrawing = false;
-        }
-
-        canvas.addEventListener('mousedown', startDrawing);
-        canvas.addEventListener('mousemove', draw);
-        canvas.addEventListener('mouseup', stopDrawing);
-        canvas.addEventListener('mouseout', stopDrawing);
-        canvas.addEventListener('touchstart', startDrawing);
-        canvas.addEventListener('touchmove', draw);
-        canvas.addEventListener('touchend', stopDrawing);
-        
-        window.addEventListener('resize', resizeCanvas);
-        window.addEventListener('load', resizeCanvas);
-
-        // --- LÓGICA DAS FERRAMENTAS DO CANVAS ---
-        function setActiveTool(tool) {
-            currentTool = tool;
-            pencilToolBtn.classList.toggle('ring-2', tool === 'pencil');
-            pencilToolBtn.classList.toggle('ring-blue-700', tool === 'pencil');
-            eraserToolBtn.classList.toggle('ring-2', tool === 'eraser');
-            eraserToolBtn.classList.toggle('ring-blue-700', tool === 'eraser');
-
-            if (tool === 'pencil') {
-                ctx.globalCompositeOperation = 'source-over';
-                ctx.strokeStyle = colorPicker.value;
-            } else {
-                ctx.globalCompositeOperation = 'destination-out';
-            }
-        }
-
-        pencilToolBtn.addEventListener('click', () => setActiveTool('pencil'));
-        eraserToolBtn.addEventListener('click', () => setActiveTool('eraser'));
-        colorPicker.addEventListener('change', (e) => {
-            if (currentTool === 'pencil') {
-                ctx.strokeStyle = e.target.value;
-            }
+    // Upload genérico
+    async function uploadFile(file, statusElement) {
+      if (!userId) {
+        showModal("Autenticação necessária. Recarregue a página.");
+        return false;
+      }
+      statusElement.classList.remove('hidden');
+      try {
+        const filePath = `drawings/${userId}_${Date.now()}_${file.name}`;
+        const fileRef = ref(storage, filePath);
+        const uploadResult = await uploadBytes(fileRef, file);
+        const imageUrl = await getDownloadURL(uploadResult.ref);
+        await addDoc(collection(db, "drawings"), {
+          imageUrl,
+          userId,
+          timestamp: serverTimestamp(),
+          userName: "Anônimo"
         });
-        brushSizeInput.addEventListener('input', (e) => ctx.lineWidth = e.target.value);
-        clearBtn.addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
+        showModal("Desenho enviado com sucesso!");
+        return true;
+      } catch (err) {
+        console.error("Erro no upload:", err);
+        showModal("Erro ao enviar o desenho.");
+        return false;
+      } finally {
+        statusElement.classList.add('hidden');
+      }
+    }
 
-        // --- LÓGICA DE UPLOAD REATORADA ---
-        async function uploadFile(file, buttonElement, statusElement) {
-            if (!userId) {
-                showModal("Autenticação necessária. Por favor, recarregue a página.");
-                return;
-            }
-            buttonElement.disabled = true;
-            statusElement.classList.remove('hidden');
+    // Upload de arquivo
+    const fileUploadBtn = document.getElementById('file-upload-btn');
+    const fileUploadInput = document.getElementById('file-upload-input');
+    const fileUploadStatus = document.getElementById('file-upload-status');
+    fileUploadBtn.addEventListener('click', async () => {
+      const file = fileUploadInput.files[0];
+      if (!file) return showModal("Selecione um arquivo.");
+      await uploadFile(file, fileUploadStatus);
+      fileUploadInput.value = '';
+    });
 
-            const filePath = `drawings/${userId}_${Date.now()}_${file.name}`;
-            const fileRef = ref(storage, filePath);
+    // Upload do canvas
+    const canvas = document.getElementById('drawing-canvas');
+    const ctx = canvas.getContext('2d');
+    const canvasUploadBtn = document.getElementById('canvas-upload-btn');
+    const canvasUploadStatus = document.getElementById('canvas-upload-status');
+    canvasUploadBtn.addEventListener('click', async () => {
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+      const blob = await fetch(dataUrl).then(r => r.blob());
+      const file = new File([blob], "canvas_drawing.jpeg", { type: "image/jpeg" });
+      await uploadFile(file, canvasUploadStatus);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
 
-            try {
-                const uploadResult = await uploadBytes(fileRef, file);
-                const imageUrl = await getDownloadURL(uploadResult.ref);
-
-                await addDoc(collection(db, `drawings`), {
-                    imageUrl: imageUrl,
-                    userId: userId,
-                    timestamp: serverTimestamp(),
-                    userName: `Anônimo` 
-                });
-                showModal("Desenho enviado com sucesso!");
-                return true;
-            } catch (error) {
-                console.error("Erro no upload: ", error);
-                showModal("Erro ao enviar o desenho. Tente novamente.");
-                return false;
-            } finally {
-                buttonElement.disabled = false;
-                statusElement.classList.add('hidden');
-            }
-        }
-
-        fileUploadBtn.addEventListener('click', async () => {
-            const file = fileUploadInput.files[0];
-            if (!file) {
-                showModal("Por favor, selecione um arquivo de imagem.");
-                return;
-            }
-            const success = await uploadFile(file, fileUploadBtn, fileUploadStatus);
-            if (success) fileUploadInput.value = '';
-        });
-
-        // =========================================================================
-        // NOVA LÓGICA DE REDIMENSIONAMENTO E COMPRESSÃO IMPLEMENTADA AQUI
-        // =========================================================================
-        canvasUploadBtn.addEventListener('click', async () => {
-            const MAX_WIDTH = 1280; // Define a largura máxima para a imagem
-            let sourceCanvas = canvas; // Começa com o canvas original
-
-            // Se o canvas for maior que a largura máxima, redimensiona
-            if (canvas.width > MAX_WIDTH) {
-                const scale = MAX_WIDTH / canvas.width;
-                const newHeight = canvas.height * scale;
-
-                const tempCanvas = document.createElement('canvas');
-                tempCanvas.width = MAX_WIDTH;
-                tempCanvas.height = newHeight;
-                
-                const tempCtx = tempCanvas.getContext('2d');
-                // Desenha a imagem do canvas original no canvas temporário (menor)
-                tempCtx.drawImage(canvas, 0, 0, MAX_WIDTH, newHeight);
-                
-                sourceCanvas = tempCanvas; // Usa o canvas temporário como fonte para o upload
-            }
-
-            // Gera o JPEG a partir do canvas fonte (original ou redimensionado)
-            const canvasDataUrl = sourceCanvas.toDataURL('image/jpeg', 0.85); 
-            const blob = await fetch(canvasDataUrl).then(res => res.blob());
-            const file = new File([blob], `canvas_drawing.jpeg`, { type: 'image/jpeg' });
-            
-            const success = await uploadFile(file, canvasUploadBtn, canvasUploadStatus);
-            if (success) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o canvas original
-            }
-        });
-
-        // --- LÓGICA DA GALERIA EM TEMPO REAL ---
-        function setupRealtimeGallery() {
-            const drawingsQuery = query(collection(db, `drawings`), orderBy("timestamp", "desc"));
-            
-            onSnapshot(drawingsQuery, (querySnapshot) => {
-                drawingsGallery.innerHTML = '';
-                loadingDrawings.classList.add('hidden');
-                
-                if (querySnapshot.empty) {
-                    drawingsGallery.innerHTML = `<p class="col-span-full text-center text-gray-500">Nenhum desenho ainda. Seja o primeiro a enviar!</p>`;
-                    return;
-                }
-
-                querySnapshot.forEach((doc) => {
-                    const data = doc.data();
-                    const card = document.createElement('div');
-                    card.className = 'bg-white rounded-lg shadow-md overflow-hidden flex flex-col transition-transform hover:-translate-y-1';
-                    
-                    const img = document.createElement('img');
-                    img.src = data.imageUrl;
-                    img.alt = `Desenho de ${data.userName}`;
-                    img.className = 'w-full h-48 object-cover';
-                    img.loading = 'lazy';
-                    
-                    const userText = document.createElement('p');
-                    userText.className = 'text-sm text-gray-600 p-3 mt-auto';
-                    const timestamp = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleDateString('pt-BR') : 'data inválida';
-                    userText.textContent = `Enviado por: ${data.userName} em ${timestamp}`;
-
-                    card.appendChild(img);
-                    card.appendChild(userText);
-
-                    const link = document.createElement('a');
-                    link.href = data.imageUrl;
-                    link.target = '_blank';
-                    link.appendChild(card);
-                    
-                    drawingsGallery.appendChild(link);
-                });
-            }, (error) => {
-                console.error("Erro ao carregar desenhos: ", error);
-                drawingsGallery.innerHTML = `<p class="col-span-full text-center text-red-500">Erro ao carregar a galeria.</p>`;
-            });
-        }
-
-        // --- AUTENTICAÇÃO ---
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                userId = user.uid;
-                setupRealtimeGallery();
-            } else {
-                signInAnonymously(auth).catch((error) => {
-                    console.error("Erro no login anônimo: ", error);
-                    showModal("Não foi possível autenticar. A galeria não funcionará corretamente.");
-                });
-            }
-        });
-
-    </script>
-</body>
-</html>
+    // Galeria em tempo real
+    const drawingsGallery = document.getElementById('drawings-gallery');
+    const loadingDrawings = document.getElementById('loading-drawings');
