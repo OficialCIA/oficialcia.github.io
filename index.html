@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#c2e9fb">
 
-  <title>Kayque Olimpio | Parallax & Flow</title>
+  <title>Kayque Olimpio | Parallax Corrigido</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,58 +13,44 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    /* Estilos Globais e Reset */
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Quicksand', sans-serif;
       overflow-x: hidden;
       opacity: 0;
       transform: translateY(10px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      height: 150vh; /* Permite o scroll para o efeito Parallax */
+      /* Essencial para o parallax funcionar: altura para scroll */
+      height: 200vh; 
       background-color: #d1fae5;
     }
-    
-    body.loaded {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    body.loaded { opacity: 1; transform: translateY(0); }
+    .fade-out { opacity: 0 !important; transition: opacity 0.5s ease-in-out !important; }
 
-    /* Efeito de saída da página */
-    .fade-out {
-      opacity: 0 !important;
-      transition: opacity 0.5s ease-in-out !important;
-    }
-
-    /* Fundo Parallax Fixo */
+    /* Fundo Parallax */
     .bg-parallax {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 110%;
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 120%;
       z-index: -1;
       background: linear-gradient(to bottom right, #d1fae5, #bfdbfe, #ddd6fe);
       will-change: transform;
-      pointer-events: none; /* Garante que o fundo não bloqueie cliques */
+      pointer-events: none;
     }
 
-    /* Card com Glassmorphism e Glow */
-    .card-glow {
-      animation: pulse-glow 4s infinite alternate;
-      will-change: transform;
+    /* Card com Glassmorphism */
+    .card-glow { 
+      animation: pulse-glow 4s infinite alternate; 
+      position: relative;
     }
     @keyframes pulse-glow {
       from { box-shadow: 0 10px 30px rgba(88, 166, 255, 0.3); }
       to   { box-shadow: 0 20px 40px rgba(88, 166, 255, 0.6); }
     }
 
-    /* Ícone Joker Animado */
+    /* Joker */
     .joker-card {
-      position: absolute;
-      top: 20px; right: 20px;
-      width: 45px;
-      z-index: 10;
+      position: absolute; top: 20px; right: 20px;
+      width: 45px; z-index: 10;
       animation: swing 5s ease-in-out infinite;
       transform-origin: top center;
     }
@@ -74,25 +60,27 @@
       75% { transform: rotate(-8deg); }
     }
 
-    /* Sistema de Revelação (Reveal) */
+    /* Reveal System */
     .reveal {
       opacity: 0;
       transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translate(0,0) !important;
-    }
+    .reveal.visible { opacity: 1; transform: translate(0,0) !important; }
     .reveal-bottom { transform: translateY(50px); }
     .reveal-left   { transform: translateX(-50px); }
     .reveal-right  { transform: translateX(50px); }
 
-    /* Delays para efeito cascata */
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.5s; }
     .reveal-delay-4 { transition-delay: 0.7s; }
     .reveal-delay-5 { transition-delay: 0.9s; }
+
+    h1:hover { animation: pulse-title 1.5s infinite; }
+    @keyframes pulse-title {
+      0%, 100% { transform: scale(1); color: #2563eb; }
+      50% { transform: scale(1.03); color: #1d4ed8; }
+    }
   </style>
 </head>
 
@@ -119,7 +107,7 @@
         Kayque Olimpio
       </h1>
       
-      <p id="quote-text" class="text-gray-700 text-lg sm:text-xl leading-relaxed mb-8 font-medium min-h-[60px]"></p>
+      <p id="quote-text" class="text-gray-700 text-lg sm:text-xl leading-relaxed mb-8 font-medium min-h-[60px] reveal reveal-left reveal-delay-4"></p>
       
       <a href="https://www.instagram.com/kayquewrld/" target="_blank" rel="noopener noreferrer" 
          class="inline-flex items-center bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:scale-110 transition-transform reveal reveal-right reveal-delay-5">
@@ -130,11 +118,10 @@
   </div>
 
   <script>
-    // 1. Efeito de Digitação
+    // 1. Digitação
     const quoteElement = document.getElementById('quote-text');
     const quote = '"A história de todas as sociedades até hoje existentes é a história das lutas de classes."';
     let charIndex = 0;
-    
     function typeWriter() {
       if (charIndex < quote.length) {
         quoteElement.textContent += quote.charAt(charIndex);
@@ -143,52 +130,45 @@
       }
     }
 
-    // 2. Lógica de Parallax (Movimento ao Scroll)
+    // 2. PARALLAX REAL (Usando margens para não conflitar com transform)
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
       
-      // Move o fundo (0.15x)
-      document.getElementById('bg-layer').style.transform = `translateY(${scrolled * 0.15}px) scale(1.1)`;
+      // Move o fundo (Lento)
+      const bg = document.getElementById('bg-layer');
+      bg.style.top = (scrolled * 0.2) + 'px';
       
-      // Move o Joker (0.3x) e adiciona uma leve rotação
-      document.getElementById('joker-parallax').style.transform = `translateY(${scrolled * 0.3}px) rotate(${scrolled * 0.05}deg)`;
+      // Move o Joker (Médio)
+      const joker = document.getElementById('joker-parallax');
+      joker.style.marginTop = (scrolled * 0.4) + 'px';
       
-      // Move o card principal levemente para cima para contraste (-0.05x)
-      document.getElementById('main-card').style.transform = `translateY(${scrolled * -0.05}px)`;
+      // Move o card (Leve contraste)
+      const card = document.getElementById('main-card');
+      card.style.marginTop = (scrolled * -0.1) + 'px';
     });
 
-    // 3. Inicialização de Efeitos
+    // 3. Inicialização
     document.addEventListener("DOMContentLoaded", () => {
-      // Fade In inicial
       document.body.classList.add('loaded');
-      
-      // Inicia digitação após 1.2s (fim das animações iniciais)
       setTimeout(typeWriter, 1200);
 
-      // Intersection Observer para disparar animações de revelação
       const reveals = document.querySelectorAll('.reveal');
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('visible');
         });
       }, { threshold: 0.1 });
-      
       reveals.forEach(el => observer.observe(el));
 
-      // Transição suave (Fade Out) ao clicar em links
+      // Fade Out Links
       const links = document.querySelectorAll('nav a');
       links.forEach(link => {
         link.addEventListener('click', (e) => {
           const href = link.getAttribute('href');
-          // Verifica se é um link para outra página
           if (href && !href.startsWith('#') && href !== 'index.html') {
             e.preventDefault();
             document.body.classList.add('fade-out');
-            setTimeout(() => {
-              window.location.href = href;
-            }, 500);
+            setTimeout(() => { window.location.href = href; }, 500);
           }
         });
       });
