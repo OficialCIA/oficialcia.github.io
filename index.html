@@ -13,38 +13,38 @@
     }
     .reveal {
       opacity: 0;
-      transition: opacity 1s ease, transform 1s ease;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    .reveal-bottom { transform: translateY(40px); }
-    .reveal-left   { transform: translateX(-40px); }
-    .reveal-right  { transform: translateX(40px); }
     .visible {
       opacity: 1;
-      transform: translate(0,0);
+      transform: translateY(0);
     }
+    .reveal-left { transform: translateX(-40px); }
+    .reveal-right { transform: translateX(40px); }
   </style>
 </head>
 <body class="bg-gradient-to-b from-blue-50 to-blue-200">
 
   <header class="p-6 text-center space-y-4">
-    <h1 class="text-5xl font-extrabold text-blue-600 reveal reveal-bottom">Kayque Olimpio</h1>
+    <h1 class="text-5xl font-extrabold text-blue-600 reveal">Kayque Olimpio</h1>
     <p class="text-lg text-gray-700 reveal reveal-left">Bem-vindo ao meu espaço pessoal</p>
   </header>
 
-  <main class="space-y-[600px] p-8"> <!-- bastante espaço para scroll -->
+  <main class="space-y-[400px] p-8"> <!-- bastante espaço para scroll -->
     <section class="text-center space-y-6">
       <h2 class="text-4xl font-bold text-blue-500 reveal reveal-right">Sobre Mim</h2>
-      <p class="text-lg text-gray-700 reveal reveal-bottom">Sou apaixonado por tecnologia, arte e inovação.</p>
+      <p class="text-lg text-gray-700 reveal">Sou apaixonado por tecnologia, arte e inovação.</p>
     </section>
 
     <section class="text-center space-y-6">
       <h2 class="text-4xl font-bold text-blue-600 reveal reveal-left">Projetos</h2>
-      <a href="projects.html" class="bg-blue-500 text-white py-3 px-8 rounded-full shadow-lg hover:bg-blue-600 transition reveal reveal-bottom">Ver Projetos</a>
+      <a href="projects.html" class="bg-blue-500 text-white py-3 px-8 rounded-full shadow-lg hover:bg-blue-600 transition reveal">Ver Projetos</a>
     </section>
 
     <section class="text-center space-y-6">
       <h2 class="text-4xl font-bold text-blue-700 reveal reveal-right">Desenhos</h2>
-      <a href="drawings.html" class="bg-green-500 text-white py-3 px-8 rounded-full shadow-lg hover:bg-green-600 transition reveal reveal-bottom">Ver Galeria</a>
+      <a href="drawings.html" class="bg-green-500 text-white py-3 px-8 rounded-full shadow-lg hover:bg-green-600 transition reveal">Ver Galeria</a>
     </section>
   </main>
 
@@ -56,12 +56,10 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target); // só revela uma vez
           }
         });
       }, {
         threshold: 0.1, // dispara quando 10% do elemento entra na tela
-        rootMargin: "0px 0px -100px 0px" // revela gradualmente
       });
 
       reveals.forEach(el => observer.observe(el));
