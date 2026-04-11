@@ -5,103 +5,194 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#c2e9fb">
 
-  <title>Kayque Olimpio</title>
-  <meta name="description" content="Página de entrada de Kayque Olimpio, com um menu de navegação e links importantes.">
-
+  <title>Kayque Olimpio | Parallax & Flow</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
+    /* Estilos Globais e Reset */
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Quicksand', sans-serif;
       overflow-x: hidden;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      height: 150vh; /* Permite o scroll para o efeito Parallax */
+      background-color: #d1fae5;
+    }
+    
+    body.loaded {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* Glow suave no card */
+    /* Efeito de saída da página */
+    .fade-out {
+      opacity: 0 !important;
+      transition: opacity 0.5s ease-in-out !important;
+    }
+
+    /* Fundo Parallax Fixo */
+    .bg-parallax {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 110%;
+      z-index: -1;
+      background: linear-gradient(to bottom right, #d1fae5, #bfdbfe, #ddd6fe);
+      will-change: transform;
+      pointer-events: none; /* Garante que o fundo não bloqueie cliques */
+    }
+
+    /* Card com Glassmorphism e Glow */
     .card-glow {
       animation: pulse-glow 4s infinite alternate;
+      will-change: transform;
     }
     @keyframes pulse-glow {
-      from {
-        box-shadow: 0 10px 30px rgba(88, 166, 255, 0.3);
-      }
-      to {
-        box-shadow: 0 20px 40px rgba(88, 166, 255, 0.6);
-      }
+      from { box-shadow: 0 10px 30px rgba(88, 166, 255, 0.3); }
+      to   { box-shadow: 0 20px 40px rgba(88, 166, 255, 0.6); }
     }
 
-    /* Carta animada */
+    /* Ícone Joker Animado */
     .joker-card {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 40px;
+      top: 20px; right: 20px;
+      width: 45px;
       z-index: 10;
       animation: swing 5s ease-in-out infinite;
       transform-origin: top center;
-      transition: transform 0.3s ease-out;
     }
     @keyframes swing {
       0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(6deg); }
-      75% { transform: rotate(-6deg); }
+      25% { transform: rotate(8deg); }
+      75% { transform: rotate(-8deg); }
     }
-    .joker-card:hover {
-      animation-play-state: paused;
-      transform: scale(1.2) rotate(8deg);
+
+    /* Sistema de Revelação (Reveal) */
+    .reveal {
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    .reveal.visible {
+      opacity: 1;
+      transform: translate(0,0) !important;
+    }
+    .reveal-bottom { transform: translateY(50px); }
+    .reveal-left   { transform: translateX(-50px); }
+    .reveal-right  { transform: translateX(50px); }
+
+    /* Delays para efeito cascata */
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.5s; }
+    .reveal-delay-4 { transition-delay: 0.7s; }
+    .reveal-delay-5 { transition-delay: 0.9s; }
   </style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 min-h-screen flex flex-col items-center justify-center p-6">
+<body class="p-6">
 
-  <!-- Ícone animado -->
-  <img src="https://img.icons8.com/ios-filled/50/joker-card.png" alt="Ícone de carta de palhaço" class="joker-card">
+  <div class="bg-parallax" id="bg-layer"></div>
 
-  <!-- Navegação -->
-  <nav class="w-full max-w-lg mb-10">
-    <ul class="flex justify-center space-x-6 text-lg sm:text-xl">
-      <li><a href="index.html" class="font-bold text-blue-600 hover:text-blue-800 transition-colors">Início</a></li>
-      <li><a href="about.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Sobre Mim</a></li>
-      <li><a href="projects.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Projetos</a></li>
-      <li><a href="drawings.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Desenhos</a></li>
-    </ul>
-  </nav>
-
-  <!-- Card principal -->
-  <main class="card-glow bg-white rounded-3xl shadow-2xl p-10 sm:p-14 w-full max-w-lg text-center transform transition-all hover:scale-105 duration-500">
+  <div class="flex flex-col items-center justify-start min-h-screen pt-20">
     
-    <h1 class="text-5xl sm:text-6xl font-extrabold text-blue-600 mb-6 tracking-tight">Kayque Olimpio</h1>
-    
-    <p id="quote-text" class="text-gray-700 text-lg sm:text-xl leading-relaxed mb-8 font-medium min-h-[56px]"></p>
-    
-    <a href="https://www.instagram.com/kayquewrld/" target="_blank" rel="noopener noreferrer" 
-       class="inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-xl">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-      </svg>
-      Meu Instagram
-    </a>
-  </main>
+    <img src="https://img.icons8.com/ios-filled/50/joker-card.png" alt="Joker" 
+         class="joker-card reveal reveal-right reveal-delay-1" id="joker-parallax">
 
-  <!-- Script de digitação -->
+    <nav class="w-full max-w-lg mb-12 reveal reveal-left reveal-delay-2">
+      <ul class="flex justify-center space-x-6 text-lg sm:text-xl">
+        <li><a href="index.html" class="font-bold text-blue-600 border-b-2 border-blue-600">Início</a></li>
+        <li><a href="about.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Sobre</a></li>
+        <li><a href="projects.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Projetos</a></li>
+        <li><a href="drawings.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Desenhos</a></li>
+      </ul>
+    </nav>
+
+    <main id="main-card" class="card-glow bg-white/80 backdrop-blur-md rounded-3xl p-10 sm:p-14 w-full max-w-lg text-center reveal reveal-bottom reveal-delay-3">
+      <h1 class="text-5xl sm:text-6xl font-extrabold text-blue-600 mb-6 tracking-tight">
+        Kayque Olimpio
+      </h1>
+      
+      <p id="quote-text" class="text-gray-700 text-lg sm:text-xl leading-relaxed mb-8 font-medium min-h-[60px]"></p>
+      
+      <a href="https://www.instagram.com/kayquewrld/" target="_blank" rel="noopener noreferrer" 
+         class="inline-flex items-center bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:scale-110 transition-transform reveal reveal-right reveal-delay-5">
+        Instagram
+      </a>
+    </main>
+
+  </div>
+
   <script>
+    // 1. Efeito de Digitação
     const quoteElement = document.getElementById('quote-text');
     const quote = '"A história de todas as sociedades até hoje existentes é a história das lutas de classes."';
+    let charIndex = 0;
     
-    let i = 0;
-    let speed = 40;
-
     function typeWriter() {
-      if (i < quote.length) {
-        quoteElement.textContent += quote.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
+      if (charIndex < quote.length) {
+        quoteElement.textContent += quote.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 40);
       }
     }
-    window.onload = typeWriter;
+
+    // 2. Lógica de Parallax (Movimento ao Scroll)
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      
+      // Move o fundo (0.15x)
+      document.getElementById('bg-layer').style.transform = `translateY(${scrolled * 0.15}px) scale(1.1)`;
+      
+      // Move o Joker (0.3x) e adiciona uma leve rotação
+      document.getElementById('joker-parallax').style.transform = `translateY(${scrolled * 0.3}px) rotate(${scrolled * 0.05}deg)`;
+      
+      // Move o card principal levemente para cima para contraste (-0.05x)
+      document.getElementById('main-card').style.transform = `translateY(${scrolled * -0.05}px)`;
+    });
+
+    // 3. Inicialização de Efeitos
+    document.addEventListener("DOMContentLoaded", () => {
+      // Fade In inicial
+      document.body.classList.add('loaded');
+      
+      // Inicia digitação após 1.2s (fim das animações iniciais)
+      setTimeout(typeWriter, 1200);
+
+      // Intersection Observer para disparar animações de revelação
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      reveals.forEach(el => observer.observe(el));
+
+      // Transição suave (Fade Out) ao clicar em links
+      const links = document.querySelectorAll('nav a');
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          // Verifica se é um link para outra página
+          if (href && !href.startsWith('#') && href !== 'index.html') {
+            e.preventDefault();
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+              window.location.href = href;
+            }, 500);
+          }
+        });
+      });
+    });
   </script>
 
 </body>
