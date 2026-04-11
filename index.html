@@ -50,16 +50,21 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      const reveals = document.querySelectorAll('.reveal');
+
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target); // garante que só aparece uma vez
+            observer.unobserve(entry.target); // só revela uma vez
           }
         });
-      }, { threshold: 0.15 }); // dispara quando ~15% do elemento entra na tela
+      }, {
+        threshold: 0.25, // só dispara quando 25% do elemento entra na tela
+        rootMargin: "0px 0px -50px 0px" // ajuda a revelar gradualmente
+      });
 
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      reveals.forEach(el => observer.observe(el));
     });
   </script>
 </body>
