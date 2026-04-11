@@ -11,11 +11,13 @@
       margin: 0;
       padding: 0;
     }
+    /* Estado inicial: invisível e deslocado */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
       transition: opacity 1s ease, transform 1s ease;
     }
+    /* Estado final: visível */
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
@@ -47,16 +49,18 @@
   </main>
 
   <script>
-    // IntersectionObserver para revelar elementos ao entrar na tela
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // evita reaplicar várias vezes
+          }
+        });
+      }, { threshold: 0.2 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
   </script>
 </body>
 </html>
