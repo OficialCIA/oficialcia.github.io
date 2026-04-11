@@ -1,123 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria dos Visitantes - Kayque Olimpio</title>
-    <meta name="title" content="Galeria dos Visitantes">
-    <meta name="description" content="Galeria onde usuários podem enviar e visualizar desenhos.">
-    <meta name="theme-color" content="#c2e9fb">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#c2e9fb">
 
-    <style>
-        body {
-            font-family: 'Quicksand', sans-serif;
-        }
-    </style>
+  <title>Kayque Olimpio</title>
+  <meta name="description" content="Página de entrada de Kayque Olimpio, com um menu de navegação e links importantes.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Glow suave no card */
+    .card-glow {
+      animation: pulse-glow 4s infinite alternate;
+    }
+    @keyframes pulse-glow {
+      from {
+        box-shadow: 0 10px 30px rgba(88, 166, 255, 0.3);
+      }
+      to {
+        box-shadow: 0 20px 40px rgba(88, 166, 255, 0.6);
+      }
+    }
+
+    /* Carta animada */
+    .joker-card {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      z-index: 10;
+      animation: swing 5s ease-in-out infinite;
+      transform-origin: top center;
+      transition: transform 0.3s ease-out;
+    }
+    @keyframes swing {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(6deg); }
+      75% { transform: rotate(-6deg); }
+    }
+    .joker-card:hover {
+      animation-play-state: paused;
+      transform: scale(1.2) rotate(8deg);
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-b from-blue-50 to-blue-200 min-h-screen flex flex-col items-center py-12 px-4">
 
-    <header class="w-full max-w-4xl mb-8">
-        <nav>
-            <ul class="flex justify-center space-x-6 text-xl">
-                <li><a href="index.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Início</a></li>
-                <li><a href="about.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Sobre Mim</a></li>
-                <li><a href="projects.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Projetos</a></li>
-                <li><a href="drawings.html" class="font-bold text-blue-500 hover:text-blue-600 transition-colors">Desenhos</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 min-h-screen flex flex-col items-center justify-center p-6">
 
-    <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-4xl text-center flex flex-col items-center">
-        
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-500 mb-8 tracking-tight">Galeria dos Visitantes</h1>
+  <!-- Ícone animado -->
+  <img src="https://img.icons8.com/ios-filled/50/joker-card.png" alt="Ícone de carta de palhaço" class="joker-card">
 
-        <section class="w-full max-w-md bg-blue-50 p-6 rounded-lg shadow-inner mb-8" aria-labelledby="upload-title">
-            <h2 id="upload-title" class="text-2xl font-bold text-gray-800 mb-4">Adicionar um Desenho</h2>
-            <label for="file-upload-input" class="sr-only">Escolha um arquivo</label>
-            <input type="file" id="file-upload-input" accept="image/*" class="w-full text-gray-700 border border-gray-300 rounded-lg p-2 mb-4 cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200">
-            <button id="file-upload-btn" class="w-full bg-blue-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 hover:bg-blue-600 disabled:bg-gray-400">
-                Fazer Upload de Imagem
-            </button>
-            <p id="file-upload-status" class="mt-4 text-sm text-gray-600 hidden" aria-live="polite">Fazendo upload...</p>
-        </section>
+  <!-- Navegação -->
+  <nav class="w-full max-w-lg mb-10">
+    <ul class="flex justify-center space-x-6 text-lg sm:text-xl">
+      <li><a href="index.html" class="font-bold text-blue-600 hover:text-blue-800 transition-colors">Início</a></li>
+      <li><a href="about.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Sobre Mim</a></li>
+      <li><a href="projects.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Projetos</a></li>
+      <li><a href="drawings.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Desenhos</a></li>
+    </ul>
+  </nav>
 
-        <section class="w-full max-w-2xl bg-blue-50 p-6 rounded-lg shadow-inner mb-8" aria-labelledby="draw-title">
-            <h2 id="draw-title" class="text-2xl font-bold text-gray-800 mb-4">Criar um Desenho</h2>
-            
-            <div class="flex flex-wrap items-center justify-center gap-4 mb-6">
-                <button id="tool-pencil" class="p-3 rounded-full text-white shadow-lg transition-colors duration-200 ring-2 ring-blue-700 bg-blue-500 hover:bg-blue-600">Lápis</button>
-                <button id="tool-eraser" class="p-3 rounded-full text-white shadow-lg transition-colors duration-200 bg-blue-500 hover:bg-blue-600">Borracha</button>
-                <label for="color-picker" class="sr-only">Seletor de Cor</label>
-                <input type="color" id="color-picker" value="#000000" class="w-12 h-12 p-1 rounded-full cursor-pointer border-2 border-gray-300">
-                <label for="brush-size" class="text-sm font-medium text-gray-700">Tamanho:</label>
-                <input type="range" id="brush-size" min="1" max="50" value="5" class="w-32 cursor-pointer">
-                <button id="clear-btn" class="p-3 rounded-full bg-red-500 text-white shadow-lg transition-colors duration-200 hover:bg-red-600">Limpar</button>
-            </div>
-            
-            <div class="border-2 border-blue-500 rounded-lg shadow-md w-full aspect-video max-w-full mb-4 overflow-hidden">
-                <canvas id="drawing-canvas" class="w-full h-full bg-white cursor-crosshair"></canvas>
-            </div>
+  <!-- Card principal -->
+  <main class="card-glow bg-white rounded-3xl shadow-2xl p-10 sm:p-14 w-full max-w-lg text-center transform transition-all hover:scale-105 duration-500">
+    
+    <h1 class="text-5xl sm:text-6xl font-extrabold text-blue-600 mb-6 tracking-tight">Kayque Olimpio</h1>
+    
+    <p id="quote-text" class="text-gray-700 text-lg sm:text-xl leading-relaxed mb-8 font-medium min-h-[56px]"></p>
+    
+    <a href="https://www.instagram.com/kayquewrld/" target="_blank" rel="noopener noreferrer" 
+       class="inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-xl">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+      Meu Instagram
+    </a>
+  </main>
 
-            <button id="canvas-upload-btn" class="w-full max-w-md bg-green-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 hover:bg-green-600 disabled:bg-gray-400">
-                Salvar e Enviar
-            </button>
-            <p id="canvas-upload-status" class="mt-4 text-sm text-gray-600 hidden" aria-live="polite">Salvando desenho...</p>
-        </section>
+  <!-- Script de digitação -->
+  <script>
+    const quoteElement = document.getElementById('quote-text');
+    const quote = '"A história de todas as sociedades até hoje existentes é a história das lutas de classes."';
+    
+    let i = 0;
+    let speed = 40;
 
-        <section class="w-full" aria-labelledby="gallery-title">
-            <h2 id="gallery-title" class="sr-only">Galeria de Desenhos Enviados</h2>
-            <div id="drawings-gallery" class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <p id="loading-drawings" class="col-span-full text-gray-500">Carregando desenhos...</p>
-            </div>
-        </section>
-    </main>
+    function typeWriter() {
+      if (i < quote.length) {
+        quoteElement.textContent += quote.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+    window.onload = typeWriter;
+  </script>
 
-    <div id="notification-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" role="alertdialog" aria-modal="true">
-        <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm mx-auto text-center">
-            <p id="notification-message" class="text-lg text-gray-800"></p>
-            <button id="notification-close-btn" class="mt-4 bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600">OK</button>
-        </div>
-    </div>
-
-    <script type="module">
-        // Importações do Firebase
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
-
-        const firebaseConfig = {
-          apiKey: "AIzaSyA6UJ3nC1WD0HQxbGBKm-L4Bmbk5_YdTNM",
-          authDomain: "kayque-e2385.firebaseapp.com",
-          projectId: "kayque-e2385",
-          storageBucket: "kayque-e2385.appspot.com",
-          messagingSenderId: "719897671237",
-          appId: "1:719897671237:web:d9a1f4ad69a0e72ff3952c",
-          measurementId: "G-LEBFZLRYC6"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
-        const storage = getStorage(app);
-        let userId = null;
-
-        // Autenticação
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                userId = user.uid;
-                // aqui você chama setupRealtimeGallery()
-            } else {
-                signInAnonymously(auth).catch((error) => {
-                    console.error("Erro no login anônimo: ", error);
-                });
-            }
-        });
-    </script>
 </body>
 </html>
