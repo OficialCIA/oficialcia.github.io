@@ -60,4 +60,12 @@
           }
         });
       }, {
-        threshold: 0.1, // dispara
+        threshold: 0.1, // dispara quando 10% do elemento entra na tela
+        rootMargin: "0px 0px -100px 0px" // revela gradualmente
+      });
+
+      reveals.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
