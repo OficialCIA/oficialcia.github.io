@@ -31,7 +31,7 @@
     <p class="text-lg text-gray-700 reveal reveal-left">Bem-vindo ao meu espaço pessoal</p>
   </header>
 
-  <main class="space-y-48 p-8"> <!-- bastante espaço para scroll -->
+  <main class="space-y-[600px] p-8"> <!-- bastante espaço para scroll -->
     <section class="text-center space-y-6">
       <h2 class="text-4xl font-bold text-blue-500 reveal reveal-right">Sobre Mim</h2>
       <p class="text-lg text-gray-700 reveal reveal-bottom">Sou apaixonado por tecnologia, arte e inovação.</p>
@@ -60,12 +60,4 @@
           }
         });
       }, {
-        threshold: 0.25, // só dispara quando 25% do elemento entra na tela
-        rootMargin: "0px 0px -50px 0px" // ajuda a revelar gradualmente
-      });
-
-      reveals.forEach(el => observer.observe(el));
-    });
-  </script>
-</body>
-</html>
+        threshold: 0.1, // dispara
