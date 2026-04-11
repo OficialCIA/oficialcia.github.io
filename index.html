@@ -1,69 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kayque Olimpio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Quicksand', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-left { transform: translateX(-40px); }
-    .reveal-right { transform: translateX(40px); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria dos Visitantes - Kayque Olimpio</title>
+    <meta name="title" content="Galeria dos Visitantes">
+    <meta name="description" content="Galeria onde usuários podem enviar e visualizar desenhos.">
+    <meta name="theme-color" content="#c2e9fb">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-b from-blue-50 to-blue-200">
+<body class="bg-gradient-to-b from-blue-50 to-blue-200 min-h-screen flex flex-col items-center py-12 px-4">
 
-  <header class="p-6 text-center space-y-4">
-    <h1 class="text-5xl font-extrabold text-blue-600 reveal">Kayque Olimpio</h1>
-    <p class="text-lg text-gray-700 reveal reveal-left">Bem-vindo ao meu espaço pessoal</p>
-  </header>
+    <header class="w-full max-w-4xl mb-8">
+        <nav>
+            <ul class="flex justify-center space-x-6 text-xl">
+                <li><a href="index.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Início</a></li>
+                <li><a href="about.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Sobre Mim</a></li>
+                <li><a href="projects.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Projetos</a></li>
+                <li><a href="drawings.html" class="font-bold text-blue-500 hover:text-blue-600 transition-colors">Desenhos</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main class="space-y-[400px] p-8"> <!-- bastante espaço para scroll -->
-    <section class="text-center space-y-6">
-      <h2 class="text-4xl font-bold text-blue-500 reveal reveal-right">Sobre Mim</h2>
-      <p class="text-lg text-gray-700 reveal">Sou apaixonado por tecnologia, arte e inovação.</p>
-    </section>
+    <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-4xl text-center flex flex-col items-center">
+        
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-500 mb-8 tracking-tight">Galeria dos Visitantes</h1>
 
-    <section class="text-center space-y-6">
-      <h2 class="text-4xl font-bold text-blue-600 reveal reveal-left">Projetos</h2>
-      <a href="projects.html" class="bg-blue-500 text-white py-3 px-8 rounded-full shadow-lg hover:bg-blue-600 transition reveal">Ver Projetos</a>
-    </section>
+        <section class="w-full max-w-md bg-blue-50 p-6 rounded-lg shadow-inner mb-8" aria-labelledby="upload-title">
+            <h2 id="upload-title" class="text-2xl font-bold text-gray-800 mb-4">Adicionar um Desenho</h2>
+            <label for="file-upload-input" class="sr-only">Escolha um arquivo</label>
+            <input type="file" id="file-upload-input" accept="image/*" class="w-full text-gray-700 border border-gray-300 rounded-lg p-2 mb-4 cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200">
+            <button id="file-upload-btn" class="w-full bg-blue-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 hover:bg-blue-600 disabled:bg-gray-400">
+                Fazer Upload de Imagem
+            </button>
+            <p id="file-upload-status" class="mt-4 text-sm text-gray-600 hidden" aria-live="polite">Fazendo upload...</p>
+        </section>
 
-    <section class="text-center space-y-6">
-      <h2 class="text-4xl font-bold text-blue-700 reveal reveal-right">Desenhos</h2>
-      <a href="drawings.html" class="bg-green-500 text-white py-3 px-8 rounded-full shadow-lg hover:bg-green-600 transition reveal">Ver Galeria</a>
-    </section>
-  </main>
+        <section class="w-full max-w-2xl bg-blue-50 p-6 rounded-lg shadow-inner mb-8" aria-labelledby="draw-title">
+            <h2 id="draw-title" class="text-2xl font-bold text-gray-800 mb-4">Criar um Desenho</h2>
+            
+            <div class="flex flex-wrap items-center justify-center gap-4 mb-6">
+                <button id="tool-pencil" class="p-3 rounded-full text-white shadow-lg transition-colors duration-200 ring-2 ring-blue-700 bg-blue-500 hover:bg-blue-600">Lápis</button>
+                <button id="tool-eraser" class="p-3 rounded-full text-white shadow-lg transition-colors duration-200 bg-blue-500 hover:bg-blue-600">Borracha</button>
+                <label for="color-picker" class="sr-only">Seletor de Cor</label>
+                <input type="color" id="color-picker" value="#000000" class="w-12 h-12 p-1 rounded-full cursor-pointer border-2 border-gray-300">
+                <label for="brush-size" class="text-sm font-medium text-gray-700">Tamanho:</label>
+                <input type="range" id="brush-size" min="1" max="50" value="5" class="w-32 cursor-pointer">
+                <button id="clear-btn" class="p-3 rounded-full bg-red-500 text-white shadow-lg transition-colors duration-200 hover:bg-red-600">Limpar</button>
+            </div>
+            
+            <div class="border-2 border-blue-500 rounded-lg shadow-md w-full aspect-video max-w-full mb-4 overflow-hidden">
+                <canvas id="drawing-canvas" class="w-full h-full bg-white cursor-crosshair"></canvas>
+            </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const reveals = document.querySelectorAll('.reveal');
+            <button id="canvas-upload-btn" class="w-full max-w-md bg-green-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 hover:bg-green-600 disabled:bg-gray-400">
+                Salvar e Enviar
+            </button>
+            <p id="canvas-upload-status" class="mt-4 text-sm text-gray-600 hidden" aria-live="polite">Salvando desenho...</p>
+        </section>
 
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
+        <section class="w-full" aria-labelledby="gallery-title">
+            <h2 id="gallery-title" class="sr-only">Galeria de Desenhos Enviados</h2>
+            <div id="drawings-gallery" class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <p id="loading-drawings" class="col-span-full text-gray-500">Carregando desenhos...</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="notification-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" role="alertdialog" aria-modal="true">
+        <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm mx-auto text-center">
+            <p id="notification-message" class="text-lg text-gray-800"></p>
+            <button id="notification-close-btn" class="mt-4 bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600">OK</button>
+        </div>
+    </div>
+
+    <script type="module">
+        // Importações do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyA6UJ3nC1WD0HQxbGBKm-L4Bmbk5_YdTNM",
+          authDomain: "kayque-e2385.firebaseapp.com",
+          projectId: "kayque-e2385",
+          storageBucket: "kayque-e2385.appspot.com",
+          messagingSenderId: "719897671237",
+          appId: "1:719897671237:web:d9a1f4ad69a0e72ff3952c",
+          measurementId: "G-LEBFZLRYC6"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const storage = getStorage(app);
+        let userId = null;
+
+        // Autenticação
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                userId = user.uid;
+                // aqui você chama setupRealtimeGallery()
+            } else {
+                signInAnonymously(auth).catch((error) => {
+                    console.error("Erro no login anônimo: ", error);
+                });
+            }
         });
-      }, {
-        threshold: 0.1, // dispara quando 10% do elemento entra na tela
-      });
-
-      reveals.forEach(el => observer.observe(el));
-    });
-  </script>
+    </script>
 </body>
 </html>
