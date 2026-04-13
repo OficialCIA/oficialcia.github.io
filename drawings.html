@@ -3,61 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Mural Kayque | Firebase</title>
+  <title>Mural Kayque | Admin Mode</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Quicksand', sans-serif; background: linear-gradient(135deg, #d1fae5, #bfdbfe, #ddd6fe); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-    .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-radius: 2rem; border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
-    canvas { background: white; touch-action: none; cursor: crosshair; border-radius: 1rem; width: 100%; max-width: 600px; height: auto; border: 1px solid #e2e8f0; }
-    .gallery-grid { display: grid; grid-template-cols: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; width: 100%; max-width: 800px; margin-top: 30px; }
-    .gallery-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; border: 4px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; }
-    .gallery-img:hover { transform: scale(1.05); }
+    body { font-family: 'Quicksand', sans-serif; background: #f0f9ff; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+    canvas { background: white; touch-action: none; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 500px; aspect-ratio: 4/3; border: 1px solid #ddd; }
+    .gallery-grid { display: grid; grid-template-cols: repeat(2, 1fr); gap: 15px; margin-top: 20px; width: 100%; max-width: 500px; }
+    .gallery-item { position: relative; }
+    .gallery-img { width: 100%; border-radius: 10px; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .btn-delete { display: none; position: absolute; top: 5px; right: 5px; background: #ef4444; color: white; border-radius: 50%; width: 25px; height: 25px; font-size: 12px; font-weight: bold; border: none; cursor: pointer; }
+    .admin-active .btn-delete { display: block; }
   </style>
 </head>
 <body>
 
-  <nav class="mb-8">
-    <ul class="flex space-x-8 text-gray-700 font-bold">
-      <li><a href="index.html" class="hover:text-blue-600 transition-colors">Início</a></li>
-      <li><a href="drawings.html" class="text-blue-600 border-b-2 border-blue-600">Desenhos</a></li>
-    </ul>
+  <nav class="mb-6 flex gap-4 font-bold text-blue-600">
+    <a href="index.html">Início</a>
+    <a href="drawings.html" class="underline">Desenhos</a>
+    <button onclick="fazerLogin()" class="text-gray-400 text-xs font-normal">Painel Admin</button>
   </nav>
 
-  <main class="glass-card w-full max-w-2xl p-6 text-center">
-    <h1 class="text-2xl font-extrabold text-gray-800 mb-2">Mural Comunitário</h1>
-    <p class="text-gray-600 text-sm mb-6">Desenhe algo e publique para o mundo!</p>
-
-    <div class="flex justify-center gap-4 mb-4">
-      <input type="color" id="colorPicker" class="w-10 h-10 cursor-pointer rounded">
-      <button onclick="window.clearCanvas()" class="text-red-500 font-bold text-xs uppercase">Limpar</button>
+  <div class="bg-white p-6 rounded-3xl shadow-xl w-full max-w-lg text-center">
+    <h1 class="text-xl font-bold mb-4">Mural Global</h1>
+    
+    <div class="mb-4 flex justify-center gap-4">
+      <input type="color" id="colorPicker" value="#000000" class="w-10 h-10 cursor-pointer">
+      <button onclick="limpar()" class="text-red-500 font-bold uppercase text-xs">Limpar</button>
     </div>
 
-    <canvas id="canvas" width="600" height="400" class="shadow-inner"></canvas>
+    <canvas id="canvas"></canvas>
 
-    <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-      <label class="bg-gray-800 text-white px-6 py-2 rounded-full font-bold cursor-pointer text-sm">
-        Abrir Foto
-        <input type="file" id="uploadFile" class="hidden" accept="image/*">
-      </label>
-      <button id="btnPublicar" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-blue-700 transition-all disabled:opacity-50">
-        Publicar no Mural Real
-      </button>
+    <div class="mt-6 flex flex-col gap-3">
+      <button id="btnPublicar" class="bg-blue-600 text-white py-3 rounded-full font-bold">Publicar no Mural Real</button>
     </div>
-  </main>
+  </div>
 
-  <section class="w-full max-w-4xl mt-12 text-center">
-    <h2 class="text-xl font-bold text-gray-800 mb-6 underline decoration-blue-400">Galeria Global</h2>
-    <div id="muralGlobal" class="gallery-grid">
-      </div>
-  </section>
+  <div class="gallery-grid" id="muralGlobal"></div>
 
   <script type="module">
-    // Importando Firebase
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, collection, addDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-    // SUAS CONFIGURAÇÕES DO FIREBASE
     const firebaseConfig = {
       apiKey: "AIzaSyCnBVK5TpuO6WkjOkvkcfm-vWDCefYtBtg",
       authDomain: "kayque-e2385.firebaseapp.com",
@@ -72,83 +58,80 @@
     const db = getFirestore(app);
     const muralRef = collection(db, "desenhos");
 
-    // Lógica do Canvas
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    let drawing = false;
+    canvas.width = 600; canvas.height = 450;
+    ctx.lineCap = 'round'; ctx.lineWidth = 5;
 
+    let desenhando = false;
+    let isAdmin = false;
+
+    // --- LOGICA DE LOGIN ---
+    window.fazerLogin = () => {
+      const senha = prompt("Digite a senha de administrador:");
+      if (senha === "1234") { // TROQUE ESSA SENHA DEPOIS
+        isAdmin = true;
+        document.body.classList.add('admin-active');
+        alert("Modo Admin ativado!");
+      } else {
+        alert("Senha incorreta.");
+      }
+    };
+
+    // --- LOGICA DE DESENHO ---
     function getPos(e) {
       const rect = canvas.getBoundingClientRect();
       const clientX = e.touches ? e.touches.clientX : e.clientX;
       const clientY = e.touches ? e.touches.clientY : e.clientY;
-      return {
-        x: (clientX - rect.left) * (canvas.width / rect.width),
-        y: (clientY - rect.top) * (canvas.height / rect.height)
-      };
+      return { x: (clientX - rect.left) * (canvas.width / rect.width), y: (clientY - rect.top) * (canvas.height / rect.height) };
     }
+    const iniciar = (e) => { desenhando = true; const pos = getPos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); draw(e); };
+    const draw = (e) => { if (!desenhando) return; e.preventDefault(); const pos = getPos(e); ctx.strokeStyle = document.getElementById('colorPicker').value; ctx.lineTo(pos.x, pos.y); ctx.stroke(); };
+    const parar = () => { desenhando = false; ctx.beginPath(); };
 
-    const start = (e) => { drawing = true; ctx.beginPath(); draw(e); };
-    const stop = () => { drawing = false; ctx.beginPath(); };
-    const draw = (e) => {
-      if (!drawing) return;
-      if (e.cancelable) e.preventDefault();
-      const pos = getPos(e);
-      ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.strokeStyle = document.getElementById('colorPicker').value;
-      ctx.lineTo(pos.x, pos.y); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(pos.x, pos.y);
-    };
-
-    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousedown', iniciar);
     canvas.addEventListener('mousemove', draw);
-    window.addEventListener('mouseup', stop);
-    canvas.addEventListener('touchstart', start, {passive: false});
+    window.addEventListener('mouseup', parar);
+    canvas.addEventListener('touchstart', iniciar, {passive: false});
     canvas.addEventListener('touchmove', draw, {passive: false});
-    canvas.addEventListener('touchend', stop);
+    canvas.addEventListener('touchend', parar);
 
-    window.clearCanvas = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
+    window.limpar = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Upload de Foto para o Canvas
-    document.getElementById('uploadFile').addEventListener('change', (e) => {
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        const img = new Image();
-        img.onload = () => ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        img.src = ev.target.result;
-      };
-      reader.readAsDataURL(e.target.files);
-    });
-
-    // PUBLICAR NO FIREBASE
+    // --- PUBLICAR ---
     document.getElementById('btnPublicar').onclick = async () => {
       const btn = document.getElementById('btnPublicar');
+      const dataURL = canvas.toDataURL("image/png", 0.3);
       btn.innerText = "Enviando..."; btn.disabled = true;
-      
-      const dataURL = canvas.toDataURL("image/png");
-
       try {
         await addDoc(muralRef, { image: dataURL, timestamp: Date.now() });
-        window.clearCanvas();
-        alert("Publicado no Mural Global!");
-      } catch (err) {
-        alert("Erro ao publicar. Verifique se o Firestore está em modo de teste.");
-      } finally {
-        btn.innerText = "Publicar no Mural Real"; btn.disabled = false;
+        limpar();
+      } catch (err) { alert("Erro ao salvar."); }
+      btn.innerText = "Publicar no Mural Real"; btn.disabled = false;
+    };
+
+    // --- DELETAR ---
+    window.deletarFoto = async (id) => {
+      if (confirm("Deseja deletar este desenho?")) {
+        await deleteDoc(doc(db, "desenhos", id));
       }
     };
 
-    // LER DO FIREBASE EM TEMPO REAL
+    // --- CARREGAR GALERIA EM TEMPO REAL ---
     const q = query(muralRef, orderBy("timestamp", "desc"));
-    onSnapshot(q, (snapshot) => {
+    onSnapshot(q, (snap) => {
       const mural = document.getElementById('muralGlobal');
       mural.innerHTML = '';
-      snapshot.forEach((doc) => {
-        const img = document.createElement('img');
-        img.src = doc.data().image;
-        img.className = 'gallery-img';
-        mural.appendChild(img);
+      snap.forEach(doc => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.innerHTML = `
+          <img src="${doc.data().image}" class="gallery-img">
+          <button class="btn-delete" onclick="deletarFoto('${doc.id}')">X</button>
+        `;
+        mural.appendChild(item);
       });
     });
   </script>
-
 </body>
 </html>
