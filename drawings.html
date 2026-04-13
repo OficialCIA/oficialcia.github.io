@@ -60,8 +60,10 @@
 
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    canvas.width = 600; canvas.height = 450;
-    ctx.lineCap = 'round'; ctx.lineWidth = 5;
+    canvas.width = 600;
+    canvas.height = 450;
+    ctx.lineCap = 'round';
+    ctx.lineWidth = 5;
 
     let desenhando = false;
     let isAdmin = false;
@@ -69,7 +71,7 @@
     // --- LOGICA DE LOGIN ---
     window.fazerLogin = () => {
       const senha = prompt("Digite a senha de administrador:");
-      if (senha === "1234") { // TROQUE ESSA SENHA DEPOIS
+      if (senha === "1234") {
         isAdmin = true;
         document.body.classList.add('admin-active');
         alert("Modo Admin ativado!");
@@ -81,19 +83,41 @@
     // --- LOGICA DE DESENHO ---
     function getPos(e) {
       const rect = canvas.getBoundingClientRect();
-      const clientX = e.touches ? e.touches.clientX : e.clientX;
-      const clientY = e.touches ? e.touches.clientY : e.clientY;
-      return { x: (clientX - rect.left) * (canvas.width / rect.width), y: (clientY - rect.top) * (canvas.height / rect.height) };
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: (clientX - rect.left) * (canvas.width / rect.width),
+        y: (clientY - rect.top) * (canvas.height / rect.height)
+      };
     }
-    const iniciar = (e) => { desenhando = true; const pos = getPos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); draw(e); };
-    const draw = (e) => { if (!desenhando) return; e.preventDefault(); const pos = getPos(e); ctx.strokeStyle = document.getElementById('colorPicker').value; ctx.lineTo(pos.x, pos.y); ctx.stroke(); };
-    const parar = () => { desenhando = false; ctx.beginPath(); };
+
+    const iniciar = (e) => {
+      desenhando = true;
+      const pos = getPos(e);
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+      draw(e);
+    };
+
+    const draw = (e) => {
+      if (!desenhando) return;
+      e.preventDefault();
+      const pos = getPos(e);
+      ctx.strokeStyle = document.getElementById('colorPicker').value;
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    };
+
+    const parar = () => {
+      desenhando = false;
+      ctx.beginPath();
+    };
 
     canvas.addEventListener('mousedown', iniciar);
     canvas.addEventListener('mousemove', draw);
     window.addEventListener('mouseup', parar);
-    canvas.addEventListener('touchstart', iniciar, {passive: false});
-    canvas.addEventListener('touchmove', draw, {passive: false});
+    canvas.addEventListener('touchstart', iniciar, { passive: false });
+    canvas.addEventListener('touchmove', draw, { passive: false });
     canvas.addEventListener('touchend', parar);
 
     window.limpar = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -102,18 +126,28 @@
     document.getElementById('btnPublicar').onclick = async () => {
       const btn = document.getElementById('btnPublicar');
       const dataURL = canvas.toDataURL("image/png", 0.3);
-      btn.innerText = "Enviando..."; btn.disabled = true;
+      btn.innerText = "Enviando...";
+      btn.disabled = true;
       try {
         await addDoc(muralRef, { image: dataURL, timestamp: Date.now() });
         limpar();
-      } catch (err) { alert("Erro ao salvar."); }
-      btn.innerText = "Publicar no Mural Real"; btn.disabled = false;
+        alert("Desenho publicado com sucesso!");
+      } catch (err) {
+        alert("Erro ao salvar: " + err.message);
+      }
+      btn.innerText = "Publicar no Mural Real";
+      btn.disabled = false;
     };
 
     // --- DELETAR ---
     window.deletarFoto = async (id) => {
       if (confirm("Deseja deletar este desenho?")) {
-        await deleteDoc(doc(db, "desenhos", id));
+        try {
+          await deleteDoc(doc(db, "desenhos", id));
+          alert("Desenho deletado!");
+        } catch (err) {
+          alert("Erro ao deletar: " + err.message);
+        }
       }
     };
 
@@ -122,15 +156,17 @@
     onSnapshot(q, (snap) => {
       const mural = document.getElementById('muralGlobal');
       mural.innerHTML = '';
-      snap.forEach(doc => {
+      snap.forEach(docSnapshot => {
         const item = document.createElement('div');
         item.className = 'gallery-item';
         item.innerHTML = `
-          <img src="${doc.data().image}" class="gallery-img">
-          <button class="btn-delete" onclick="deletarFoto('${doc.id}')">X</button>
+          <img src="${docSnapshot.data().image}" class="gallery-img">
+          <button class="btn-delete" onclick="deletarFoto('${docSnapshot.id}')">X</button>
         `;
         mural.appendChild(item);
       });
+    }, (err) => {
+      console.error("Erro ao carregar galeria:", err);
     });
   </script>
 </body>
