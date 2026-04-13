@@ -3,158 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria dos Visitantes - Kayque Olimpio</title>
-  <meta name="description" content="Galeria onde usuários podem enviar e visualizar desenhos.">
-  <meta name="theme-color" content="#c2e9fb">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <title>Kayque Olimpio | Desenhos & Fotos</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: 'Quicksand', sans-serif; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #d1fae5 0%, #bfdbfe 50%, #ddd6fe 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    canvas {
+      background: white;
+      cursor: crosshair;
+      touch-action: none;
+      border-radius: 15px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .color-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid white;
+      transition: transform 0.2s;
+    }
+    .color-btn:hover { transform: scale(1.15); }
   </style>
 </head>
-<body class="bg-gradient-to-b from-blue-50 to-blue-200 min-h-screen flex flex-col items-center py-12 px-4">
+<body>
 
-  <header class="w-full max-w-4xl mb-8">
-    <nav>
-      <ul class="flex justify-center space-x-6 text-xl">
-        <li><a href="index.html" class="font-bold text-gray-700 hover:text-blue-600">Início</a></li>
-        <li><a href="about.html" class="font-bold text-gray-700 hover:text-blue-600">Sobre Mim</a></li>
-        <li><a href="projects.html" class="font-bold text-gray-700 hover:text-blue-600">Projetos</a></li>
-        <li><a href="drawings.html" class="font-bold text-blue-500 hover:text-blue-600">Desenhos</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav class="mb-8">
+    <ul class="flex space-x-8 text-gray-700 font-bold">
+      <li><a href="index.html" class="hover:text-blue-600 transition-colors">Início</a></li>
+      <li><a href="about.html" class="hover:text-blue-600 transition-colors">Sobre</a></li>
+      <li><a href="projects.html" class="hover:text-blue-600 transition-colors">Projetos</a></li>
+      <li><a href="drawings.html" class="text-blue-600 border-b-2 border-blue-600">Desenhos</a></li>
+    </ul>
+  </nav>
 
-  <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-4xl text-center flex flex-col items-center">
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-500 mb-8">Galeria dos Visitantes</h1>
+  <main class="glass-card w-full max-w-2xl rounded-3xl p-6 text-center">
+    <h1 class="text-3xl font-extrabold text-gray-800 mb-2">Editor Criativo</h1>
+    <p class="text-gray-600 mb-6 text-sm">Desenhe do zero ou carregue uma foto para editar</p>
 
-    <!-- Upload de arquivo -->
-    <section class="w-full max-w-md bg-blue-50 p-6 rounded-lg shadow-inner mb-8">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">Adicionar um Desenho</h2>
-      <input type="file" id="file-upload-input" accept="image/*" class="w-full mb-4">
-      <button id="file-upload-btn" class="w-full bg-blue-500 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-600">
-        Fazer Upload de Imagem
-      </button>
-      <p id="file-upload-status" class="mt-4 text-sm text-gray-600 hidden">Fazendo upload...</p>
-    </section>
-
-    <!-- Canvas -->
-    <section class="w-full max-w-2xl bg-blue-50 p-6 rounded-lg shadow-inner mb-8">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">Criar um Desenho</h2>
-      <canvas id="drawing-canvas" class="w-full h-64 bg-white border-2 border-blue-500 rounded-lg"></canvas>
-      <button id="canvas-upload-btn" class="mt-4 w-full bg-green-500 text-white font-bold py-3 px-8 rounded-full hover:bg-green-600">
-        Salvar e Enviar
-      </button>
-      <p id="canvas-upload-status" class="mt-4 text-sm text-gray-600 hidden">Salvando desenho...</p>
-    </section>
-
-    <!-- Galeria -->
-    <section class="w-full">
-      <h2 class="sr-only">Galeria de Desenhos Enviados</h2>
-      <div id="drawings-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <p id="loading-drawings" class="col-span-full text-gray-500">Carregando desenhos...</p>
+    <div class="flex flex-wrap justify-center items-center gap-3 mb-6">
+      <div class="flex gap-2">
+        <button class="color-btn bg-black" onclick="changeColor('#000000')"></button>
+        <button class="color-btn bg-red-500" onclick="changeColor('#ef4444')"></button>
+        <button class="color-btn bg-blue-500" onclick="changeColor('#3b82f6')"></button>
       </div>
-    </section>
+      
+      <input type="color" id="colorPicker" class="w-8 h-8 cursor-pointer" onchange="changeColor(this.value)">
+      
+      <select id="brushSize" class="bg-white border rounded px-2 py-1 text-sm font-bold" onchange="changeSize(this.value)">
+        <option value="3">Fino</option>
+        <option value="6" selected>Médio</option>
+        <option value="12">Grosso</option>
+      </select>
+
+      <button onclick="clearCanvas()" class="text-xs font-bold text-red-500 uppercase ml-2">Limpar Tudo</button>
+    </div>
+
+    <div class="relative inline-block w-full">
+      <canvas id="canvas" width="800" height="500" class="w-full shadow-inner"></canvas>
+    </div>
+
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <label class="flex items-center gap-2 cursor-pointer bg-gray-800 text-white px-6 py-3 rounded-full font-bold hover:bg-gray-900 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        Abrir Foto
+        <input type="file" id="uploadPhoto" class="hidden" accept="image/*">
+      </label>
+
+      <button onclick="downloadImage()" class="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        Baixar Resultado
+      </button>
+    </div>
   </main>
 
-  <!-- Modal -->
-  <div id="notification-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-    <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm mx-auto text-center">
-      <p id="notification-message" class="text-lg text-gray-800"></p>
-      <button id="notification-close-btn" class="mt-4 bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600">OK</button>
-    </div>
-  </div>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
-
-    // Configuração corrigida
-    const firebaseConfig = {
-      apiKey: "AIzaSyA6UJ3nC1WD0HQxbGBKm-L4Bmbk5_YdTNM",
-      authDomain: "kayque-e2385.firebaseapp.com",
-      projectId: "kayque-e2385",
-      storageBucket: "kayque-e2385.appspot.com", // CORRIGIDO
-      messagingSenderId: "719897671237",
-      appId: "1:719897671237:web:d9a1f4ad69a0e72ff3952c",
-      measurementId: "G-LEBFZLRYC6"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const auth = getAuth(app);
-    const storage = getStorage(app);
-    let userId = null;
-
-    // Modal
-    const notificationModal = document.getElementById('notification-modal');
-    const notificationMessage = document.getElementById('notification-message');
-    const notificationCloseBtn = document.getElementById('notification-close-btn');
-    function showModal(msg) {
-      notificationMessage.textContent = msg;
-      notificationModal.classList.remove('hidden');
-    }
-    notificationCloseBtn.addEventListener('click', () => notificationModal.classList.add('hidden'));
-
-    // Upload genérico
-    async function uploadFile(file, statusElement) {
-      if (!userId) {
-        showModal("Autenticação necessária. Recarregue a página.");
-        return false;
-      }
-      statusElement.classList.remove('hidden');
-      try {
-        const filePath = `drawings/${userId}_${Date.now()}_${file.name}`;
-        const fileRef = ref(storage, filePath);
-        const uploadResult = await uploadBytes(fileRef, file);
-        const imageUrl = await getDownloadURL(uploadResult.ref);
-        await addDoc(collection(db, "drawings"), {
-          imageUrl,
-          userId,
-          timestamp: serverTimestamp(),
-          userName: "Anônimo"
-        });
-        showModal("Desenho enviado com sucesso!");
-        return true;
-      } catch (err) {
-        console.error("Erro no upload:", err);
-        showModal("Erro ao enviar o desenho.");
-        return false;
-      } finally {
-        statusElement.classList.add('hidden');
-      }
-    }
-
-    // Upload de arquivo
-    const fileUploadBtn = document.getElementById('file-upload-btn');
-    const fileUploadInput = document.getElementById('file-upload-input');
-    const fileUploadStatus = document.getElementById('file-upload-status');
-    fileUploadBtn.addEventListener('click', async () => {
-      const file = fileUploadInput.files[0];
-      if (!file) return showModal("Selecione um arquivo.");
-      await uploadFile(file, fileUploadStatus);
-      fileUploadInput.value = '';
-    });
-
-    // Upload do canvas
-    const canvas = document.getElementById('drawing-canvas');
+  <script>
+    const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    const canvasUploadBtn = document.getElementById('canvas-upload-btn');
-    const canvasUploadStatus = document.getElementById('canvas-upload-status');
-    canvasUploadBtn.addEventListener('click', async () => {
-      const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
-      const blob = await fetch(dataUrl).then(r => r.blob());
-      const file = new File([blob], "canvas_drawing.jpeg", { type: "image/jpeg" });
-      await uploadFile(file, canvasUploadStatus);
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const uploadPhoto = document.getElementById('uploadPhoto');
+    
+    let drawing = false;
+    let color = "#000000";
+    let brushSize = 6;
+
+    // Configuração inicial do pincel
+    function setupBrush() {
+      ctx.lineWidth = brushSize;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+    }
+    setupBrush();
+
+    // Funções de Desenho
+    function startPosition(e) {
+      drawing = true;
+      draw(e);
+    }
+
+    function finishedPosition() {
+      drawing = false;
+      ctx.beginPath();
+    }
+
+    function draw(e) {
+      if (!drawing) return;
+      
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      
+      const x = ((e.clientX || (e.touches && e.touches.clientX)) - rect.left) * scaleX;
+      const y = ((e.clientY || (e.touches && e.touches.clientY)) - rect.top) * scaleY;
+
+      ctx.strokeStyle = color;
+      ctx.lineWidth = brushSize;
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+    }
+
+    // Eventos
+    canvas.addEventListener('mousedown', startPosition);
+    canvas.addEventListener('mouseup', finishedPosition);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startPosition(e.touches); });
+    canvas.addEventListener('touchend', finishedPosition);
+    canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e.touches); });
+
+    // Ferramentas
+    function changeColor(newColor) { color = newColor; }
+    function changeSize(newSize) { brushSize = newSize; }
+    function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
+    // LÓGICA PARA CARREGAR FOTO DO DISPOSITIVO
+    uploadPhoto.addEventListener('change', function(e) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const img = new Image();
+        img.onload = function() {
+          // Limpa o canvas antes de colocar a foto ou desenha por cima?
+          // Aqui escolhi limpar para focar na edição da foto enviada
+          clearCanvas();
+          
+          // Calcula proporção para a imagem caber no canvas sem distorcer
+          const ratio = Math.min(canvas.width / img.width, canvas.height / img.height);
+          const x = (canvas.width - img.width * ratio) / 2;
+          const y = (canvas.height - img.height * ratio) / 2;
+          
+          ctx.drawImage(img, x, y, img.width * ratio, img.height * ratio);
+          setupBrush(); // Garante que o pincel continue configurado
+        }
+        img.src = event.target.result;
+      }
+      reader.readAsDataURL(e.target.files);
     });
 
-    // Galeria em tempo real
-    const drawingsGallery = document.getElementById('drawings-gallery');
-    const loadingDrawings = document.getElementById('loading-drawings');
+    function downloadImage() {
+      const link = document.createElement('a');
+      link.download = 'arte-kayque-olimpio.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    }
+  </script>
+
+</body>
+</html>
