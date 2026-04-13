@@ -2,8 +2,8 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kayque Olimpio | Desenhos & Fotos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kayque Olimpio | Galeria Comunitária</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
 
@@ -13,181 +13,152 @@
       background: linear-gradient(135deg, #d1fae5 0%, #bfdbfe 50%, #ddd6fe 100%);
       background-attachment: fixed;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
+      display: flex; flex-direction: column; align-items: center; padding: 20px;
     }
-
     .glass-card {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(12px);
+      border-radius: 2rem;
       border: 1px solid rgba(255, 255, 255, 0.4);
       box-shadow: 0 20px 50px rgba(0,0,0,0.1);
     }
-
     canvas {
       background: white;
+      touch-action: none; /* Bloqueia o scroll enquanto desenha */
       cursor: crosshair;
-      touch-action: none;
-      border-radius: 15px;
-      max-width: 100%;
-      height: auto;
+      border-radius: 1rem;
     }
-
-    .color-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
+    .gallery-item {
+      width: 150px; height: 100px;
+      object-fit: cover;
+      border-radius: 0.5rem;
       border: 2px solid white;
-      transition: transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .color-btn:hover { transform: scale(1.15); }
   </style>
 </head>
 <body>
 
   <nav class="mb-8">
-    <ul class="flex space-x-8 text-gray-700 font-bold">
-      <li><a href="index.html" class="hover:text-blue-600 transition-colors">Início</a></li>
-      <li><a href="about.html" class="hover:text-blue-600 transition-colors">Sobre</a></li>
-      <li><a href="projects.html" class="hover:text-blue-600 transition-colors">Projetos</a></li>
+    <ul class="flex space-x-6 text-gray-700 font-bold">
+      <li><a href="index.html" class="hover:text-blue-600">Início</a></li>
       <li><a href="drawings.html" class="text-blue-600 border-b-2 border-blue-600">Desenhos</a></li>
     </ul>
   </nav>
 
-  <main class="glass-card w-full max-w-2xl rounded-3xl p-6 text-center">
-    <h1 class="text-3xl font-extrabold text-gray-800 mb-2">Editor Criativo</h1>
-    <p class="text-gray-600 mb-6 text-sm">Desenhe do zero ou carregue uma foto para editar</p>
-
-    <div class="flex flex-wrap justify-center items-center gap-3 mb-6">
-      <div class="flex gap-2">
-        <button class="color-btn bg-black" onclick="changeColor('#000000')"></button>
-        <button class="color-btn bg-red-500" onclick="changeColor('#ef4444')"></button>
-        <button class="color-btn bg-blue-500" onclick="changeColor('#3b82f6')"></button>
-      </div>
-      
-      <input type="color" id="colorPicker" class="w-8 h-8 cursor-pointer" onchange="changeColor(this.value)">
-      
-      <select id="brushSize" class="bg-white border rounded px-2 py-1 text-sm font-bold" onchange="changeSize(this.value)">
-        <option value="3">Fino</option>
-        <option value="6" selected>Médio</option>
-        <option value="12">Grosso</option>
-      </select>
-
-      <button onclick="clearCanvas()" class="text-xs font-bold text-red-500 uppercase ml-2">Limpar Tudo</button>
+  <main class="glass-card w-full max-w-2xl p-6 text-center mb-10">
+    <h1 class="text-2xl font-extrabold text-gray-800 mb-4">Mural Criativo</h1>
+    
+    <div class="flex justify-center gap-4 mb-4">
+      <input type="color" id="colorPicker" value="#000000" class="w-10 h-10 cursor-pointer">
+      <button onclick="clearCanvas()" class="text-red-500 font-bold text-xs uppercase">Limpar</button>
     </div>
 
-    <div class="relative inline-block w-full">
-      <canvas id="canvas" width="800" height="500" class="w-full shadow-inner"></canvas>
-    </div>
+    <canvas id="canvas" width="600" height="400" class="w-full shadow-inner border"></canvas>
 
-    <div class="mt-8 flex flex-wrap justify-center gap-4">
-      <label class="flex items-center gap-2 cursor-pointer bg-gray-800 text-white px-6 py-3 rounded-full font-bold hover:bg-gray-900 transition-all">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        Abrir Foto
-        <input type="file" id="uploadPhoto" class="hidden" accept="image/*">
+    <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <label class="bg-gray-800 text-white px-5 py-2 rounded-full font-bold cursor-pointer text-sm">
+        Importar Foto
+        <input type="file" id="uploadFile" class="hidden" accept="image/*">
       </label>
-
-      <button onclick="downloadImage()" class="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
-        Baixar Resultado
+      
+      <button onclick="saveToGallery()" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold text-sm hover:bg-blue-700">
+        Publicar no Mural
       </button>
     </div>
   </main>
 
+  <section class="w-full max-w-4xl">
+    <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Desenhos Salvos</h2>
+    <div id="gallery" class="flex flex-wrap justify-center gap-4">
+      </div>
+  </section>
+
   <script>
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    const uploadPhoto = document.getElementById('uploadPhoto');
-    
+    const galleryContainer = document.getElementById('gallery');
     let drawing = false;
-    let color = "#000000";
-    let brushSize = 6;
 
-    // Configuração inicial do pincel
-    function setupBrush() {
-      ctx.lineWidth = brushSize;
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-    }
-    setupBrush();
+    // Ajuste de DPI/Escala
+    ctx.lineWidth = 4;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#000000';
 
-    // Funções de Desenho
-    function startPosition(e) {
-      drawing = true;
-      draw(e);
-    }
-
-    function finishedPosition() {
-      drawing = false;
-      ctx.beginPath();
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches.clientX : e.clientX;
+      const clientY = e.touches ? e.touches.clientY : e.clientY;
+      return {
+        x: (clientX - rect.left) * (canvas.width / rect.width),
+        y: (clientY - rect.top) * (canvas.height / rect.height)
+      };
     }
 
+    function start(e) { drawing = true; draw(e); }
+    function stop() { drawing = false; ctx.beginPath(); }
+    
     function draw(e) {
       if (!drawing) return;
-      
-      const rect = canvas.getBoundingClientRect();
-      const scaleX = canvas.width / rect.width;
-      const scaleY = canvas.height / rect.height;
-      
-      const x = ((e.clientX || (e.touches && e.touches.clientX)) - rect.left) * scaleX;
-      const y = ((e.clientY || (e.touches && e.touches.clientY)) - rect.top) * scaleY;
-
-      ctx.strokeStyle = color;
-      ctx.lineWidth = brushSize;
-      ctx.lineTo(x, y);
+      e.preventDefault();
+      const pos = getPos(e);
+      ctx.lineTo(pos.x, pos.y);
       ctx.stroke();
       ctx.beginPath();
-      ctx.moveTo(x, y);
+      ctx.moveTo(pos.x, pos.y);
     }
 
-    // Eventos
-    canvas.addEventListener('mousedown', startPosition);
-    canvas.addEventListener('mouseup', finishedPosition);
+    // Eventos Mouse e Touch
+    canvas.addEventListener('mousedown', start);
     canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startPosition(e.touches); });
-    canvas.addEventListener('touchend', finishedPosition);
-    canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e.touches); });
+    window.addEventListener('mouseup', stop);
+    canvas.addEventListener('touchstart', start);
+    canvas.addEventListener('touchmove', draw);
+    canvas.addEventListener('touchend', stop);
 
-    // Ferramentas
-    function changeColor(newColor) { color = newColor; }
-    function changeSize(newSize) { brushSize = newSize; }
+    document.getElementById('colorPicker').onchange = (e) => ctx.strokeStyle = e.target.value;
+
     function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
 
-    // LÓGICA PARA CARREGAR FOTO DO DISPOSITIVO
-    uploadPhoto.addEventListener('change', function(e) {
+    // Upload de Foto
+    document.getElementById('uploadFile').addEventListener('change', function(e) {
       const reader = new FileReader();
       reader.onload = function(event) {
         const img = new Image();
         img.onload = function() {
-          // Limpa o canvas antes de colocar a foto ou desenha por cima?
-          // Aqui escolhi limpar para focar na edição da foto enviada
-          clearCanvas();
-          
-          // Calcula proporção para a imagem caber no canvas sem distorcer
-          const ratio = Math.min(canvas.width / img.width, canvas.height / img.height);
-          const x = (canvas.width - img.width * ratio) / 2;
-          const y = (canvas.height - img.height * ratio) / 2;
-          
-          ctx.drawImage(img, x, y, img.width * ratio, img.height * ratio);
-          setupBrush(); // Garante que o pincel continue configurado
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         }
         img.src = event.target.result;
       }
       reader.readAsDataURL(e.target.files);
     });
 
-    function downloadImage() {
-      const link = document.createElement('a');
-      link.download = 'arte-kayque-olimpio.png';
-      link.href = canvas.toDataURL();
-      link.click();
+    // SISTEMA DE GALERIA (LocalStorage)
+    function saveToGallery() {
+      const dataURL = canvas.toDataURL();
+      let savedItems = JSON.parse(localStorage.getItem('kayque_gallery') || '[]');
+      savedItems.push(dataURL);
+      localStorage.setItem('kayque_gallery', JSON.stringify(savedItems));
+      renderGallery();
+      clearCanvas();
+      alert("Desenho publicado no seu mural local!");
     }
+
+    function renderGallery() {
+      galleryContainer.innerHTML = '';
+      const savedItems = JSON.parse(localStorage.getItem('kayque_gallery') || '[]');
+      savedItems.reverse().forEach(imgData => {
+        const img = document.createElement('img');
+        img.src = imgData;
+        img.className = 'gallery-item';
+        galleryContainer.appendChild(img);
+      });
+    }
+
+    // Carregar galeria ao abrir
+    window.onload = renderGallery;
+
+    function changeColor(c) { ctx.strokeStyle = c; }
   </script>
 
 </body>
