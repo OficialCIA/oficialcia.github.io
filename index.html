@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#c2e9fb">
 
-  <title>Kayque Olimpio | Design Clean</title>
+  <title>Kayque Olimpio | Home</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,48 +22,42 @@
       align-items: center;
       justify-content: center;
       opacity: 0;
-      transition: opacity 1s ease-in;
+      transition: opacity 0.6s ease-in-out;
     }
 
     body.loaded { opacity: 1; }
 
-    /* Card com Glassmorphism (Efeito Vidro) */
+    /* Efeito de saída suave */
+    .fade-out { opacity: 0 !important; }
+
+    /* Glassmorphism */
     .glass-card {
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
     }
 
     .glass-card:hover {
       transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 30px 60px rgba(59, 130, 246, 0.2);
+      background: rgba(255, 255, 255, 0.8);
     }
 
-    /* Animação suave do Joker */
-    .joker-float {
-      animation: float 4s ease-in-out infinite;
-    }
+    .joker-float { animation: float 4s ease-in-out infinite; }
     @keyframes float {
       0%, 100% { transform: translateY(0) rotate(0deg); }
       50% { transform: translateY(-10px) rotate(5deg); }
     }
 
-    /* Sistema de entrada suave (Reveal) */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.8s ease-out;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* Efeito de brilho no botão */
     .btn-shine {
       position: relative;
       overflow: hidden;
@@ -71,22 +65,13 @@
     .btn-shine::after {
       content: "";
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
       background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
       transform: rotate(45deg);
-      transition: 0.5s;
+      transition: 0.6s;
     }
-    .btn-shine:hover::after {
-      left: 120%;
-    }
-
-    /* Delays de entrada */
-    .delay-1 { transition-delay: 0.2s; }
-    .delay-2 { transition-delay: 0.4s; }
-    .delay-3 { transition-delay: 0.6s; }
+    .btn-shine:hover::after { left: 120%; }
   </style>
 </head>
 
@@ -94,27 +79,28 @@
 
   <div class="flex flex-col items-center w-full max-w-lg">
     
-    <div class="mb-6 reveal delay-1">
+    <div class="mb-6 reveal" style="transition-delay: 0.1s;">
       <img src="https://img.icons8.com/ios-filled/100/joker-card.png" 
-           alt="Joker" class="w-16 h-16 opacity-70 joker-float">
+           alt="Joker" class="w-16 h-16 opacity-60 joker-float">
     </div>
 
-    <nav class="mb-10 reveal delay-2">
+    <nav class="mb-10 reveal" style="transition-delay: 0.3s;">
       <ul class="flex space-x-8 text-gray-700 font-bold">
-        <li><a href="#" class="hover:text-blue-600 transition-colors">Início</a></li>
-        <li><a href="#" class="hover:text-blue-600 transition-colors">Sobre</a></li>
-        <li><a href="#" class="hover:text-blue-600 transition-colors">Projetos</a></li>
+        <li><a href="index.html" class="text-blue-600 border-b-2 border-blue-600">Início</a></li>
+        <li><a href="about.html" class="nav-link hover:text-blue-600 transition-colors">Sobre</a></li>
+        <li><a href="projects.html" class="nav-link hover:text-blue-600 transition-colors">Projetos</a></li>
+        <li><a href="drawings.html" class="nav-link hover:text-blue-600 transition-colors">Desenhos</a></li>
       </ul>
     </nav>
 
-    <main class="glass-card rounded-3xl p-10 sm:p-14 w-full text-center reveal delay-3">
+    <main class="glass-card rounded-3xl p-10 sm:p-14 w-full text-center reveal" style="transition-delay: 0.5s;">
       <h1 class="text-5xl font-extrabold text-gray-800 mb-6 tracking-tight">
         Kayque Olimpio
       </h1>
       
       <p id="quote-text" class="text-gray-600 text-lg leading-relaxed mb-8 font-medium min-h-[60px]"></p>
       
-      <a href="https://www.instagram.com/kayquewrld/" target="_blank" 
+      <a href="https://www.instagram.com/kayquewrld/" target="_blank" rel="noopener noreferrer"
          class="btn-shine inline-flex items-center bg-blue-600 text-white font-bold py-3 px-12 rounded-full shadow-lg transition-all active:scale-95">
         Instagram
       </a>
@@ -131,22 +117,36 @@
       if (i < quote.length) {
         quoteElement.textContent += quote.charAt(i);
         i++;
-        setTimeout(typeWriter, 50);
+        setTimeout(typeWriter, 40);
       }
     }
 
-    // 2. Inicialização
+    // 2. Inicialização e Navegação
     document.addEventListener("DOMContentLoaded", () => {
-      // Ativa o corpo
       document.body.classList.add('loaded');
       
-      // Ativa os reveals
+      // Ativa elementos reveal
       setTimeout(() => {
         document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-      }, 100);
+      }, 150);
 
       // Inicia digitação
       setTimeout(typeWriter, 1000);
+
+      // Lógica de transição suave entre páginas
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = link.getAttribute('href');
+          
+          document.body.classList.add('fade-out');
+          
+          setTimeout(() => {
+            window.location.href = target;
+          }, 500);
+        });
+      });
     });
   </script>
 
