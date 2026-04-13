@@ -1,1 +1,3 @@
-olimpio.me
+Type: CNAME
+Name: www
+Value: OficialCIA.github.io
