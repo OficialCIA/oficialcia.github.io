@@ -2,43 +2,124 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mural Kayque | Admin Mode</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: 'Quicksand', sans-serif; background: #f0f9ff; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-    canvas { background: white; touch-action: none; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 500px; aspect-ratio: 4/3; border: 1px solid #ddd; }
-    .gallery-grid { display: grid; grid-template-cols: repeat(2, 1fr); gap: 15px; margin-top: 20px; width: 100%; max-width: 500px; }
-    .gallery-item { position: relative; }
-    .gallery-img { width: 100%; border-radius: 10px; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .btn-delete { display: none; position: absolute; top: 5px; right: 5px; background: #ef4444; color: white; border-radius: 50%; width: 25px; height: 25px; font-size: 12px; font-weight: bold; border: none; cursor: pointer; }
-    .admin-active .btn-delete { display: block; }
+    body { font-family: 'Quicksand', sans-serif; background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 16px; }
+    canvas { background: white; touch-action: none; border-radius: 1rem; box-shadow: 0 4px 24px rgba(0,0,0,0.10); width: 100%; display: block; border: 2px solid #e2e8f0; cursor: crosshair; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px; width: 100%; max-width: 540px; }
+    @media (min-width: 480px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    .gallery-item { position: relative; aspect-ratio: 4/3; overflow: hidden; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.10); }
+    .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.2s; }
+    .gallery-item:hover .gallery-img { transform: scale(1.04); }
+    .btn-delete { display: none; position: absolute; top: 6px; right: 6px; background: #ef4444; color: white; border-radius: 50%; width: 28px; height: 28px; font-size: 13px; font-weight: bold; border: 2px solid white; cursor: pointer; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: background 0.15s; }
+    .btn-delete:hover { background: #b91c1c; }
+    .admin-active .btn-delete { display: flex; }
+    .tab-btn { transition: all 0.2s; }
+    .tab-btn.active { background: #2563eb; color: white; box-shadow: 0 2px 8px rgba(37,99,235,0.25); }
+    .tab-btn:not(.active) { background: #f1f5f9; color: #64748b; }
+    #uploadZone { border: 2px dashed #93c5fd; border-radius: 1rem; background: #eff6ff; transition: border-color 0.2s, background 0.2s; }
+    #uploadZone.drag-over { border-color: #2563eb; background: #dbeafe; }
+    .spinner { border: 3px solid #e2e8f0; border-top: 3px solid #2563eb; border-radius: 50%; width: 22px; height: 22px; animation: spin 0.8s linear infinite; display: inline-block; vertical-align: middle; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px); opacity: 0; transition: all 0.35s cubic-bezier(.4,2,.6,1); z-index: 50; min-width: 220px; text-align: center; }
+    #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
   </style>
 </head>
 <body>
 
-  <nav class="mb-6 flex gap-4 font-bold text-blue-600">
-    <a href="index.html">Início</a>
+  <!-- Navbar -->
+  <nav class="mb-6 flex gap-4 font-bold text-blue-600 w-full max-w-lg items-center">
+    <a href="index.html" class="hover:text-blue-800 transition-colors">Início</a>
     <a href="drawings.html" class="underline">Desenhos</a>
-    <button onclick="fazerLogin()" class="text-gray-400 text-xs font-normal">Painel Admin</button>
+    <button id="btnAdmin" onclick="fazerLogin()" class="ml-auto text-gray-400 text-xs font-normal bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200 transition-colors">⚙️ Admin</button>
   </nav>
 
-  <div class="bg-white p-6 rounded-3xl shadow-xl w-full max-w-lg text-center">
-    <h1 class="text-xl font-bold mb-4">Mural Global</h1>
-    
-    <div class="mb-4 flex justify-center gap-4">
-      <input type="color" id="colorPicker" value="#000000" class="w-10 h-10 cursor-pointer">
-      <button onclick="limpar()" class="text-red-500 font-bold uppercase text-xs">Limpar</button>
+  <!-- Main card -->
+  <div class="bg-white p-5 rounded-3xl shadow-xl w-full max-w-lg text-center">
+    <h1 class="text-2xl font-bold mb-1 text-gray-800">🎨 Mural Global</h1>
+    <p class="text-xs text-gray-400 mb-4">Desenhe ou envie uma foto para o mural!</p>
+
+    <!-- Tabs -->
+    <div class="flex gap-2 mb-5 rounded-xl overflow-hidden border border-slate-200 p-1 bg-slate-50">
+      <button id="tabDraw" class="tab-btn active flex-1 py-2 rounded-lg text-sm font-semibold" onclick="switchTab('draw')">✏️ Desenhar</button>
+      <button id="tabUpload" class="tab-btn flex-1 py-2 rounded-lg text-sm font-semibold" onclick="switchTab('upload')">📷 Upload de Foto</button>
     </div>
 
-    <canvas id="canvas"></canvas>
+    <!-- Draw panel -->
+    <div id="panelDraw">
+      <div class="mb-3 flex items-center justify-center gap-3 flex-wrap">
+        <label class="flex items-center gap-1 text-xs text-gray-500">
+          Cor:
+          <input type="color" id="colorPicker" value="#000000" class="w-8 h-8 cursor-pointer rounded-lg border-0">
+        </label>
+        <label class="flex items-center gap-1 text-xs text-gray-500">
+          Espessura:
+          <input type="range" id="brushSize" min="1" max="30" value="5" class="w-20 cursor-pointer">
+          <span id="brushSizeLabel" class="w-5 text-center">5</span>
+        </label>
+        <button onclick="limpar()" class="text-red-400 font-bold text-xs px-3 py-1.5 rounded-full bg-red-50 hover:bg-red-100 transition-colors">🗑 Limpar</button>
+        <button onclick="desfazer()" class="text-gray-500 font-bold text-xs px-3 py-1.5 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors">↩ Desfazer</button>
+      </div>
+      <canvas id="canvas"></canvas>
+    </div>
 
-    <div class="mt-6 flex flex-col gap-3">
-      <button id="btnPublicar" class="bg-blue-600 text-white py-3 rounded-full font-bold">Publicar no Mural Real</button>
+    <!-- Upload panel -->
+    <div id="panelUpload" class="hidden">
+      <!-- Upload zone -->
+      <div id="uploadZone" class="p-6 mb-3 cursor-pointer rounded-2xl text-center" onclick="document.getElementById('fileInput').click()">
+        <div id="uploadPlaceholder">
+          <div class="text-4xl mb-2">📷</div>
+          <p class="text-blue-500 font-semibold text-sm">Clique ou arraste uma foto aqui</p>
+          <p class="text-gray-400 text-xs mt-1">PNG, JPG, GIF • máx. 5 MB</p>
+        </div>
+        <div id="uploadPreviewWrap" class="hidden">
+          <img id="uploadPreview" class="rounded-xl mx-auto max-h-40 object-contain mb-2" alt="Preview">
+          <p id="uploadFileInfo" class="text-xs text-gray-500"></p>
+        </div>
+      </div>
+      <input type="file" id="fileInput" accept="image/png,image/jpeg,image/gif" class="hidden">
+
+      <!-- Canvas to draw over photo -->
+      <div id="photoCanvasWrap" class="hidden">
+        <div class="mb-2 flex items-center justify-center gap-3 flex-wrap">
+          <label class="flex items-center gap-1 text-xs text-gray-500">
+            Cor:
+            <input type="color" id="colorPickerUpload" value="#ff0000" class="w-8 h-8 cursor-pointer rounded-lg border-0">
+          </label>
+          <label class="flex items-center gap-1 text-xs text-gray-500">
+            Espessura:
+            <input type="range" id="brushSizeUpload" min="1" max="30" value="5" class="w-20 cursor-pointer">
+            <span id="brushSizeUploadLabel" class="w-5 text-center">5</span>
+          </label>
+          <button onclick="desfazerUpload()" class="text-gray-500 font-bold text-xs px-3 py-1.5 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors">↩ Desfazer</button>
+        </div>
+        <canvas id="canvasUpload"></canvas>
+        <p class="text-xs text-gray-400 mt-1">Desenhe sobre a foto acima ✏️</p>
+      </div>
+
+      <button id="btnClearPhoto" class="hidden mt-2 text-xs text-red-400 font-semibold px-3 py-1.5 rounded-full bg-red-50 hover:bg-red-100 transition-colors" onclick="limparFoto()">✕ Remover foto</button>
+    </div>
+
+    <!-- Publish button -->
+    <div class="mt-5">
+      <button id="btnPublicar" class="w-full bg-blue-600 hover:bg-blue-700 active:scale-95 text-white py-3 rounded-full font-bold text-base transition-all shadow-md">
+        🚀 Publicar no Mural
+      </button>
     </div>
   </div>
 
-  <div class="gallery-grid" id="muralGlobal"></div>
+  <!-- Toast notification -->
+  <div id="toast" class="bg-gray-800 text-white text-sm font-medium px-5 py-3 rounded-full shadow-lg"></div>
+
+  <!-- Gallery -->
+  <div class="w-full max-w-lg mt-2">
+    <h2 class="text-sm font-semibold text-gray-500 mt-6 mb-2 px-1">📌 Publicações</h2>
+    <div class="gallery-grid" id="muralGlobal">
+      <p class="text-gray-400 text-sm col-span-2 text-center py-8">Carregando...</p>
+    </div>
+  </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -58,115 +139,325 @@
     const db = getFirestore(app);
     const muralRef = collection(db, "desenhos");
 
+    // ---- CANVAS SETUP ----
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = 600;
     canvas.height = 450;
     ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
     ctx.lineWidth = 5;
 
+    const canvasUpload = document.getElementById('canvasUpload');
+    const ctxUp = canvasUpload.getContext('2d');
+    canvasUpload.width = 600;
+    canvasUpload.height = 450;
+    ctxUp.lineCap = 'round';
+    ctxUp.lineJoin = 'round';
+    ctxUp.lineWidth = 5;
+
+    // ---- CONSTANTS ----
+    const MAX_HISTORY = 20;
+    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+    const COMPRESS_QUALITY = 0.7;
+    const COMPRESS_MAX_WIDTH = 800;
+
+    // ---- STATE ----
     let desenhando = false;
     let isAdmin = false;
+    let currentTab = 'draw';
+    let uploadedImage = null; // HTMLImageElement when a photo is loaded
+    let historyDraw = [];
+    let historyUpload = [];
 
-    // --- LOGICA DE LOGIN ---
+    // ---- TOAST ----
+    function showToast(msg, type = 'info') {
+      const t = document.getElementById('toast');
+      const colors = { success: 'bg-green-600', error: 'bg-red-600', info: 'bg-gray-800' };
+      t.className = `${colors[type] || colors.info} text-white text-sm font-medium px-5 py-3 rounded-full shadow-lg`;
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(t._timer);
+      t._timer = setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ---- TABS ----
+    window.switchTab = (tab) => {
+      currentTab = tab;
+      document.getElementById('panelDraw').classList.toggle('hidden', tab !== 'draw');
+      document.getElementById('panelUpload').classList.toggle('hidden', tab !== 'upload');
+      document.getElementById('tabDraw').classList.toggle('active', tab === 'draw');
+      document.getElementById('tabUpload').classList.toggle('active', tab === 'upload');
+    };
+
+    // ---- BRUSH SIZE LABELS ----
+    document.getElementById('brushSize').addEventListener('input', (e) => {
+      ctx.lineWidth = e.target.value;
+      document.getElementById('brushSizeLabel').textContent = e.target.value;
+    });
+    document.getElementById('brushSizeUpload').addEventListener('input', (e) => {
+      ctxUp.lineWidth = e.target.value;
+      document.getElementById('brushSizeUploadLabel').textContent = e.target.value;
+    });
+
+    // ---- ADMIN LOGIN ----
     window.fazerLogin = () => {
       const senha = prompt("Digite a senha de administrador:");
       if (senha === "1234") {
         isAdmin = true;
         document.body.classList.add('admin-active');
-        alert("Modo Admin ativado!");
-      } else {
-        alert("Senha incorreta.");
+        document.getElementById('btnAdmin').textContent = '✅ Admin';
+        showToast('Modo Admin ativado!', 'success');
+      } else if (senha !== null) {
+        showToast('Senha incorreta.', 'error');
       }
     };
 
-    // --- LOGICA DE DESENHO ---
-    function getPos(e) {
-      const rect = canvas.getBoundingClientRect();
+    // ---- DRAWING HELPERS ----
+    function getPos(e, targetCanvas) {
+      const rect = targetCanvas.getBoundingClientRect();
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
       return {
-        x: (clientX - rect.left) * (canvas.width / rect.width),
-        y: (clientY - rect.top) * (canvas.height / rect.height)
+        x: (clientX - rect.left) * (targetCanvas.width / rect.width),
+        y: (clientY - rect.top) * (targetCanvas.height / rect.height)
       };
     }
 
-    const iniciar = (e) => {
+    function saveHistory(targetCtx, targetCanvas, history) {
+      history.push(targetCtx.getImageData(0, 0, targetCanvas.width, targetCanvas.height));
+      if (history.length > MAX_HISTORY) history.shift();
+    }
+
+    // ---- DRAW CANVAS EVENTS ----
+    const iniciarDraw = (e) => {
+      saveHistory(ctx, canvas, historyDraw);
       desenhando = true;
-      const pos = getPos(e);
+      const pos = getPos(e, canvas);
       ctx.beginPath();
       ctx.moveTo(pos.x, pos.y);
-      draw(e);
     };
-
-    const draw = (e) => {
+    const drawMove = (e) => {
       if (!desenhando) return;
       e.preventDefault();
-      const pos = getPos(e);
+      const pos = getPos(e, canvas);
       ctx.strokeStyle = document.getElementById('colorPicker').value;
+      ctx.lineWidth = document.getElementById('brushSize').value;
       ctx.lineTo(pos.x, pos.y);
       ctx.stroke();
     };
+    const pararDraw = () => { desenhando = false; ctx.beginPath(); };
 
-    const parar = () => {
-      desenhando = false;
-      ctx.beginPath();
+    canvas.addEventListener('mousedown', iniciarDraw);
+    canvas.addEventListener('mousemove', drawMove);
+    window.addEventListener('mouseup', pararDraw);
+    canvas.addEventListener('touchstart', iniciarDraw, { passive: false });
+    canvas.addEventListener('touchmove', drawMove, { passive: false });
+    canvas.addEventListener('touchend', pararDraw);
+
+    // ---- UPLOAD CANVAS EVENTS ----
+    const iniciarUp = (e) => {
+      saveHistory(ctxUp, canvasUpload, historyUpload);
+      desenhando = true;
+      const pos = getPos(e, canvasUpload);
+      ctxUp.beginPath();
+      ctxUp.moveTo(pos.x, pos.y);
+    };
+    const drawUpMove = (e) => {
+      if (!desenhando) return;
+      e.preventDefault();
+      const pos = getPos(e, canvasUpload);
+      ctxUp.strokeStyle = document.getElementById('colorPickerUpload').value;
+      ctxUp.lineWidth = document.getElementById('brushSizeUpload').value;
+      ctxUp.lineTo(pos.x, pos.y);
+      ctxUp.stroke();
+    };
+    const pararUp = () => { desenhando = false; ctxUp.beginPath(); };
+
+    canvasUpload.addEventListener('mousedown', iniciarUp);
+    canvasUpload.addEventListener('mousemove', drawUpMove);
+    window.addEventListener('mouseup', pararUp);
+    canvasUpload.addEventListener('touchstart', iniciarUp, { passive: false });
+    canvasUpload.addEventListener('touchmove', drawUpMove, { passive: false });
+    canvasUpload.addEventListener('touchend', pararUp);
+
+    // ---- CLEAR / UNDO ----
+    window.limpar = () => {
+      saveHistory(ctx, canvas, historyDraw);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    };
+    window.desfazer = () => {
+      if (historyDraw.length === 0) return;
+      ctx.putImageData(historyDraw.pop(), 0, 0);
+    };
+    window.desfazerUpload = () => {
+      if (historyUpload.length === 0) return;
+      ctxUp.putImageData(historyUpload.pop(), 0, 0);
     };
 
-    canvas.addEventListener('mousedown', iniciar);
-    canvas.addEventListener('mousemove', draw);
-    window.addEventListener('mouseup', parar);
-    canvas.addEventListener('touchstart', iniciar, { passive: false });
-    canvas.addEventListener('touchmove', draw, { passive: false });
-    canvas.addEventListener('touchend', parar);
+    // ---- PHOTO UPLOAD ----
+    function drawPhotoOnCanvas() {
+      const cw = canvasUpload.width, ch = canvasUpload.height;
+      const iw = uploadedImage.naturalWidth, ih = uploadedImage.naturalHeight;
+      const scale = Math.min(cw / iw, ch / ih);
+      const x = (cw - iw * scale) / 2;
+      const y = (ch - ih * scale) / 2;
+      ctxUp.clearRect(0, 0, cw, ch);
+      ctxUp.drawImage(uploadedImage, x, y, iw * scale, ih * scale);
+    }
 
-    window.limpar = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
 
-    // --- PUBLICAR ---
+    function handleFile(file) {
+      if (!file) return;
+      const allowed = ['image/png', 'image/jpeg', 'image/gif'];
+      if (!allowed.includes(file.type)) {
+        showToast('Tipo de arquivo inválido. Use PNG, JPG ou GIF.', 'error');
+        return;
+      }
+      if (file.size > MAX_FILE_SIZE) {
+        showToast('Arquivo muito grande. Máximo: 5 MB.', 'error');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const img = new Image();
+        img.onload = () => {
+          uploadedImage = img;
+          historyUpload = [];
+          drawPhotoOnCanvas();
+          // Show preview
+          document.getElementById('uploadPreview').src = ev.target.result;
+          document.getElementById('uploadFileInfo').textContent = `${file.name} • ${formatBytes(file.size)} • ${img.naturalWidth}×${img.naturalHeight}px`;
+          document.getElementById('uploadPlaceholder').classList.add('hidden');
+          document.getElementById('uploadPreviewWrap').classList.remove('hidden');
+          document.getElementById('photoCanvasWrap').classList.remove('hidden');
+          document.getElementById('btnClearPhoto').classList.remove('hidden');
+          showToast('Foto carregada! Desenhe sobre ela.', 'success');
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    document.getElementById('fileInput').addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+    // Drag & drop
+    const zone = document.getElementById('uploadZone');
+    zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+    zone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      handleFile(e.dataTransfer.files[0]);
+    });
+
+    window.limparFoto = () => {
+      uploadedImage = null;
+      historyUpload = [];
+      ctxUp.clearRect(0, 0, canvasUpload.width, canvasUpload.height);
+      document.getElementById('fileInput').value = '';
+      document.getElementById('uploadPreview').src = '';
+      document.getElementById('uploadFileInfo').textContent = '';
+      document.getElementById('uploadPlaceholder').classList.remove('hidden');
+      document.getElementById('uploadPreviewWrap').classList.add('hidden');
+      document.getElementById('photoCanvasWrap').classList.add('hidden');
+      document.getElementById('btnClearPhoto').classList.add('hidden');
+    };
+
+    // ---- COMPRESS + PUBLISH ----
+    function compressCanvas(sourceCanvas, quality = COMPRESS_QUALITY, maxW = COMPRESS_MAX_WIDTH) {
+      const offscreen = document.createElement('canvas');
+      let w = sourceCanvas.width, h = sourceCanvas.height;
+      if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
+      offscreen.width = w;
+      offscreen.height = h;
+      offscreen.getContext('2d').drawImage(sourceCanvas, 0, 0, w, h);
+      return offscreen.toDataURL('image/jpeg', quality);
+    }
+
+    function mergeCanvases() {
+      // Merge photo + drawing layers into one canvas
+      const merged = document.createElement('canvas');
+      merged.width = canvasUpload.width;
+      merged.height = canvasUpload.height;
+      const mCtx = merged.getContext('2d');
+      if (uploadedImage) {
+        const cw = canvasUpload.width, ch = canvasUpload.height;
+        const iw = uploadedImage.naturalWidth, ih = uploadedImage.naturalHeight;
+        const scale = Math.min(cw / iw, ch / ih);
+        const x = (cw - iw * scale) / 2, y = (ch - ih * scale) / 2;
+        mCtx.drawImage(uploadedImage, x, y, iw * scale, ih * scale);
+      }
+      mCtx.drawImage(canvasUpload, 0, 0);
+      return merged;
+    }
+
     document.getElementById('btnPublicar').onclick = async () => {
       const btn = document.getElementById('btnPublicar');
-      const dataURL = canvas.toDataURL("image/png", 0.3);
-      btn.innerText = "Enviando...";
+
+      let dataURL;
+      if (currentTab === 'draw') {
+        // Check if canvas is blank by inspecting alpha channel
+        const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        const hasContent = pixels.some((v, i) => i % 4 === 3 && v > 0);
+        if (!hasContent) { showToast('Canvas está vazio! Desenhe algo primeiro.', 'error'); return; }
+        dataURL = compressCanvas(canvas);
+      } else {
+        if (!uploadedImage) { showToast('Selecione uma foto primeiro!', 'error'); return; }
+        dataURL = compressCanvas(mergeCanvases());
+      }
+
+      btn.innerHTML = '<span class="spinner"></span> Enviando...';
       btn.disabled = true;
       try {
         await addDoc(muralRef, { image: dataURL, timestamp: Date.now() });
-        limpar();
-        alert("Desenho publicado com sucesso!");
+        if (currentTab === 'draw') limpar();
+        else limparFoto();
+        showToast('🎉 Publicado com sucesso!', 'success');
       } catch (err) {
-        alert("Erro ao salvar: " + err.message);
+        showToast('Erro ao salvar: ' + err.message, 'error');
       }
-      btn.innerText = "Publicar no Mural Real";
+      btn.innerHTML = '🚀 Publicar no Mural';
       btn.disabled = false;
     };
 
-    // --- DELETAR ---
+    // ---- DELETE ----
     window.deletarFoto = async (id) => {
-      if (confirm("Deseja deletar este desenho?")) {
-        try {
-          await deleteDoc(doc(db, "desenhos", id));
-          alert("Desenho deletado!");
-        } catch (err) {
-          alert("Erro ao deletar: " + err.message);
-        }
+      if (!confirm("Deseja deletar este item do mural?")) return;
+      try {
+        await deleteDoc(doc(db, "desenhos", id));
+        showToast('Item deletado.', 'info');
+      } catch (err) {
+        showToast('Erro ao deletar: ' + err.message, 'error');
       }
     };
 
-    // --- CARREGAR GALERIA EM TEMPO REAL ---
+    // ---- REALTIME GALLERY ----
     const q = query(muralRef, orderBy("timestamp", "desc"));
     onSnapshot(q, (snap) => {
       const mural = document.getElementById('muralGlobal');
       mural.innerHTML = '';
+      if (snap.empty) {
+        mural.innerHTML = '<p class="text-gray-400 text-sm col-span-2 text-center py-8">Nenhuma publicação ainda. Seja o primeiro! 🎨</p>';
+        return;
+      }
       snap.forEach(docSnapshot => {
         const item = document.createElement('div');
         item.className = 'gallery-item';
         item.innerHTML = `
-          <img src="${docSnapshot.data().image}" class="gallery-img">
-          <button class="btn-delete" onclick="deletarFoto('${docSnapshot.id}')">X</button>
+          <img src="${docSnapshot.data().image}" class="gallery-img" loading="lazy" alt="Publicação do mural">
+          <button class="btn-delete" onclick="deletarFoto('${docSnapshot.id}')" title="Deletar">✕</button>
         `;
         mural.appendChild(item);
       });
     }, (err) => {
       console.error("Erro ao carregar galeria:", err);
+      showToast('Erro ao carregar galeria.', 'error');
     });
   </script>
 </body>
