@@ -28,7 +28,7 @@
 
     nav {
       width: 100%;
-      max-width: 480px;
+      max-width: 680px;
       margin-bottom: 24px;
     }
 
@@ -208,6 +208,86 @@
       border-color: #6366f1;
     }
 
+    /* Explore section */
+    .explore-section {
+      width: 100%;
+      max-width: 900px;
+      margin-top: 32px;
+    }
+
+    .explore-title {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #6b7280;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .explore-card {
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s, box-shadow 0.25s;
+      animation: reveal 0.7s ease both;
+    }
+
+    .explore-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(99, 102, 241, 0.22);
+    }
+
+    .explore-card-emoji {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .explore-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1e1b4b;
+    }
+
+    .explore-card-desc {
+      font-size: 0.82rem;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+
+    .explore-card-blog {
+      background: linear-gradient(135deg, rgba(232, 210, 255, 0.55) 0%, rgba(255, 200, 220, 0.55) 100%);
+      border-color: rgba(196, 160, 255, 0.45);
+    }
+
+    .explore-card-biblioteca {
+      background: linear-gradient(135deg, rgba(187, 247, 208, 0.55) 0%, rgba(191, 219, 254, 0.55) 100%);
+      border-color: rgba(110, 231, 183, 0.45);
+    }
+
+    .explore-card-timeline {
+      background: linear-gradient(135deg, rgba(254, 240, 138, 0.55) 0%, rgba(253, 186, 116, 0.55) 100%);
+      border-color: rgba(252, 211, 77, 0.45);
+    }
+
     @media (max-width: 480px) {
       .buttons {
         flex-direction: column;
@@ -227,6 +307,10 @@
       .name {
         font-size: 1.5rem;
       }
+
+      .explore-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -236,6 +320,9 @@
     <ul>
       <li><a href="about.html">Sobre</a></li>
       <li><a href="projects.html">Projetos</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="biblioteca.html">Biblioteca</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
       <li><a href="drawings.html">Desenhos</a></li>
     </ul>
   </nav>
@@ -266,6 +353,27 @@
     <a href="mailto:kayque@olimpio.me" class="email-link">kayque@olimpio.me</a>
 
   </main>
+
+  <section class="explore-section" aria-label="Explorar seções">
+    <p class="explore-title">Explore</p>
+    <div class="explore-grid">
+      <a href="blog.html" class="explore-card explore-card-blog">
+        <span class="explore-card-emoji" aria-hidden="true">✍️</span>
+        <span class="explore-card-title">Blog</span>
+        <span class="explore-card-desc">Reflexões sobre arte, política, design e filosofia</span>
+      </a>
+      <a href="biblioteca.html" class="explore-card explore-card-biblioteca">
+        <span class="explore-card-emoji" aria-hidden="true">📚</span>
+        <span class="explore-card-title">Biblioteca</span>
+        <span class="explore-card-desc">Recursos recomendados: livros, artigos e ferramentas</span>
+      </a>
+      <a href="timeline.html" class="explore-card explore-card-timeline">
+        <span class="explore-card-emoji" aria-hidden="true">🗓️</span>
+        <span class="explore-card-title">Timeline</span>
+        <span class="explore-card-desc">Minha trajetória em arte, design e vida</span>
+      </a>
+    </div>
+  </section>
 
   <script>
     (function () {
