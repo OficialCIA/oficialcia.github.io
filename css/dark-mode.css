@@ -1,1 +1,200 @@
+/* ===== DARK MODE STYLES ===== */
 
+/* Toggle button */
+.dark-mode-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* ===== DARK THEME VARIABLES ===== */
+body.dark-mode {
+  --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  --card-bg: rgba(30, 30, 50, 0.85);
+  --card-border: rgba(99, 102, 241, 0.3);
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-heading: #c7d2fe;
+  --nav-link: #94a3b8;
+  --nav-link-hover: #818cf8;
+  --input-bg: rgba(30, 30, 50, 0.9);
+  --input-border: rgba(99, 102, 241, 0.4);
+  --input-text: #e2e8f0;
+  --btn-bg: #4f46e5;
+  --btn-text: #fff;
+}
+
+/* ===== DARK BODY ===== */
+body.dark-mode {
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+}
+
+/* ===== DARK NAVIGATION ===== */
+body.dark-mode nav ul li a {
+  color: var(--nav-link);
+}
+
+body.dark-mode nav ul li a:hover,
+body.dark-mode nav ul li a.active {
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--nav-link-hover);
+}
+
+/* ===== DARK CARD / GLASSMORPHISM ===== */
+body.dark-mode .card,
+body.dark-mode .bg-white,
+body.dark-mode main.bg-white {
+  background: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+}
+
+/* ===== TAILWIND OVERRIDES FOR DARK ===== */
+body.dark-mode .bg-white {
+  background: rgba(30, 30, 50, 0.85) !important;
+}
+
+body.dark-mode .bg-blue-50 {
+  background: rgba(30, 41, 70, 0.8) !important;
+}
+
+body.dark-mode .text-gray-800,
+body.dark-mode .text-gray-700,
+body.dark-mode .text-gray-600 {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .text-gray-500 {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: var(--text-heading);
+}
+
+body.dark-mode .text-blue-500,
+body.dark-mode .text-blue-600 {
+  color: #818cf8 !important;
+}
+
+/* ===== DARK BUTTONS ===== */
+body.dark-mode .btn-instagram {
+  background: linear-gradient(135deg, #be185d, #9d174d);
+}
+
+body.dark-mode .btn-lattes {
+  background: linear-gradient(135deg, #4338ca, #3730a3);
+}
+
+/* ===== DARK FORMS (comments) ===== */
+body.dark-mode .comment-form .comment-input,
+body.dark-mode .comment-form .comment-textarea {
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--input-text);
+}
+
+body.dark-mode .comment-form .comment-input::placeholder,
+body.dark-mode .comment-form .comment-textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .comment-item {
+  background: rgba(30, 41, 70, 0.7);
+  border-color: rgba(99, 102, 241, 0.25);
+}
+
+body.dark-mode .comment-author {
+  color: #a5b4fc;
+}
+
+body.dark-mode .comment-date {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .comment-text {
+  color: var(--text-primary);
+}
+
+/* ===== DARK TIMELINE ===== */
+body.dark-mode .timeline-line {
+  background: rgba(99, 102, 241, 0.4);
+}
+
+body.dark-mode .timeline-dot {
+  background: #6366f1;
+  border-color: #1a1a2e;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4);
+}
+
+body.dark-mode .timeline-card {
+  background: rgba(30, 30, 50, 0.85);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: var(--text-primary);
+}
+
+body.dark-mode .timeline-year {
+  color: #818cf8;
+}
+
+/* ===== DARK LIBRARY / BLOG CARDS ===== */
+body.dark-mode .resource-card,
+body.dark-mode .blog-card {
+  background: rgba(30, 41, 70, 0.8);
+  border-color: rgba(99, 102, 241, 0.25);
+}
+
+body.dark-mode .resource-card:hover,
+body.dark-mode .blog-card:hover {
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
+}
+
+/* ===== DARK ARTICLE ===== */
+body.dark-mode article {
+  color: var(--text-primary);
+}
+
+body.dark-mode article p,
+body.dark-mode article li {
+  color: var(--text-secondary);
+}
+
+body.dark-mode article h2,
+body.dark-mode article h3 {
+  color: var(--text-heading);
+}
+
+body.dark-mode blockquote {
+  border-left-color: #6366f1;
+  background: rgba(30, 41, 70, 0.5);
+  color: var(--text-secondary);
+}
+
+/* ===== SMOOTH TRANSITION ===== */
+body,
+body * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

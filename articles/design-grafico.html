@@ -1,1 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#c2e9fb">
+  <title>Design Gráfico - Kayque Olimpio</title>
+  <meta name="description" content="Artigo sobre princípios fundamentais e ferramentas do design gráfico para comunicar com impacto.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/dark-mode.css">
+  <style>
+    body { font-family: 'Quicksand', sans-serif; }
+    article p { margin-bottom: 1rem; line-height: 1.8; }
+    article h2 { margin-top: 2rem; margin-bottom: 0.75rem; }
+    blockquote {
+      border-left: 4px solid #10b981;
+      padding: 12px 20px;
+      margin: 1.5rem 0;
+      background: #f0fdf4;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: #4b5563;
+    }
+    .principle-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+    .principle-card h3 { color: #065f46; font-weight: 700; margin-bottom: 6px; }
+    .principle-card p { color: #374151; font-size: 0.9rem; line-height: 1.6; margin: 0; }
+    .comment-input, .comment-textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .comment-input:focus, .comment-textarea:focus { border-color: #10b981; }
+    .comment-submit {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .comment-submit:hover { transform: translateY(-2px); }
+    .comment-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+    }
+    .comment-header { display: flex; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 4px; }
+    .comment-author { color: #10b981; font-size: 0.95rem; }
+    .comment-date { color: #94a3b8; font-size: 0.8rem; }
+    .comment-text { color: #374151; font-size: 0.9rem; line-height: 1.6; }
+    .comments-empty { color: #94a3b8; font-style: italic; text-align: center; padding: 16px 0; }
+    .comments-title { font-size: 1.4rem; font-weight: 700; color: #1e293b; margin-bottom: 16px; }
+    .comment-form { margin-top: 20px; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-green-50 to-blue-100 min-h-screen flex flex-col items-center py-12 px-4">
 
+  <button class="dark-mode-toggle" id="theme-toggle" aria-label="Alternar tema escuro" title="Alternar tema">🌙</button>
+
+  <header class="w-full max-w-3xl mb-8">
+    <nav>
+      <ul class="flex justify-center flex-wrap gap-4 text-lg">
+        <li><a href="../index.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Início</a></li>
+        <li><a href="../blog.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Blog</a></li>
+        <li><a href="../biblioteca.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Biblioteca</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-3xl">
+
+    <div class="mb-6">
+      <p class="text-xs font-semibold text-green-600 uppercase tracking-widest mb-2">Design Gráfico</p>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-4 leading-tight">
+        Design Gráfico: Comunicar com Impacto Visual
+      </h1>
+      <p class="text-gray-400 text-sm">Por Kayque Olimpio · 2024</p>
+    </div>
+
+    <article class="text-gray-700">
+
+      <p>
+        O design gráfico vai muito além de "deixar as coisas bonitas". É uma disciplina que combina arte, 
+        psicologia e comunicação para transmitir mensagens de forma eficaz. Um bom design resolve problemas 
+        de comunicação. Um ótimo design faz isso enquanto emociona.
+      </p>
+
+      <blockquote>
+        "Design é a intenção por trás do resultado." — Robert L. Peters
+      </blockquote>
+
+      <h2 class="text-2xl font-bold text-gray-800">Os Princípios Fundamentais</h2>
+
+      <p>
+        Todo designer precisa dominar os princípios básicos que guiam a criação visual. Eles não são regras 
+        rígidas — são ferramentas para tomar decisões conscientes.
+      </p>
+
+      <div>
+        <div class="principle-card">
+          <h3>🎯 Hierarquia Visual</h3>
+          <p>Organize os elementos para guiar o olhar do espectador. O que deve ser visto primeiro? O que é secundário? Use tamanho, cor e posição para criar esse fluxo.</p>
+        </div>
+        <div class="principle-card">
+          <h3>⚖️ Equilíbrio</h3>
+          <p>Tanto o equilíbrio simétrico quanto o assimétrico funcionam — desde que intencional. O equilíbrio cria estabilidade visual e conforto ao olhar.</p>
+        </div>
+        <div class="principle-card">
+          <h3>🔗 Contraste</h3>
+          <p>Sem contraste, não há destaque. Use contraste de cor, tamanho, forma e tipografia para criar interesse visual e guiar a atenção.</p>
+        </div>
+        <div class="principle-card">
+          <h3>🔄 Repetição</h3>
+          <p>Repetir elementos cria unidade e identidade. É o que torna um conjunto de peças reconhecível como pertencente à mesma marca ou projeto.</p>
+        </div>
+        <div class="principle-card">
+          <h3>📐 Alinhamento</h3>
+          <p>Nada deve ser posicionado arbitrariamente. O alinhamento conecta elementos visuais e cria ordem, mesmo em layouts aparentemente "livres".</p>
+        </div>
+        <div class="principle-card">
+          <h3>🌊 Proximidade</h3>
+          <p>Elementos relacionados devem estar próximos. Isso reduz o esforço cognitivo e torna a informação mais fácil de processar.</p>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold text-gray-800">Cor: Mais do que Estética</h2>
+
+      <p>
+        A cor é talvez o elemento mais poderoso do design. Ela evoca emoções, cria associações e comunica 
+        instantaneamente. O vermelho acelera o coração. O azul transmite confiança. O verde remete à natureza.
+      </p>
+
+      <p>
+        Mas atenção: essas associações variam entre culturas. O branco é luto no Japão, pureza no Ocidente. 
+        Um bom designer pesquisa o contexto cultural antes de definir a paleta de cores.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-800">Tipografia: A Voz do Design</h2>
+
+      <p>
+        "Tipografia é o que a linguagem parece." — Ellen Lupton. A escolha da fonte comunica muito antes 
+        de a pessoa ler uma palavra. Uma serif clássica transmite tradição e confiança. Uma sans-serif 
+        geométrica projeta modernidade e clareza. Uma fonte manuscrita evoca humanidade e proximidade.
+      </p>
+
+      <blockquote>
+        "Existe beleza no design quando forma e função se encontram perfeitamente." — Charles Eames
+      </blockquote>
+
+      <h2 class="text-2xl font-bold text-gray-800">Ferramentas do Ofício</h2>
+
+      <p>
+        No mundo atual, o designer tem à disposição ferramentas incríveis. <strong>Adobe Illustrator</strong> 
+        para vetores, <strong>Photoshop</strong> para manipulação de imagens, <strong>Figma</strong> para UI/UX, 
+        <strong>Canva</strong> para quem está começando. A ferramenta não define o talento — o olhar define.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-800">Conclusão</h2>
+
+      <p>
+        Design gráfico é uma habilidade que combina técnica e sensibilidade. Aprende-se a teoria, pratica-se 
+        muito, e desenvolve-se um olhar crítico para o mundo visual que nos cerca. Cada cartaz de rua, cada 
+        embalagem de produto, cada post de rede social é uma aula — preste atenção neles.
+      </p>
+
+    </article>
+
+    <div id="comments-section" class="mt-10 pt-8 border-t border-gray-100"></div>
+
+  </main>
+
+  <div class="mt-6">
+    <a href="../blog.html" class="text-green-600 font-semibold hover:underline">← Voltar para o Blog</a>
+  </div>
+
+  <footer class="mt-8 text-center text-gray-500 text-sm">
+    &copy; 2024 Kayque Olimpio
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/comments.js"></script>
+</body>
+</html>

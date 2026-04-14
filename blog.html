@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#c2e9fb">
+  <title>Blog - Kayque Olimpio</title>
+  <meta name="description" content="Blog de Kayque Olimpio com artigos sobre arte, política, design gráfico e filosofia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <style>
+    body { font-family: 'Quicksand', sans-serif; }
+    .blog-card {
+      border: 1px solid transparent;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(99, 102, 241, 0.15);
+      border-color: #a5b4fc;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-blue-200 min-h-screen flex flex-col items-center py-12 px-4">
 
+  <button class="dark-mode-toggle" id="theme-toggle" aria-label="Alternar tema escuro" title="Alternar tema">🌙</button>
+
+  <header class="w-full max-w-4xl mb-8">
+    <nav>
+      <ul class="flex justify-center flex-wrap gap-4 text-lg">
+        <li><a href="index.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Início</a></li>
+        <li><a href="about.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Sobre Mim</a></li>
+        <li><a href="blog.html" class="font-bold text-blue-500">Blog</a></li>
+        <li><a href="biblioteca.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Biblioteca</a></li>
+        <li><a href="timeline.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Timeline</a></li>
+        <li><a href="drawings.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Desenhos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-4xl">
+
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-500 mb-4 text-center tracking-tight">✍️ Blog</h1>
+    <p class="text-center text-gray-500 mb-10 text-lg">Reflexões sobre arte, política, design e cotidiano.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Artigo 1 -->
+      <a href="articles/arte-e-politica.html" class="blog-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 block">
+        <div class="text-4xl mb-4">🎭</div>
+        <p class="text-xs font-semibold text-purple-500 uppercase mb-2 tracking-widest">Arte &amp; Política</p>
+        <h2 class="text-xl font-bold text-gray-800 mb-3 leading-snug">Arte e Política: Instrumentos de Transformação</h2>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+          Como a criatividade e o pensamento crítico se entrelaçam para construir uma sociedade mais justa e reflexiva.
+        </p>
+        <span class="text-purple-500 font-semibold text-sm">Ler artigo →</span>
+      </a>
+
+      <!-- Artigo 2 -->
+      <a href="articles/design-grafico.html" class="blog-card bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl p-6 block">
+        <div class="text-4xl mb-4">🖌️</div>
+        <p class="text-xs font-semibold text-green-600 uppercase mb-2 tracking-widest">Design Gráfico</p>
+        <h2 class="text-xl font-bold text-gray-800 mb-3 leading-snug">Design Gráfico: Comunicar com Impacto Visual</h2>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+          Princípios e técnicas do design gráfico aplicados à comunicação visual eficaz no mundo contemporâneo.
+        </p>
+        <span class="text-green-600 font-semibold text-sm">Ler artigo →</span>
+      </a>
+
+      <!-- Artigo 3 -->
+      <a href="articles/filosofia-cotidiano.html" class="blog-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6 block">
+        <div class="text-4xl mb-4">💭</div>
+        <p class="text-xs font-semibold text-yellow-600 uppercase mb-2 tracking-widest">Filosofia</p>
+        <h2 class="text-xl font-bold text-gray-800 mb-3 leading-snug">Filosofia do Cotidiano: Pensar o Dia a Dia</h2>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+          Reflexões filosóficas acessíveis sobre situações do dia a dia e como o pensamento crítico nos transforma.
+        </p>
+        <span class="text-yellow-600 font-semibold text-sm">Ler artigo →</span>
+      </a>
+
+    </div>
+
+    <!-- Sobre o Blog -->
+    <div class="mt-12 bg-blue-50 rounded-2xl p-6 text-center">
+      <h2 class="text-xl font-bold text-gray-800 mb-3">Sobre este Blog</h2>
+      <p class="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+        Este espaço reúne meus pensamentos e reflexões sobre temas que me fascinam: arte, política, design e filosofia. 
+        É um lugar para questionar, debater e crescer através das ideias. Fique à vontade para explorar!
+      </p>
+    </div>
+
+  </main>
+
+  <footer class="mt-8 text-center text-gray-500 text-sm">
+    &copy; 2024 Kayque Olimpio
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

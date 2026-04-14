@@ -1,1 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#c2e9fb">
+  <title>Arte e Política - Kayque Olimpio</title>
+  <meta name="description" content="Artigo sobre a relação entre arte e política como instrumentos de transformação social.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/dark-mode.css">
+  <style>
+    body { font-family: 'Quicksand', sans-serif; }
+    article p { margin-bottom: 1rem; line-height: 1.8; }
+    article h2 { margin-top: 2rem; margin-bottom: 0.75rem; }
+    blockquote {
+      border-left: 4px solid #6366f1;
+      padding: 12px 20px;
+      margin: 1.5rem 0;
+      background: #eff6ff;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: #4b5563;
+    }
+    .comment-input, .comment-textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .comment-input:focus, .comment-textarea:focus { border-color: #6366f1; }
+    .comment-submit {
+      background: linear-gradient(135deg, #6366f1, #818cf8);
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .comment-submit:hover { transform: translateY(-2px); }
+    .comment-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+    }
+    .comment-header { display: flex; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 4px; }
+    .comment-author { color: #6366f1; font-size: 0.95rem; }
+    .comment-date { color: #94a3b8; font-size: 0.8rem; }
+    .comment-text { color: #374151; font-size: 0.9rem; line-height: 1.6; }
+    .comments-empty { color: #94a3b8; font-style: italic; text-align: center; padding: 16px 0; }
+    .comments-title { font-size: 1.4rem; font-weight: 700; color: #1e293b; margin-bottom: 16px; }
+    .comment-form { margin-top: 20px; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-blue-200 min-h-screen flex flex-col items-center py-12 px-4">
 
+  <button class="dark-mode-toggle" id="theme-toggle" aria-label="Alternar tema escuro" title="Alternar tema">🌙</button>
+
+  <header class="w-full max-w-3xl mb-8">
+    <nav>
+      <ul class="flex justify-center flex-wrap gap-4 text-lg">
+        <li><a href="../index.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Início</a></li>
+        <li><a href="../blog.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Blog</a></li>
+        <li><a href="../biblioteca.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Biblioteca</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-3xl">
+
+    <div class="mb-6">
+      <p class="text-xs font-semibold text-purple-500 uppercase tracking-widest mb-2">Arte &amp; Política</p>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-4 leading-tight">
+        Arte e Política: Instrumentos de Transformação Social
+      </h1>
+      <p class="text-gray-400 text-sm">Por Kayque Olimpio · 2024</p>
+    </div>
+
+    <article class="text-gray-700">
+
+      <p>
+        Desde os tempos mais remotos, arte e política caminham lado a lado. As pinturas rupestres eram uma 
+        forma de comunicar, de registrar o mundo. Os frescos medievais ensinavam a doutrina religiosa a um povo 
+        majoritariamente analfabeto. E os cartazes do século XX mobilizaram massas em guerras e revoluções.
+      </p>
+
+      <blockquote>
+        "A arte não é um espelho para refletir a realidade, mas um martelo para moldá-la." — Bertolt Brecht
+      </blockquote>
+
+      <h2 class="text-2xl font-bold text-gray-800">A Arte Como Resistência</h2>
+
+      <p>
+        Em momentos de opressão, a arte frequentemente surge como a voz dos que não têm poder. O samba nasceu 
+        nas favelas como forma de resistência cultural. A poesia concretista brasileira desafiou as normas estéticas 
+        durante a ditadura. Os grafites de Jean-Michel Basquiat denunciavam o racismo estrutural nos Estados Unidos.
+      </p>
+
+      <p>
+        Não é por acaso que regimes autoritários historicamente perseguem artistas. Quando um governo proíbe um 
+        livro, censura uma música ou destrói uma estátua, reconhece implicitamente o poder transformador da arte.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-800">Design e Comunicação Política</h2>
+
+      <p>
+        O design gráfico também tem papel fundamental nessa relação. Os cartazes do maio de 1968 em Paris, a 
+        identidade visual do Partido Comunista Soviético, as capas do The Clash — cada elemento visual carrega 
+        uma intenção política, consciente ou não.
+      </p>
+
+      <p>
+        Como designer, é impossível ser neutro. A escolha de uma cor, de uma tipografia, do que mostrar ou 
+        omitir numa imagem são escolhas políticas. O profissional de comunicação visual que ignora isso 
+        trabalha para o status quo sem perceber.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-800">Arte Popular e Transformação</h2>
+
+      <p>
+        A arte popular — o carnaval, as festas juninas, o cordel — também é espaço de disputa política. 
+        Quando valorizada e financiada, fortalece identidades culturais e cria sentimento de pertencimento. 
+        Quando negligenciada ou mercantilizada, perde sua força transformadora.
+      </p>
+
+      <blockquote>
+        "A história de todas as sociedades até hoje existentes é a história das lutas de classes." — Karl Marx
+      </blockquote>
+
+      <p>
+        Essa luta se dá também no campo cultural. Quais histórias são contadas? Quais são apagadas? 
+        Quais vozes chegam às galerias de arte, às playlists, às telas de cinema? Essas perguntas são 
+        profundamente políticas.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-800">Conclusão</h2>
+
+      <p>
+        Arte e política não são esferas separadas. São faces do mesmo compromisso com o mundo. Criar é 
+        posicionar-se. Escolher o que retratar, como retratar e para quem retratar é um ato político. 
+        E reconhecer isso é o primeiro passo para fazer arte com intenção, com responsabilidade e com impacto real.
+      </p>
+
+    </article>
+
+    <!-- Seção de comentários -->
+    <div id="comments-section" class="mt-10 pt-8 border-t border-gray-100"></div>
+
+  </main>
+
+  <div class="mt-6">
+    <a href="../blog.html" class="text-blue-500 font-semibold hover:underline">← Voltar para o Blog</a>
+  </div>
+
+  <footer class="mt-8 text-center text-gray-500 text-sm">
+    &copy; 2024 Kayque Olimpio
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/comments.js"></script>
+</body>
+</html>
