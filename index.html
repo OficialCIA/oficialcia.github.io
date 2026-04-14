@@ -1,345 +1,287 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#c2e9fb">
-    <title>Kayque Olimpio</title>
-    <meta name="title" content="Página de perfil de Kayque Olimpio">
-    <meta name="description" content="Página pessoal de Kayque Olimpio - Designer, Desenvolvedor e Criador de Conteúdo.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kayque Olimpio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    body {
+      font-family: 'Quicksand', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      background: linear-gradient(135deg, #d1fae5 0%, #bfdbfe 50%, #ddd6fe 100%);
+      background-attachment: fixed;
+    }
 
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    nav {
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 24px;
+    }
 
-        body {
-            font-family: 'Quicksand', sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #a8edea 0%, #c2e9fb 30%, #d4b8f0 70%, #b8d8f5 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem 1rem;
-            animation: bgShift 10s ease-in-out infinite alternate;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-        @keyframes bgShift {
-            0%   { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+    nav ul li a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #4b5563;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: background 0.25s, color 0.25s;
+    }
 
-        /* ── NAV ── */
-        header {
-            width: 100%;
-            max-width: 900px;
-            margin-bottom: 2.5rem;
-        }
+    nav ul li a:hover {
+      background: rgba(255, 255, 255, 0.6);
+      color: #1d4ed8;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
+    .card {
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
+      padding: 40px 32px;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: reveal 0.7s ease both;
+    }
 
-        nav ul li a {
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: #4a5568;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: #6b46c1;
-        }
+    .avatar-wrapper {
+      animation: float 4s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
 
-        /* ── CARD (glassmorphism) ── */
-        main {
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 2rem;
-            box-shadow: 0 8px 40px rgba(100, 80, 160, 0.18);
-            padding: 3rem 2.5rem;
-            width: 100%;
-            max-width: 520px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.4rem;
-            animation: reveal 0.9s cubic-bezier(0.23, 1, 0.32, 1) both;
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
 
-        @keyframes reveal {
-            from { opacity: 0; transform: translateY(32px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
+    }
 
-        /* ── AVATAR ── */
-        .avatar-wrap {
-            animation: float 4s ease-in-out infinite;
-        }
+    .name {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1e1b4b;
+      margin-bottom: 12px;
+      min-height: 2.2rem;
+      letter-spacing: 0.01em;
+    }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50%       { transform: translateY(-10px); }
-        }
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      background: #6366f1;
+      margin-left: 2px;
+      animation: blink 0.75s step-end infinite;
+      vertical-align: text-bottom;
+      height: 1.6rem;
+    }
 
-        .avatar-wrap img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 20px rgba(107, 70, 193, 0.25);
-            object-fit: cover;
-        }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
 
-        /* ── NAME / TYPEWRITER ── */
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #553c9a;
-            text-align: center;
-            letter-spacing: -0.5px;
-        }
+    .quote {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #4b5563;
+      text-align: center;
+      margin-bottom: 28px;
+      line-height: 1.6;
+      max-width: 380px;
+    }
 
-        .typewriter {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid #a78bfa;
-            animation: typing 2.5s steps(14, end) forwards, blink 0.75s step-end infinite;
-        }
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
 
-        @keyframes typing {
-            from { width: 0; }
-            to   { width: 100%; }
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 24px;
+      border-radius: 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -75%;
+      width: 50%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.35);
+      transform: skewX(-20deg);
+      animation: btn-shine 2.5s infinite;
+    }
 
-        /* ── TAGLINE ── */
-        .tagline {
-            font-size: 1rem;
-            color: #718096;
-            font-weight: 600;
-            text-align: center;
-        }
+    @keyframes btn-shine {
+      0% { left: -75%; }
+      50%, 100% { left: 125%; }
+    }
 
-        /* ── DIVIDER ── */
-        .divider {
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(to right, #a78bfa, #60d9d9);
-            border-radius: 2px;
-        }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
 
-        /* ── SOCIAL BUTTONS ── */
-        .btn-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.9rem;
-            width: 100%;
-        }
+    .btn-instagram {
+      background: linear-gradient(135deg, #f9a8d4, #fb7185);
+      color: #fff;
+    }
 
-        .btn-shine {
-            position: relative;
-            overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.65rem 1.5rem;
-            border-radius: 9999px;
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-decoration: none;
-            color: #fff;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-            transition: transform 0.25s, box-shadow 0.25s;
-            cursor: pointer;
-            border: none;
-        }
+    .btn-lattes {
+      background: linear-gradient(135deg, #93c5fd, #6366f1);
+      color: #fff;
+    }
 
-        .btn-shine::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -75%;
-            width: 50%;
-            height: 200%;
-            background: rgba(255,255,255,0.25);
-            transform: skewX(-20deg);
-            animation: shine 3s infinite;
-        }
+    .email-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #4b5563;
+      text-decoration: none;
+      border-bottom: 1px dashed #9ca3af;
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
 
-        @keyframes shine {
-            0%   { left: -75%; }
-            60%  { left: 125%; }
-            100% { left: 125%; }
-        }
+    .email-link:hover {
+      color: #6366f1;
+      border-color: #6366f1;
+    }
 
-        .btn-shine:hover {
-            transform: translateY(-3px) scale(1.04);
-            box-shadow: 0 8px 22px rgba(0,0,0,0.2);
-        }
+    @media (max-width: 480px) {
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+      }
 
-        .btn-instagram {
-            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
+      .btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
 
-        .btn-lattes {
-            background: linear-gradient(135deg, #1a56db, #3b82f6);
-        }
+      .card {
+        padding: 32px 20px;
+      }
 
-        /* ── EMAIL ── */
-        .email-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #553c9a;
-            text-decoration: none;
-            transition: color 0.25s;
-        }
-
-        .email-link:hover {
-            color: #6b46c1;
-            text-decoration: underline;
-        }
-
-        /* ── NAV LINKS ROW ── */
-        .nav-links-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-top: 0.5rem;
-        }
-
-        .nav-pill {
-            padding: 0.5rem 1.3rem;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.55);
-            border: 1px solid rgba(167, 139, 250, 0.4);
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: #553c9a;
-            text-decoration: none;
-            transition: background 0.25s, transform 0.25s;
-        }
-
-        .nav-pill:hover {
-            background: rgba(167, 139, 250, 0.25);
-            transform: translateY(-2px);
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 480px) {
-            main {
-                padding: 2rem 1.25rem;
-            }
-
-            h1 {
-                font-size: 1.65rem;
-            }
-
-            .btn-row {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn-shine {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-    </style>
+      .name {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Início</a></li>
-                <li><a href="about.html">Sobre Mim</a></li>
-                <li><a href="projects.html">Projetos</a></li>
-                <li><a href="drawings.html">Desenhos</a></li>
-            </ul>
-        </nav>
-    </header>
+  <nav aria-label="Navegação principal">
+    <ul>
+      <li><a href="about.html">Sobre</a></li>
+      <li><a href="projects.html">Projetos</a></li>
+      <li><a href="drawings.html">Desenhos</a></li>
+    </ul>
+  </nav>
 
-    <main>
-        <!-- Avatar -->
-        <div class="avatar-wrap">
-            <img src="https://placehold.co/110x110/d4b8f0/553c9a?text=KO" alt="Foto de Kayque Olimpio">
-        </div>
+  <main class="card">
 
-        <!-- Name with typewriter -->
-        <h1><span class="typewriter">Kayque Olimpio</span></h1>
+    <div class="avatar-wrapper">
+      <img src="img/img.png" alt="Avatar de Kayque Olimpio" class="avatar" onerror="this.style.display='none'">
+    </div>
 
-        <!-- Tagline -->
-        <p class="tagline">Designer · Desenvolvedor · Criador</p>
+    <h1 class="name"><span id="typed-name"></span><span class="typewriter-cursor"></span></h1>
 
-        <div class="divider"></div>
+    <p class="quote">
+      "A história de todas as sociedades até hoje existentes é a história das lutas de classes."
+    </p>
 
-        <!-- Social buttons -->
-        <div class="btn-row">
-            <a href="https://www.instagram.com/kayquewrld/" target="_blank" rel="noopener noreferrer" class="btn-shine btn-instagram">
-                <!-- Instagram icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <circle cx="12" cy="12" r="4"/>
-                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-                </svg>
-                Instagram
-            </a>
-            <a href="http://lattes.cnpq.br/5363150253158209" target="_blank" rel="noopener noreferrer" class="btn-shine btn-lattes">
-                <!-- Document icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="16" y1="13" x2="8" y2="13"/>
-                    <line x1="16" y1="17" x2="8" y2="17"/>
-                    <polyline points="10 9 9 9 8 9"/>
-                </svg>
-                Lattes
-            </a>
-        </div>
+    <div class="buttons">
+      <a href="https://www.instagram.com/kayquewrld/" target="_blank" rel="noopener noreferrer" class="btn btn-instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Instagram
+      </a>
+      <a href="http://lattes.cnpq.br/5363150253158209" target="_blank" rel="noopener noreferrer" class="btn btn-lattes">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Lattes
+      </a>
+    </div>
 
-        <!-- Email -->
-        <a href="mailto:kayque@olimpio.me" class="email-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-            </svg>
-            kayque@olimpio.me
-        </a>
+    <a href="mailto:kayque@olimpio.me" class="email-link">kayque@olimpio.me</a>
 
-        <div class="divider"></div>
+  </main>
 
-        <!-- Nav pills -->
-        <div class="nav-links-row">
-            <a href="about.html" class="nav-pill">Sobre Mim</a>
-            <a href="projects.html" class="nav-pill">Projetos</a>
-            <a href="drawings.html" class="nav-pill">Desenhos</a>
-        </div>
-    </main>
+  <script>
+    (function () {
+      const fullName = 'Kayque Olimpio';
+      const el = document.getElementById('typed-name');
+      let i = 0;
+      function type() {
+        if (i < fullName.length) {
+          el.textContent += fullName[i];
+          i++;
+          setTimeout(type, 100);
+        }
+      }
+      setTimeout(type, 400);
+    }());
+  </script>
 
 </body>
 </html>
