@@ -232,7 +232,7 @@
 </head>
 <body>
 
-  <nav>
+  <nav aria-label="Navegação principal">
     <ul>
       <li><a href="about.html">Sobre</a></li>
       <li><a href="projects.html">Projetos</a></li>
@@ -243,7 +243,7 @@
   <main class="card">
 
     <div class="avatar-wrapper">
-      <img src="img/img.png" alt="Avatar de Kayque Olimpio" class="avatar">
+      <img src="img/img.png" alt="Avatar de Kayque Olimpio" class="avatar" onerror="this.style.display='none'">
     </div>
 
     <h1 class="name"><span id="typed-name"></span><span class="typewriter-cursor"></span></h1>
@@ -269,9 +269,9 @@
 
   <script>
     (function () {
-      var fullName = 'Kayque Olimpio';
-      var el = document.getElementById('typed-name');
-      var i = 0;
+      const fullName = 'Kayque Olimpio';
+      const el = document.getElementById('typed-name');
+      let i = 0;
       function type() {
         if (i < fullName.length) {
           el.textContent += fullName[i];
