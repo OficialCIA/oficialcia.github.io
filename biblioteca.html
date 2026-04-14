@@ -1,1 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#c2e9fb">
+  <title>Biblioteca - Kayque Olimpio</title>
+  <meta name="description" content="Biblioteca de recursos recomendados por Kayque Olimpio: livros, artigos, vídeos e links úteis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <style>
+    body { font-family: 'Quicksand', sans-serif; }
+    .resource-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid transparent;
+    }
+    .resource-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(99, 102, 241, 0.15);
+      border-color: #a5b4fc;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-blue-200 min-h-screen flex flex-col items-center py-12 px-4">
 
+  <button class="dark-mode-toggle" id="theme-toggle" aria-label="Alternar tema escuro" title="Alternar tema">🌙</button>
+
+  <header class="w-full max-w-4xl mb-8">
+    <nav>
+      <ul class="flex justify-center flex-wrap gap-4 text-lg">
+        <li><a href="index.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Início</a></li>
+        <li><a href="about.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Sobre Mim</a></li>
+        <li><a href="blog.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Blog</a></li>
+        <li><a href="biblioteca.html" class="font-bold text-blue-500">Biblioteca</a></li>
+        <li><a href="timeline.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Timeline</a></li>
+        <li><a href="drawings.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Desenhos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-4xl">
+
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-500 mb-4 text-center tracking-tight">📚 Biblioteca</h1>
+    <p class="text-center text-gray-500 mb-10 text-lg">Recursos que me inspiram e recomendo para você.</p>
+
+    <!-- Livros -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        <span>📖</span> Livros
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <div class="resource-card bg-blue-50 rounded-2xl p-5">
+          <div class="text-3xl mb-3">🔴</div>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">O Manifesto Comunista</h3>
+          <p class="text-gray-500 text-sm mb-1">Karl Marx & Friedrich Engels</p>
+          <p class="text-gray-600 text-sm">Um dos textos políticos mais influentes da história, que analisa as lutas de classes e o capitalismo.</p>
+        </div>
+
+        <div class="resource-card bg-blue-50 rounded-2xl p-5">
+          <div class="text-3xl mb-3">🎨</div>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Pensar com Arte</h3>
+          <p class="text-gray-500 text-sm mb-1">Diversos autores</p>
+          <p class="text-gray-600 text-sm">Reflexões sobre como a arte pode ser uma forma de pensamento crítico e transformação social.</p>
+        </div>
+
+        <div class="resource-card bg-blue-50 rounded-2xl p-5">
+          <div class="text-3xl mb-3">🧠</div>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Sapiens</h3>
+          <p class="text-gray-500 text-sm mb-1">Yuval Noah Harari</p>
+          <p class="text-gray-600 text-sm">Uma breve história da humanidade que questiona nossas origens, crenças e o futuro da espécie.</p>
+        </div>
+
+        <div class="resource-card bg-blue-50 rounded-2xl p-5">
+          <div class="text-3xl mb-3">✏️</div>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Pedagogia do Oprimido</h3>
+          <p class="text-gray-500 text-sm mb-1">Paulo Freire</p>
+          <p class="text-gray-600 text-sm">Uma obra fundamental da pedagogia crítica que propõe a educação como ato de libertação.</p>
+        </div>
+
+        <div class="resource-card bg-blue-50 rounded-2xl p-5">
+          <div class="text-3xl mb-3">🌍</div>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Quarto de Despejo</h3>
+          <p class="text-gray-500 text-sm mb-1">Carolina Maria de Jesus</p>
+          <p class="text-gray-600 text-sm">Diário emocionante que retrata a vida na favela paulistana nos anos 1950 com perspectiva única.</p>
+        </div>
+
+        <div class="resource-card bg-blue-50 rounded-2xl p-5">
+          <div class="text-3xl mb-3">🖼️</div>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Modos de Ver</h3>
+          <p class="text-gray-500 text-sm mb-1">John Berger</p>
+          <p class="text-gray-600 text-sm">Análise revolucionária de como vemos e interpretamos as imagens na arte e na publicidade.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Artigos & Links -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        <span>🔗</span> Artigos & Links
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+        <a href="articles/arte-e-politica.html" class="resource-card bg-purple-50 rounded-2xl p-5 block">
+          <p class="text-xs font-semibold text-purple-500 uppercase mb-1">Artigo</p>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Arte e Política</h3>
+          <p class="text-gray-600 text-sm">Como a arte pode ser um instrumento de transformação social e resistência política.</p>
+        </a>
+
+        <a href="articles/design-grafico.html" class="resource-card bg-green-50 rounded-2xl p-5 block">
+          <p class="text-xs font-semibold text-green-500 uppercase mb-1">Artigo</p>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Design Gráfico</h3>
+          <p class="text-gray-600 text-sm">Princípios fundamentais e ferramentas do design gráfico para comunicar com impacto.</p>
+        </a>
+
+        <a href="articles/filosofia-cotidiano.html" class="resource-card bg-yellow-50 rounded-2xl p-5 block">
+          <p class="text-xs font-semibold text-yellow-500 uppercase mb-1">Artigo</p>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Filosofia do Cotidiano</h3>
+          <p class="text-gray-600 text-sm">Reflexões filosóficas sobre situações do dia a dia e como pensar o mundo de forma crítica.</p>
+        </a>
+
+        <a href="blog.html" class="resource-card bg-blue-50 rounded-2xl p-5 block">
+          <p class="text-xs font-semibold text-blue-500 uppercase mb-1">Blog</p>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Todos os artigos</h3>
+          <p class="text-gray-600 text-sm">Veja todos os textos e reflexões publicados no blog.</p>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Ferramentas -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        <span>🛠️</span> Ferramentas & Recursos Úteis
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <div class="resource-card bg-blue-50 rounded-2xl p-5">
+          <div class="text-3xl mb-3">🎨</div>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Canva</h3>
+          <p class="text-gray-600 text-sm">Plataforma de design gráfico intuitiva para criação de materiais visuais.</p>
+        </div>
+
+        <div class="resource-card bg-blue-50 rounded-2xl p-5">
+          <div class="text-3xl mb-3">📐</div>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Figma</h3>
+          <p class="text-gray-600 text-sm">Ferramenta colaborativa de design de interfaces e prototipagem.</p>
+        </div>
+
+        <div class="resource-card bg-blue-50 rounded-2xl p-5">
+          <div class="text-3xl mb-3">🖊️</div>
+          <h3 class="font-bold text-gray-800 text-lg mb-1">Procreate</h3>
+          <p class="text-gray-600 text-sm">Aplicativo de ilustração digital para iPad amplamente usado por artistas.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="mt-8 text-center text-gray-500 text-sm">
+    &copy; 2024 Kayque Olimpio
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

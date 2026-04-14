@@ -1,1 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#c2e9fb">
+  <title>Filosofia do Cotidiano - Kayque Olimpio</title>
+  <meta name="description" content="Reflexões filosóficas sobre situações do dia a dia e como pensar o mundo de forma crítica.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/dark-mode.css">
+  <style>
+    body { font-family: 'Quicksand', sans-serif; }
+    article p { margin-bottom: 1rem; line-height: 1.8; }
+    article h2 { margin-top: 2rem; margin-bottom: 0.75rem; }
+    blockquote {
+      border-left: 4px solid #f59e0b;
+      padding: 12px 20px;
+      margin: 1.5rem 0;
+      background: #fffbeb;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: #4b5563;
+    }
+    .comment-input, .comment-textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .comment-input:focus, .comment-textarea:focus { border-color: #f59e0b; }
+    .comment-submit {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .comment-submit:hover { transform: translateY(-2px); }
+    .comment-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+    }
+    .comment-header { display: flex; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 4px; }
+    .comment-author { color: #d97706; font-size: 0.95rem; }
+    .comment-date { color: #94a3b8; font-size: 0.8rem; }
+    .comment-text { color: #374151; font-size: 0.9rem; line-height: 1.6; }
+    .comments-empty { color: #94a3b8; font-style: italic; text-align: center; padding: 16px 0; }
+    .comments-title { font-size: 1.4rem; font-weight: 700; color: #1e293b; margin-bottom: 16px; }
+    .comment-form { margin-top: 20px; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-yellow-50 to-blue-100 min-h-screen flex flex-col items-center py-12 px-4">
 
+  <button class="dark-mode-toggle" id="theme-toggle" aria-label="Alternar tema escuro" title="Alternar tema">🌙</button>
+
+  <header class="w-full max-w-3xl mb-8">
+    <nav>
+      <ul class="flex justify-center flex-wrap gap-4 text-lg">
+        <li><a href="../index.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Início</a></li>
+        <li><a href="../blog.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Blog</a></li>
+        <li><a href="../biblioteca.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Biblioteca</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-3xl">
+
+    <div class="mb-6">
+      <p class="text-xs font-semibold text-yellow-600 uppercase tracking-widest mb-2">Filosofia</p>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-4 leading-tight">
+        Filosofia do Cotidiano: Pensar o Dia a Dia
+      </h1>
+      <p class="text-gray-400 text-sm">Por Kayque Olimpio · 2024</p>
+    </div>
+
+    <article class="text-gray-700">
+
+      <p>
+        Filosofia não é assunto apenas de acadêmicos e livros difíceis. Ela está em cada escolha que fazemos, 
+        em cada conversa que temos, em cada momento em que paramos para perguntar: "Por quê?" O cotidiano 
+        é um laboratório filosófico permanente.
+      </p>
+
+      <blockquote>
+        "O homem é o único ser que sabe que vai morrer — e isso o torna o único ser capaz de realmente viver." — Heidegger (adaptado)
+      </blockquote>
+
+      <h2 class="text-2xl font-bold text-gray-800">O Que É Pensar Criticamente?</h2>
+
+      <p>
+        Pensar criticamente não significa criticar tudo — significa questionar antes de aceitar. Significa 
+        perguntar: "Como sei que isso é verdade? Quem se beneficia disso? Quais são as premissas?" São 
+        perguntas simples, mas profundamente poderosas.
+      </p>
+
+      <p>
+        Sócrates passava o dia fazendo perguntas às pessoas nas ruas de Atenas. Era tão incômodo que 
+        o condenaram à morte. Mas deixou uma herança: a ideia de que a vida não examinada não vale a pena 
+        ser vivida.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-800">Liberdade e Responsabilidade</h2>
+
+      <p>
+        Sartre dizia que "estamos condenados a ser livres". Isso soa paradoxal, mas faz sentido: não podemos 
+        escapar da necessidade de escolher. Mesmo não escolher é uma escolha. E cada escolha implica 
+        responsabilidade.
+      </p>
+
+      <p>
+        Quando olhamos para o feed das redes sociais e decidimos compartilhar ou ignorar uma informação, 
+        estamos fazendo filosofia política aplicada. Quando escolhemos onde comprar, o que consumir, de 
+        quem aceitar favores — cada ato tem dimensões éticas.
+      </p>
+
+      <blockquote>
+        "Não somos apenas o que fazemos, mas também o que nos recusamos a fazer." — Simone de Beauvoir (adaptado)
+      </blockquote>
+
+      <h2 class="text-2xl font-bold text-gray-800">O Tempo e a Presença</h2>
+
+      <p>
+        Os estoicos antigos — Marco Aurélio, Epicteto, Sêneca — tinham uma obsessão com o tempo. 
+        "Memento mori" — lembre-se que você vai morrer. Não como pessimismo, mas como convite para 
+        valorizar o presente.
+      </p>
+
+      <p>
+        Vivemos numa era de notificações, urgências e ansiedade. Parar para respirar, para observar, 
+        para estar presente — isso é um ato filosófico e revolucionário em nossos tempos.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-800">Arte Como Prática Filosófica</h2>
+
+      <p>
+        Criar arte — desenhar, escrever, fotografar — é uma forma de filosofia. É uma tentativa de 
+        dar sentido ao mundo, de expressar o que as palavras comuns não alcançam. Quando faço um 
+        desenho, estou fazendo uma afirmação sobre como vejo a realidade.
+      </p>
+
+      <p>
+        Nietzsche dizia que a arte é a grande afirmadora da vida. Diante do absurdo, do sofrimento, 
+        da finitude — criar é dizer sim. É uma das respostas mais corajosas que um ser humano pode dar.
+      </p>
+
+      <blockquote>
+        "Temos a arte para não morrer da verdade." — Friedrich Nietzsche
+      </blockquote>
+
+      <h2 class="text-2xl font-bold text-gray-800">Conclusão</h2>
+
+      <p>
+        Filosofia do cotidiano não é uma disciplina acadêmica — é um hábito mental. É o costume de 
+        perguntar antes de aceitar, de refletir antes de agir, de buscar sentido em vez de apenas 
+        executar rotinas. E o melhor de tudo: está disponível para qualquer pessoa, em qualquer lugar, 
+        a qualquer momento.
+      </p>
+
+      <p>
+        Você já está fazendo filosofia ao ler este texto. Continue.
+      </p>
+
+    </article>
+
+    <div id="comments-section" class="mt-10 pt-8 border-t border-gray-100"></div>
+
+  </main>
+
+  <div class="mt-6">
+    <a href="../blog.html" class="text-yellow-600 font-semibold hover:underline">← Voltar para o Blog</a>
+  </div>
+
+  <footer class="mt-8 text-center text-gray-500 text-sm">
+    &copy; 2024 Kayque Olimpio
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/comments.js"></script>
+</body>
+</html>
