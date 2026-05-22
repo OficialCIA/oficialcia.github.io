@@ -1,395 +1,95 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kayque Olimpio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#c2e9fb">
 
-    body {
-      font-family: 'Quicksand', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 16px;
-      background: linear-gradient(135deg, #d1fae5 0%, #bfdbfe 50%, #ddd6fe 100%);
-      background-attachment: fixed;
-    }
+    <title>Sobre Mim - Kayque Olimpio</title>
+    <meta name="title" content="Página de perfil de Kayque Olimpio">
+    <meta name="description" content="Página sobre Kayque Olimpio, com informações sobre seus interesses, experiência e competências.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    </head>
+<body class="bg-gradient-to-b from-blue-50 to-blue-200 min-h-screen flex flex-col items-center py-12 px-4">
 
-    nav {
-      width: 100%;
-      max-width: 680px;
-      margin-bottom: 24px;
-    }
+    <header class="w-full max-w-4xl mb-8">
+        <nav>
+            <ul class="flex justify-center space-x-6 text-xl">
+                <li><a href="index.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Início</a></li>
+                <li><a href="about.html" class="font-bold text-blue-500 hover:text-blue-600 transition-colors">Sobre Mim</a></li>
+                <li><a href="projects.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Projetos</a></li>
+                <li><a href="drawings.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Desenhos</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+    <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-4xl flex flex-col items-center">
+        
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-500 mb-4 tracking-tight">Sobre Mim</h1>
+        
+        <img src="https://i.pinimg.com/1200x/95/c9/b2/95c9b288e2ea7c5d6ff3a04a49c31c16.jpg" alt="Foto de Perfil de Kayque" class="w-32 h-32 rounded-full mb-6 shadow-md">
+        
+        <p class="text-gray-700 text-lg sm:text-xl leading-relaxed mb-6 font-medium text-center max-w-2xl">
+            Minha experiência profissional, que teve início em 2020 como designer gráfico, se destaca pela minha capacidade de comunicação e liderança. Sou proativo e comunicativo, com grande facilidade em resolver problemas e focado no trabalho em equipe.
+        </p>
 
-    nav ul li a {
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #4b5563;
-      padding: 6px 14px;
-      border-radius: 20px;
-      transition: background 0.25s, color 0.25s;
-    }
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mt-4 mb-4">Experiência Profissional</h2>
+        <ul class="text-gray-600 text-md sm:text-lg text-left w-full max-w-md space-y-4">
+            <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 mt-1 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.182 1.832.707 2.228.995.422 2.247.422 3.242 0M10 14a2 2 0 100-4 2 2 0 000 4z" />
+                </svg>
+                <div>
+                    <p class="font-semibold text-gray-800">Assistente de Vendas Freelance</p>
+                    <p class="text-sm text-gray-500">Agosto de 2023</p>
+                    <p class="text-sm mt-1">Atuação na área de vendas, com foco em atendimento ao público e organização de estoque.</p>
+                </div>
+            </li>
+            <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 mt-1 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z" />
+                </svg>
+                <div>
+                    <p class="font-semibold text-gray-800">Designer Gráfico Freelance</p>
+                    <p class="text-sm text-gray-500">Setembro - Outubro de 2022</p>
+                    <p class="text-sm mt-1">Responsável pela criação de materiais visuais, incluindo imagens, miniaturas (thumbnails) e banners.</p>
+                </div>
+            </li>
+        </ul>
 
-    nav ul li a:hover {
-      background: rgba(255, 255, 255, 0.6);
-      color: #1d4ed8;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 24px;
-      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
-      padding: 40px 32px;
-      width: 100%;
-      max-width: 480px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: reveal 0.7s ease both;
-    }
-
-    @keyframes reveal {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .avatar-wrapper {
-      animation: float 4s ease-in-out infinite;
-      margin-bottom: 20px;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    .avatar {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(255, 255, 255, 0.7);
-      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
-    }
-
-    .name {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: #1e1b4b;
-      margin-bottom: 12px;
-      min-height: 2.2rem;
-      letter-spacing: 0.01em;
-    }
-
-    .typewriter-cursor {
-      display: inline-block;
-      width: 2px;
-      background: #6366f1;
-      margin-left: 2px;
-      animation: blink 0.75s step-end infinite;
-      vertical-align: text-bottom;
-      height: 1.6rem;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .quote {
-      font-size: 0.85rem;
-      font-style: italic;
-      color: #4b5563;
-      text-align: center;
-      margin-bottom: 28px;
-      line-height: 1.6;
-      max-width: 380px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      width: 100%;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 24px;
-      border-radius: 50px;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -75%;
-      width: 50%;
-      height: 200%;
-      background: rgba(255, 255, 255, 0.35);
-      transform: skewX(-20deg);
-      animation: btn-shine 2.5s infinite;
-    }
-
-    @keyframes btn-shine {
-      0% { left: -75%; }
-      50%, 100% { left: 125%; }
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .btn-instagram {
-      background: linear-gradient(135deg, #f9a8d4, #fb7185);
-      color: #fff;
-    }
-
-    .btn-lattes {
-      background: linear-gradient(135deg, #93c5fd, #6366f1);
-      color: #fff;
-    }
-
-    .email-link {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #4b5563;
-      text-decoration: none;
-      border-bottom: 1px dashed #9ca3af;
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .email-link:hover {
-      color: #6366f1;
-      border-color: #6366f1;
-    }
-
-    /* Explore section */
-    .explore-section {
-      width: 100%;
-      max-width: 900px;
-      margin-top: 32px;
-    }
-
-    .explore-title {
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #6b7280;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .explore-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .explore-card {
-      background: rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
-      padding: 28px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.25s, box-shadow 0.25s;
-      animation: reveal 0.7s ease both;
-    }
-
-    .explore-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 36px rgba(99, 102, 241, 0.22);
-    }
-
-    .explore-card-emoji {
-      font-size: 2.2rem;
-      margin-bottom: 12px;
-      line-height: 1;
-    }
-
-    .explore-card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #1e1b4b;
-    }
-
-    .explore-card-desc {
-      font-size: 0.82rem;
-      color: #4b5563;
-      line-height: 1.5;
-    }
-
-    .explore-card-blog {
-      background: linear-gradient(135deg, rgba(232, 210, 255, 0.55) 0%, rgba(255, 200, 220, 0.55) 100%);
-      border-color: rgba(196, 160, 255, 0.45);
-    }
-
-    .explore-card-biblioteca {
-      background: linear-gradient(135deg, rgba(187, 247, 208, 0.55) 0%, rgba(191, 219, 254, 0.55) 100%);
-      border-color: rgba(110, 231, 183, 0.45);
-    }
-
-    .explore-card-timeline {
-      background: linear-gradient(135deg, rgba(254, 240, 138, 0.55) 0%, rgba(253, 186, 116, 0.55) 100%);
-      border-color: rgba(252, 211, 77, 0.45);
-    }
-
-    @media (max-width: 480px) {
-      .buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-      }
-
-      .card {
-        padding: 32px 20px;
-      }
-
-      .name {
-        font-size: 1.5rem;
-      }
-
-      .explore-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <nav aria-label="Navegação principal">
-    <ul>
-      <li><a href="about.html">Sobre</a></li>
-      <li><a href="projects.html">Projetos</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="biblioteca.html">Biblioteca</a></li>
-      <li><a href="timeline.html">Timeline</a></li>
-      <li><a href="drawings.html">Desenhos</a></li>
-    </ul>
-  </nav>
-
-  <main class="card">
-
-    <div class="avatar-wrapper">
-      <img src="img/img.png" alt="Avatar de Kayque Olimpio" class="avatar" onerror="this.style.display='none'">
-    </div>
-
-    <h1 class="name"><span id="typed-name"></span><span class="typewriter-cursor"></span></h1>
-
-    <p class="quote">
-      "A história de todas as sociedades até hoje existentes é a história das lutas de classes."
-    </p>
-
-    <div class="buttons">
-      <a href="https://www.instagram.com/kayquewrld/" target="_blank" rel="noopener noreferrer" class="btn btn-instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        Instagram
-      </a>
-      <a href="http://lattes.cnpq.br/5363150253158209" target="_blank" rel="noopener noreferrer" class="btn btn-lattes">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        Lattes
-      </a>
-    </div>
-
-    <a href="mailto:kayque@olimpio.me" class="email-link">kayque@olimpio.me</a>
-
-  </main>
-
-  <section class="explore-section" aria-label="Explorar seções">
-    <p class="explore-title">Explore</p>
-    <div class="explore-grid">
-      <a href="blog.html" class="explore-card explore-card-blog">
-        <span class="explore-card-emoji" aria-hidden="true">✍️</span>
-        <span class="explore-card-title">Blog</span>
-        <span class="explore-card-desc">Reflexões sobre arte, política, design e filosofia</span>
-      </a>
-      <a href="biblioteca.html" class="explore-card explore-card-biblioteca">
-        <span class="explore-card-emoji" aria-hidden="true">📚</span>
-        <span class="explore-card-title">Biblioteca</span>
-        <span class="explore-card-desc">Recursos recomendados: livros, artigos e ferramentas</span>
-      </a>
-      <a href="timeline.html" class="explore-card explore-card-timeline">
-        <span class="explore-card-emoji" aria-hidden="true">🗓️</span>
-        <span class="explore-card-title">Timeline</span>
-        <span class="explore-card-desc">Minha trajetória em arte, design e vida</span>
-      </a>
-    </div>
-  </section>
-
-  <script>
-    (function () {
-      const fullName = 'Kayque Olimpio';
-      const el = document.getElementById('typed-name');
-      let i = 0;
-      function type() {
-        if (i < fullName.length) {
-          el.textContent += fullName[i];
-          i++;
-          setTimeout(type, 100);
-        }
-      }
-      setTimeout(type, 400);
-    }());
-  </script>
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mt-8 mb-4">Competências</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-600 w-full max-w-md">
+            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m2 4H7m2 4h6"></path></svg>
+                <span class="text-gray-800 font-medium">Proatividade</span>
+            </li>
+            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405C18.37 14.37 16 12.28 16 10.25 16 8.54 17.54 7 19.25 7c1.28 0 2.556.737 3 1.655"></path></svg>
+                <span class="text-gray-800 font-medium">Comunicação</span>
+            </li>
+            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01"></path></svg>
+                <span class="text-gray-800 font-medium">Liderança</span>
+            </li>
+            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 14H7a2 2 0 01-2-2V7a2 2 0 012-2h10a2 2 0 012 2v5a2 2 0 01-2 2h-2"></path></svg>
+                <span class="text-gray-800 font-medium">Trabalho em Equipe</span>
+            </li>
+            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 11c-2.21 0-4 1.79-4 4h8c0-2.21-1.79-4-4-4zm0-5a4 4 0 110 8 4 4 0 010-8z"></path></svg>
+                <span class="text-gray-800 font-medium">Atendimento ao Cliente</span>
+            </li>
+            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A2 2 0 0022 6.382V4a2 2 0 00-2-2H4a2 2 0 00-2 2v2.382a2 2 0 002.447 1.342L8 10m0 0l4 12h-4l4-12zm0 0V8a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg>
+                <span class="text-gray-800 font-medium">Design de Imagens</span>
+            </li>
+        </ul>
+    </main>
 
 </body>
 </html>
