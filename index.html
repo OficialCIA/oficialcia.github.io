@@ -353,7 +353,7 @@
   <main class="card">
 
     <div class="avatar-wrapper">
-      <img src="https://i.pinimg.com/1200x/95/c9/b2/95c9b288e2ea7c5d6ff3a04a49c31c16.jpg" alt="Avatar de Kayque Olimpio" class="avatar" width="110" height="110" loading="lazy" decoding="async" onerror="this.style.display='none'">
+      <img src="https://i.pinimg.com/1200x/95/c9/b2/95c9b288e2ea7c5d6ff3a04a49c31c16.jpg" alt="Avatar de Kayque Olimpio" class="avatar" id="avatar-image" width="110" height="110" loading="lazy" decoding="async">
     </div>
 
     <h1 class="name"><span id="typed-name"></span><span class="typewriter-cursor"></span></h1>
@@ -408,23 +408,29 @@
         return;
       }
 
+      const avatarFallbackSvg = "<svg xmlns='http://www.w3.org/2000/svg' width='110' height='110' viewBox='0 0 110 110'><rect width='110' height='110' rx='55' fill='%23e0e7ff'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='%236366f1' font-family='Arial,sans-serif' font-size='28'>KO</text></svg>";
+      const avatarFallbackSrc = 'data:image/svg+xml,' + encodeURIComponent(avatarFallbackSvg);
+      const avatarEl = document.getElementById('avatar-image');
+      if (avatarEl) {
+        avatarEl.addEventListener('error', function () {
+          avatarEl.src = avatarFallbackSrc;
+          avatarEl.alt = 'Avatar indisponível';
+        }, { once: true });
+      }
+
       let i = 0;
       const type = function () {
         if (i >= fullName.length) {
           return;
         }
 
-        el.textContent += fullName.charAt(i);
-        i += 1;
-        window.setTimeout(function () {
-          window.requestAnimationFrame(type);
-        }, 100);
+        el.textContent += fullName[i];
+        i++;
+        window.setTimeout(type, 100);
       };
 
       const startTypewriter = function () {
-        window.setTimeout(function () {
-          window.requestAnimationFrame(type);
-        }, 400);
+        window.setTimeout(type, 400);
       };
 
       if (document.readyState === 'loading') {
