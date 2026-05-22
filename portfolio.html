@@ -1,3 +1,4 @@
+HTML
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -155,6 +156,7 @@
       border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 20px;
       overflow: hidden;
+      cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       position: relative;
     }
@@ -179,7 +181,6 @@
 
     .card-content {
       padding: 20px;
-      cursor: pointer;
     }
 
     .card-title {
@@ -297,6 +298,86 @@
       background: #4f46e5;
     }
 
+    /* ESTILOS DO CARROSSEL */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      margin-top: 20px;
+      overflow: hidden; /* Importante para esconder as outras thumbnails */
+    }
+
+    .carousel-track-container {
+      padding: 10px 0; /* Espaço para sombra */
+    }
+
+    .carousel-track {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .carousel-slide {
+      flex: 0 0 calc(33.333% - 13.33px); /* 3 itens visíveis menos o gap */
+      margin-right: 20px; /* Gap entre itens */
+    }
+
+    .carousel-slide:last-child {
+      margin-right: 0;
+    }
+
+    /* Ajuste específico para a "div" de Thumbnail dentro do slide */
+    .carousel-slide .card {
+      width: 100%;
+    }
+
+    /* BOTÕES DE NAVEGAÇÃO DO CARROSSEL */
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      color: #4338ca;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .carousel-button:hover {
+      background: #fff;
+      color: #1d4ed8;
+    }
+
+    .carousel-button.prev {
+      left: 10px;
+    }
+
+    .carousel-button.next {
+      right: 10px;
+    }
+
+    /* Esconde o botão se não houver mais slides para mostrar */
+    .carousel-button.hidden {
+      display: none;
+    }
+
+    /* MEDIA QUERIES PARA CARROSSEL RESPONSIVO */
+    @media (max-width: 900px) {
+      .carousel-slide {
+        flex: 0 0 calc(50% - 10px); /* 2 itens visíveis */
+      }
+    }
+
     @media (max-width: 640px) {
       body {
         padding: 16px 12px 40px;
@@ -313,6 +394,16 @@
       .modal-content {
         padding: 20px;
         margin: 20px;
+      }
+
+      /* Ajuste carrossel para mobile */
+      .carousel-slide {
+        flex: 0 0 100%; /* 1 item visível por vez */
+        margin-right: 0;
+      }
+      
+      .carousel-track {
+        gap: 0; /* Remove gap para mobile se necessário, ajustado pelo JS */
       }
     }
   </style>
@@ -334,7 +425,6 @@
       <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="button button-primary">Visitar Canal</a>
     </header>
 
-    <!-- Edição de Vídeo -->
     <section class="section">
       <h2 class="section-title">🎬 Edição de Vídeo</h2>
       <p class="section-desc">Edições de conteúdo para YouTube com ritmo visual, efeitos e transições profissionais.</p>
@@ -387,51 +477,78 @@
       </div>
     </section>
 
-    <!-- Thumbnail Design -->
     <section class="section">
       <h2 class="section-title">🎨 Thumbnail Design</h2>
       <p class="section-desc">Thumbnails profissionais para YouTube com alto impacto visual, criadas no Photoshop e Canva.</p>
       
-      <div class="grid">
-        <div class="card">
-          <div class="card-content" onclick="openModal('thumb1')" role="button" tabindex="0">
-            <div style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 12px; margin-bottom: 12px;">🎬 Thumbnail</div>
-            <h3 class="card-title">Thumbnail Design #1</h3>
-            <p class="card-text">Composição vibrante e contraste alto</p>
-            <div class="tools">
-              <span class="tool">Photoshop</span>
-              <span class="tool">Canva</span>
-            </div>
-          </div>
-        </div>
+      <div class="carousel-container">
+        <button class="carousel-button prev hidden" id="prevBtn">‹</button>
+        
+        <div class="carousel-track-container">
+          <ul class="carousel-track" id="carouselTrack">
+            <li class="carousel-slide">
+              <div class="card">
+                <div class="card-content" onclick="openModal('thumb1')" role="button" tabindex="0">
+                  <div style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 12px; margin-bottom: 12px;">🎬 Thumbnail</div>
+                  <h3 class="card-title">Thumbnail #1</h3>
+                  <p class="card-text">Composição vibrante e contraste alto</p>
+                  <div class="tools">
+                    <span class="tool">Photoshop</span>
+                    <span class="tool">Canva</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="carousel-slide">
+              <div class="card">
+                <div class="card-content" onclick="openModal('thumb2')" role="button" tabindex="0">
+                  <div style="background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 12px; margin-bottom: 12px;">🎨 Design</div>
+                  <h3 class="card-title">Thumbnail #2</h3>
+                  <p class="card-text">Identidade visual e tipografia</p>
+                  <div class="tools">
+                    <span class="tool">Photoshop</span>
+                    <span class="tool">Canva</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="carousel-slide">
+              <div class="card">
+                <div class="card-content" onclick="openModal('thumb3')" role="button" tabindex="0">
+                  <div style="background: linear-gradient(135deg, #34d399 0%, #38bdf8 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 12px; margin-bottom: 12px;">🌈 Visual</div>
+                  <h3 class="card-title">Thumbnail #3</h3>
+                  <p class="card-text">Gradientes e direção de arte</p>
+                  <div class="tools">
+                    <span class="tool">Photoshop</span>
+                    <span class="tool">Canva</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="carousel-slide">
+              <div class="card">
+                <div class="card-content" onclick="openModal('thumb1')" role="button" tabindex="0">
+                  <div style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 12px; margin-bottom: 12px;">🔥 Impacto</div>
+                  <h3 class="card-title">Thumbnail #4</h3>
+                  <p class="card-text">Composição dramática para cliques</p>
+                  <div class="tools">
+                    <span class="tool">Photoshop</span>
+                    <span class="tool">CapCut</span>
+                  </div>
+                </div>
+              </div>
+            </li>
 
-        <div class="card">
-          <div class="card-content" onclick="openModal('thumb2')" role="button" tabindex="0">
-            <div style="background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 12px; margin-bottom: 12px;">🎨 Design</div>
-            <h3 class="card-title">Thumbnail Design #2</h3>
-            <p class="card-text">Identidade visual e tipografia</p>
-            <div class="tools">
-              <span class="tool">Photoshop</span>
-              <span class="tool">Canva</span>
-            </div>
-          </div>
+          </ul>
         </div>
-
-        <div class="card">
-          <div class="card-content" onclick="openModal('thumb3')" role="button" tabindex="0">
-            <div style="background: linear-gradient(135deg, #34d399 0%, #38bdf8 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 12px; margin-bottom: 12px;">🌈 Visual</div>
-            <h3 class="card-title">Thumbnail Design #3</h3>
-            <p class="card-text">Gradientes e direção de arte</p>
-            <div class="tools">
-              <span class="tool">Photoshop</span>
-              <span class="tool">Canva</span>
-            </div>
-          </div>
-        </div>
+        
+        <button class="carousel-button next" id="nextBtn">›</button>
       </div>
     </section>
 
-    <!-- Programação -->
     <section class="section">
       <h2 class="section-title">💻 Programação</h2>
       <p class="section-desc">Desenvolvimento web com HTML, CSS e JavaScript. Sites responsivos e otimizados para performance.</p>
@@ -477,7 +594,6 @@
     </section>
   </div>
 
-  <!-- Modals -->
   <div id="video1Modal" class="modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('video1')">×</button>
@@ -551,7 +667,7 @@
       <p class="modal-desc"><strong>O que é:</strong> Um site portfólio responsivo e otimizado, desenvolvido com HTML5, CSS3 e JavaScript.</p>
       <p class="modal-desc"><strong>Para que serve:</strong> Apresentar seus projetos de forma profissional, acessível e com excelente performance.</p>
       <p class="modal-desc"><strong>Ferramentas:</strong> HTML5, CSS3, JavaScript, Git</p>
-      <a href="https://github.com/OficialCIA" target="_blank" class="modal-link">Ver Repositório →</a>
+      <a href="https://github.com/KayqueOlimpio" target="_blank" class="modal-link">Ver Repositório →</a>
     </div>
   </div>
 
@@ -573,11 +689,12 @@
       <p class="modal-desc"><strong>O que é:</strong> Otimizações de performance, responsividade mobile e acessibilidade do site.</p>
       <p class="modal-desc"><strong>Para que serve:</strong> Garantir carregamento rápido, funcionamento perfeito em todos os dispositivos e acesso para todos.</p>
       <p class="modal-desc"><strong>Técnicas:</strong> Minificação, Cache, Lazy Loading, Mobile-First Design</p>
-      <a href="https://github.com/OficialCIA" target="_blank" class="modal-link">Ver Código →</a>
+      <a href="https://github.com/KayqueOlimpio" target="_blank" class="modal-link">Ver Código →</a>
     </div>
   </div>
 
   <script>
+    // FUNÇÕES DO MODAL
     function openModal(id) {
       document.getElementById(id + 'Modal').classList.add('active');
     }
@@ -598,6 +715,84 @@
       if (e.key === 'Escape') {
         document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
       }
+    });
+
+    // LÓGICA DO CARROSSEL
+    document.addEventListener('DOMContentLoaded', function() {
+      const track = document.getElementById('carouselTrack');
+      const slides = Array.from(track.children);
+      const nextBtn = document.getElementById('nextBtn');
+      const prevBtn = document.getElementById('prevBtn');
+      
+      let currentSlideIndex = 0;
+      
+      // Função para calcular quantos slides estão visíveis por vez
+      function getVisibleSlidesCount() {
+        if (window.innerWidth <= 640) return 1;
+        if (window.innerWidth <= 900) return 2;
+        return 3;
+      }
+
+      // Função para calcular o tamanho de "pulo" ao clicar em avançar/voltar
+      function getSlideWidth() {
+        if (slides.length === 0) return 0;
+        const slide = slides;
+        const style = window.getComputedStyle(slide);
+        const margin = parseFloat(style.marginRight);
+        return slide.offsetWidth + margin;
+      }
+
+      // Função para atualizar a posição do carrossel e visibilidade dos botões
+      function updateCarousel() {
+        const visibleSlides = getVisibleSlidesCount();
+        const slideWidth = getSlideWidth();
+        
+        // Calcula a posição de transform baseado no index atual e tamanho do slide
+        track.style.transform = 'translateX(-' + (currentSlideIndex * slideWidth) + 'px)';
+        
+        // Controla a visibilidade dos botões
+        if (currentSlideIndex === 0) {
+          prevBtn.classList.add('hidden');
+        } else {
+          prevBtn.classList.remove('hidden');
+        }
+        
+        // Mostra botão 'próximo' apenas se houver mais slides escondidos à direita
+        if (currentSlideIndex >= slides.length - visibleSlides) {
+          nextBtn.classList.add('hidden');
+        } else {
+          nextBtn.classList.remove('hidden');
+        }
+      }
+
+      // Evento de clique no botão 'Avançar'
+      nextBtn.addEventListener('click', () => {
+        const visibleSlides = getVisibleSlidesCount();
+        if (currentSlideIndex < slides.length - visibleSlides) {
+          currentSlideIndex++;
+          updateCarousel();
+        }
+      });
+
+      // Evento de clique no botão 'Voltar'
+      prevBtn.addEventListener('click', () => {
+        if (currentSlideIndex > 0) {
+          currentSlideIndex--;
+          updateCarousel();
+        }
+      });
+
+      // Atualiza o carrossel se a janela for redimensionada (para reajustar visibilidade)
+      window.addEventListener('resize', () => {
+        // Reinicia para o começo se mudar muito de tamanho para evitar bugs visuais
+        if (currentSlideIndex > slides.length - getVisibleSlidesCount()) {
+            currentSlideIndex = Math.max(0, slides.length - getVisibleSlidesCount());
+        }
+        updateCarousel();
+      });
+
+      // Inicializa o carrossel na primeira carga
+      updateCarousel();
     });
   </script>
 </body>
