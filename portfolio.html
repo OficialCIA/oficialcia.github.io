@@ -164,10 +164,9 @@
       box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15);
     }
 
-    .card-image {
+    .card-video {
       width: 100%;
       height: 200px;
-      object-fit: cover;
       display: block;
     }
 
@@ -321,14 +320,14 @@
     <!-- Edição de Vídeo -->
     <section class="section">
       <h2 class="section-title">🎬 Edição de Vídeo</h2>
-      <p class="section-desc">Conteúdo visual dinâmico criado com Adobe Premiere, After Effects e CapCut. Desde vídeos para YouTube até campanhas visuais.</p>
+      <p class="section-desc">Edições de conteúdo para YouTube com ritmo visual, efeitos e transitions profissionais.</p>
       
       <div class="grid">
         <div class="card" onclick="openModal('video1')">
-          <img src="https://cdn.discordapp.com/attachments/1342649568747196477/1507407953999958086/Sem_Titulo-1.png" alt="Edição Vídeo" class="card-image">
+          <iframe class="card-video" src="https://www.youtube.com/embed/2c8PwSSGmLE" title="Edição 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="card-content">
-            <h3 class="card-title">Grupo dos Vaqueiro</h3>
-            <p class="card-text">Edição dinâmica e ritmo visual para YouTube</p>
+            <h3 class="card-title">Edição #1</h3>
+            <p class="card-text">Ritmo e sincronismo com áudio</p>
             <div class="tools">
               <span class="tool">Adobe Premiere</span>
               <span class="tool">After Effects</span>
@@ -337,13 +336,25 @@
         </div>
 
         <div class="card" onclick="openModal('video2')">
-          <img src="https://cdn.discordapp.com/attachments/1342649568747196477/1507407953546969209/wallpaper.png" alt="Edição Vídeo 2" class="card-image">
+          <iframe class="card-video" src="https://www.youtube.com/embed/gEhgJTtVgbQ" title="Edição 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="card-content">
-            <h3 class="card-title">Motion Graphics</h3>
-            <p class="card-text">Animações e efeitos visuais para conteúdo</p>
+            <h3 class="card-title">Edição #2</h3>
+            <p class="card-text">Transições fluidas e efeitos visuais</p>
             <div class="tools">
+              <span class="tool">Adobe Premiere</span>
               <span class="tool">After Effects</span>
-              <span class="tool">CapCut</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('video3')">
+          <iframe class="card-video" src="https://www.youtube.com/embed/-u0zWuU4rCs" title="Edição 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="card-content">
+            <h3 class="card-title">Edição #3</h3>
+            <p class="card-text">Dinâmica e movimento em cena</p>
+            <div class="tools">
+              <span class="tool">Adobe Premiere</span>
+              <span class="tool">After Effects</span>
             </div>
           </div>
         </div>
@@ -353,14 +364,14 @@
     <!-- Thumbnail Design -->
     <section class="section">
       <h2 class="section-title">🎨 Thumbnail Design</h2>
-      <p class="section-desc">Thumbnails profissionais para YouTube com alto impacto visual, criadas no Photoshop, Canva e ferramentas de design modernas.</p>
+      <p class="section-desc">Thumbnails profissionais para YouTube com alto impacto visual, criadas no Photoshop e Canva.</p>
       
       <div class="grid">
         <div class="card" onclick="openModal('thumb1')">
-          <img src="https://cdn.discordapp.com/attachments/1342649568747196477/1507407953039200256/THUMNNAIWDL.png" alt="Thumbnail IWDL" class="card-image">
+          <div style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">🎬 Thumbnail</div>
           <div class="card-content">
-            <h3 class="card-title">Thumbnail IWDL</h3>
-            <p class="card-text">Valorant - composição vibrante e contraste alto</p>
+            <h3 class="card-title">Thumbnail Design #1</h3>
+            <p class="card-text">Composição vibrante e contraste alto</p>
             <div class="tools">
               <span class="tool">Photoshop</span>
               <span class="tool">Canva</span>
@@ -369,10 +380,10 @@
         </div>
 
         <div class="card" onclick="openModal('thumb2')">
-          <img src="https://cdn.discordapp.com/attachments/1342649568747196477/1507407953546969209/wallpaper.png" alt="Thumbnail Maridão" class="card-image">
+          <div style="background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">🎨 Design</div>
           <div class="card-content">
-            <h3 class="card-title">Thumbnail Maridão</h3>
-            <p class="card-text">Identidade visual do canal - tipografia forte</p>
+            <h3 class="card-title">Thumbnail Design #2</h3>
+            <p class="card-text">Identidade visual e tipografia</p>
             <div class="tools">
               <span class="tool">Photoshop</span>
               <span class="tool">Canva</span>
@@ -381,10 +392,10 @@
         </div>
 
         <div class="card" onclick="openModal('thumb3')">
-          <img src="https://cdn.discordapp.com/attachments/1342649568747196477/1507407953999958086/Sem_Titulo-1.png" alt="Thumbnail Design" class="card-image">
+          <div style="background: linear-gradient(135deg, #34d399 0%, #38bdf8 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">🌈 Visual</div>
           <div class="card-content">
-            <h3 class="card-title">Wallpaper Design</h3>
-            <p class="card-text">Gradientes em destaque - reforça identidade</p>
+            <h3 class="card-title">Thumbnail Design #3</h3>
+            <p class="card-text">Gradientes e direção de arte</p>
             <div class="tools">
               <span class="tool">Photoshop</span>
               <span class="tool">Canva</span>
@@ -404,7 +415,7 @@
           <div style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">💻</div>
           <div class="card-content">
             <h3 class="card-title">Este Site</h3>
-            <p class="card-text">Portfolio responsivo e otimizado com design moderno</p>
+            <p class="card-text">Portfolio responsivo e otimizado</p>
             <div class="tools">
               <span class="tool">HTML</span>
               <span class="tool">CSS</span>
@@ -417,7 +428,7 @@
           <div style="background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🎥</div>
           <div class="card-content">
             <h3 class="card-title">Canal YouTube</h3>
-            <p class="card-text">Integração com plataforma e otimização SEO</p>
+            <p class="card-text">Integração com plataforma e SEO</p>
             <div class="tools">
               <span class="tool">Web</span>
               <span class="tool">SEO</span>
@@ -429,7 +440,7 @@
           <div style="background: linear-gradient(135deg, #34d399 0%, #38bdf8 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">⚙️</div>
           <div class="card-content">
             <h3 class="card-title">Otimização Web</h3>
-            <p class="card-text">Performance, responsividade e acessibilidade</p>
+            <p class="card-text">Performance e acessibilidade</p>
             <div class="tools">
               <span class="tool">Performance</span>
               <span class="tool">Mobile</span>
@@ -444,31 +455,42 @@
   <div id="video1Modal" class="modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('video1')">×</button>
-      <h2 class="modal-title">Grupo dos Vaqueiro</h2>
-      <p class="modal-desc"><strong>O que é:</strong> Uma edição dinâmica e criativa para YouTube, com ritmo visual acelerado e efeitos profissionais.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Criar conteúdo atrativo para o canal, aumentando engajamento e retenção de visualizações.</p>
-      <p class="modal-desc"><strong>Ferramentas:</strong> Adobe Premiere, After Effects, CapCut</p>
-      <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="modal-link">Assistir no Canal →</a>
+      <h2 class="modal-title">Edição de Vídeo #1</h2>
+      <p class="modal-desc"><strong>O que é:</strong> Uma edição profissional com ritmo sincronizado ao áudio, transitions fluidas e efeitos visuais impactantes.</p>
+      <p class="modal-desc"><strong>Para que serve:</strong> Criar conteúdo atrativo para YouTube, aumentando engajamento e tempo de visualização.</p>
+      <p class="modal-desc"><strong>Ferramentas:</strong> Adobe Premiere Pro, After Effects</p>
+      <a href="https://www.youtube.com/watch?v=2c8PwSSGmLE&t=1s" target="_blank" class="modal-link">Assistir no YouTube →</a>
     </div>
   </div>
 
   <div id="video2Modal" class="modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('video2')">×</button>
-      <h2 class="modal-title">Motion Graphics</h2>
-      <p class="modal-desc"><strong>O que é:</strong> Animações e efeitos visuais sophisticated para enriquecer conteúdo em vídeo.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Melhorar a produção visual, adicionar profissionalismo e capturar atenção do espectador.</p>
-      <p class="modal-desc"><strong>Ferramentas:</strong> After Effects, CapCut</p>
-      <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="modal-link">Ver Mais →</a>
+      <h2 class="modal-title">Edição de Vídeo #2</h2>
+      <p class="modal-desc"><strong>O que é:</strong> Edição com transições dinâmicas e efeitos visuais sofisticados para enriquecer o conteúdo.</p>
+      <p class="modal-desc"><strong>Para que serve:</strong> Melhorar a produção visual e capturar a atenção do espectador desde os primeiros segundos.</p>
+      <p class="modal-desc"><strong>Ferramentas:</strong> Adobe Premiere Pro, After Effects</p>
+      <a href="https://www.youtube.com/watch?v=gEhgJTtVgbQ&t=152s" target="_blank" class="modal-link">Assistir no YouTube →</a>
+    </div>
+  </div>
+
+  <div id="video3Modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('video3')">×</button>
+      <h2 class="modal-title">Edição de Vídeo #3</h2>
+      <p class="modal-desc"><strong>O que é:</strong> Edição com dinâmica de movimento em cena, color grading e efeitos sincronizados.</p>
+      <p class="modal-desc"><strong>Para que serve:</strong> Criar uma experiência visual imersiva e profissional para o espectador.</p>
+      <p class="modal-desc"><strong>Ferramentas:</strong> Adobe Premiere Pro, After Effects</p>
+      <a href="https://www.youtube.com/watch?v=-u0zWuU4rCs&t=26s" target="_blank" class="modal-link">Assistir no YouTube →</a>
     </div>
   </div>
 
   <div id="thumb1Modal" class="modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('thumb1')">×</button>
-      <h2 class="modal-title">Thumbnail IWDL</h2>
-      <p class="modal-desc"><strong>O que é:</strong> Uma thumbnail profissional para vídeos de Valorant, com composição vibrante e alto contraste.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Aumentar o CTR (taxa de cliques) dos vídeos no YouTube através de design atrativo.</p>
+      <h2 class="modal-title">Thumbnail Design #1</h2>
+      <p class="modal-desc"><strong>O que é:</strong> Uma thumbnail profissional com composição vibrante e alto contraste visual.</p>
+      <p class="modal-desc"><strong>Para que serve:</strong> Aumentar o CTR (Taxa de Cliques) dos vídeos através de design atrativo e chamativo.</p>
       <p class="modal-desc"><strong>Ferramentas:</strong> Photoshop, Canva</p>
       <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="modal-link">Ver no Canal →</a>
     </div>
@@ -477,9 +499,9 @@
   <div id="thumb2Modal" class="modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('thumb2')">×</button>
-      <h2 class="modal-title">Thumbnail Maridão</h2>
-      <p class="modal-desc"><strong>O que é:</strong> Thumbnail com identidade visual única do canal, combinando tipografia forte e direção de arte.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Criar consistência visual no canal e reconhecimento da marca entre visualizadores.</p>
+      <h2 class="modal-title">Thumbnail Design #2</h2>
+      <p class="modal-desc"><strong>O que é:</strong> Thumbnail com identidade visual única, tipografia forte e direção de arte coerente.</p>
+      <p class="modal-desc"><strong>Para que serve:</strong> Criar reconhecimento de marca e consistência visual em toda a biblioteca de vídeos.</p>
       <p class="modal-desc"><strong>Ferramentas:</strong> Photoshop, Canva</p>
       <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="modal-link">Ver no Canal →</a>
     </div>
@@ -488,11 +510,11 @@
   <div id="thumb3Modal" class="modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('thumb3')">×</button>
-      <h2 class="modal-title">Wallpaper Design</h2>
-      <p class="modal-desc"><strong>O que é:</strong> Um wallpaper criado com gradientes em destaque, reforçando a identidade visual.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Oferecer conteúdo de valor aos seguidores e fortalecer a presença estética do canal.</p>
+      <h2 class="modal-title">Thumbnail Design #3</h2>
+      <p class="modal-desc"><strong>O que é:</strong> Thumbnail com gradientes sofisticados e composição visual estratégica.</p>
+      <p class="modal-desc"><strong>Para que serve:</strong> Oferecer conteúdo visualmente atraente que reforça a identidade estética do canal.</p>
       <p class="modal-desc"><strong>Ferramentas:</strong> Photoshop, Canva</p>
-      <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="modal-link">Baixar →</a>
+      <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="modal-link">Ver no Canal →</a>
     </div>
   </div>
 
@@ -500,8 +522,8 @@
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('prog1')">×</button>
       <h2 class="modal-title">Este Site (Portfolio)</h2>
-      <p class="modal-desc"><strong>O que é:</strong> Um site portfólio responsivo e otimizado, desenvolvido com HTML, CSS e JavaScript.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Apresentar seus projetos, trabalhos e habilidades de forma profissional e atrativa.</p>
+      <p class="modal-desc"><strong>O que é:</strong> Um site portfólio responsivo e otimizado, desenvolvido com HTML5, CSS3 e JavaScript.</p>
+      <p class="modal-desc"><strong>Para que serve:</strong> Apresentar seus projetos de forma profissional, acessível e com excelente performance.</p>
       <p class="modal-desc"><strong>Ferramentas:</strong> HTML5, CSS3, JavaScript, Git</p>
       <a href="https://github.com/OficialCIA" target="_blank" class="modal-link">Ver Repositório →</a>
     </div>
@@ -511,9 +533,9 @@
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('prog2')">×</button>
       <h2 class="modal-title">Canal YouTube</h2>
-      <p class="modal-desc"><strong>O que é:</strong> Integração com a plataforma YouTube e otimização para SEO e descoberta.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Maximizar alcance, melhorar recomendações e crescimento orgânico do canal.</p>
-      <p class="modal-desc"><strong>Ferramentas:</strong> YouTube Analytics, SEO, Tags e Descrições</p>
+      <p class="modal-desc"><strong>O que é:</strong> Integração com a plataforma YouTube e otimização para SEO e descoberta orgânica.</p>
+      <p class="modal-desc"><strong>Para que serve:</strong> Maximizar alcance, melhorar recomendações e impulsionar crescimento orgânico do canal.</p>
+      <p class="modal-desc"><strong>Ferramentas:</strong> YouTube Analytics, SEO, Tags e Metadados</p>
       <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="modal-link">Visitar Canal →</a>
     </div>
   </div>
@@ -522,9 +544,9 @@
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('prog3')">×</button>
       <h2 class="modal-title">Otimização Web</h2>
-      <p class="modal-desc"><strong>O que é:</strong> Otimizações de performance, responsividade em mobile e acessibilidade do site.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Garantir que o site funcione rápido em todos os dispositivos e seja acessível para todos.</p>
-      <p class="modal-desc"><strong>Técnicas:</strong> Minificação, Cache, Lazy Loading, Mobile-First</p>
+      <p class="modal-desc"><strong>O que é:</strong> Otimizações de performance, responsividade mobile e acessibilidade do site.</p>
+      <p class="modal-desc"><strong>Para que serve:</strong> Garantir carregamento rápido, funcionamento perfeito em todos os dispositivos e acesso para todos.</p>
+      <p class="modal-desc"><strong>Técnicas:</strong> Minificação, Cache, Lazy Loading, Mobile-First Design</p>
       <a href="https://github.com/OficialCIA" target="_blank" class="modal-link">Ver Código →</a>
     </div>
   </div>
