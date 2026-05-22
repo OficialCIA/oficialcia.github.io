@@ -316,6 +316,34 @@
       flex-direction: column;
       justify-content: space-between;
       color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-visual.has-image {
+      background: #312e81;
+    }
+
+    .card-visual.has-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.62) 100%);
+      pointer-events: none;
+    }
+
+    .card-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-visual .card-badge,
+    .card-visual .card-icon {
+      position: relative;
+      z-index: 1;
     }
 
     .visual-portfolio {
@@ -535,43 +563,43 @@
         </div>
 
         <div class="featured-grid">
-          <a href="index.html" class="featured-card">
-            <div class="card-visual visual-portfolio">
-              <span class="card-badge">Identidade principal</span>
-              <span class="card-icon" aria-hidden="true">✨</span>
+          <a href="https://www.youtube.com/@kayquerld" class="featured-card">
+            <div class="card-visual has-image">
+              <img class="card-image" src="https://cdn.discordapp.com/attachments/1342649568747196477/1507407953039200256/THUMNNAIWDL.png?ex=6a11ca8e&amp;is=6a10790e&amp;hm=ed32e9ec820f34d07bf49f3aca3e874d0d394e4cf735e6962621013ade617c89" alt="Thumbnail IWDL com design vibrante para conteúdo de Valorant." loading="lazy">
+              <span class="card-badge">Motion Design</span>
             </div>
             <div class="card-content">
-              <h3>Página Inicial</h3>
+              <h3>Thumbnail IWDL</h3>
               <p>
-                A vitrine central da presença digital, com composição clean, animações suaves e um
-                visual etéreo que define o tom de toda a experiência.
+                Thumbnail profissional para vídeos de Valorant no canal Maridão, com composição vibrante,
+                alto contraste e foco em impacto visual para YouTube.
               </p>
               <div class="tags">
-                <span class="tag">Hero</span>
-                <span class="tag">Gradiente</span>
-                <span class="tag">Motion</span>
+                <span class="tag">Motion Design</span>
+                <span class="tag">YouTube</span>
+                <span class="tag">Design Gráfico</span>
               </div>
-              <span class="card-link">Explorar experiência <span aria-hidden="true">→</span></span>
+              <span class="card-link">Ver no canal <span aria-hidden="true">→</span></span>
             </div>
           </a>
 
-          <a href="blog.html" class="featured-card">
-            <div class="card-visual visual-blog">
-              <span class="card-badge">Conteúdo editorial</span>
-              <span class="card-icon" aria-hidden="true">✍️</span>
+          <a href="https://www.youtube.com/@kayquerld" class="featured-card">
+            <div class="card-visual has-image">
+              <img class="card-image" src="https://cdn.discordapp.com/attachments/1342649568747196477/1507407953546969209/wallpaper.png?ex=6a11ca8e&amp;is=6a10790e&amp;hm=0c773cccf79c6de26d1b79d1bf6f106886d445dd63221d0ad364a9e6ae25711a" alt="Wallpaper design com cores em degradê para o canal Maridão." loading="lazy">
+              <span class="card-badge">Design Gráfico</span>
             </div>
             <div class="card-content">
-              <h3>Blog Curado</h3>
+              <h3>Wallpaper Design</h3>
               <p>
-                Cartões editoriais com hierarquia forte, uso de cores pastéis e leitura confortável
-                para textos sobre arte, política, design e filosofia.
+                Wallpaper criado para o canal Maridão com gradientes em destaque, reforçando a identidade
+                visual e o estilo de conteúdo voltado para design e games.
               </p>
               <div class="tags">
-                <span class="tag">Editorial</span>
-                <span class="tag">Cards</span>
-                <span class="tag">Leitura</span>
+                <span class="tag">Motion Design</span>
+                <span class="tag">YouTube</span>
+                <span class="tag">Design Gráfico</span>
               </div>
-              <span class="card-link">Ler seções <span aria-hidden="true">→</span></span>
+              <span class="card-link">Ver no canal <span aria-hidden="true">→</span></span>
             </div>
           </a>
         </div>
@@ -591,19 +619,20 @@
         </div>
 
         <div class="projects-grid">
-          <a href="projects.html" class="project-card">
-            <div class="card-visual visual-biblioteca">
-              <span class="card-badge">Produção visual</span>
-              <span class="card-icon" aria-hidden="true">🚀</span>
+          <a href="https://www.youtube.com/@kayquerld" class="project-card">
+            <div class="card-visual has-image">
+              <img class="card-image" src="https://cdn.discordapp.com/attachments/1342649568747196477/1507407953999958086/Sem_Titulo-1.png?ex=6a11ca8e&amp;is=6a10790e&amp;hm=ba422255118af3b4f05ca61959ddd8913f5174c3ee04f5b806e885c80ed1b433" alt="Thumbnail MARIDÃO com tipografia e identidade visual do canal." loading="lazy">
+              <span class="card-badge">YouTube</span>
             </div>
             <div class="card-content">
-              <h3>Projetos</h3>
-              <p>Uma visão direta de trabalhos, entregas e ideias em desenvolvimento com linguagem objetiva e visual suave.</p>
+              <h3>Thumbnail MARIDÃO</h3>
+              <p>Thumbnail com identidade visual do canal Maridão, combinando tipografia forte, direção de arte e linguagem gráfica autoral para YouTube.</p>
               <div class="tags">
-                <span class="tag">Case</span>
-                <span class="tag">Design</span>
+                <span class="tag">Motion Design</span>
+                <span class="tag">YouTube</span>
+                <span class="tag">Design Gráfico</span>
               </div>
-              <span class="card-link">Ver projetos <span aria-hidden="true">→</span></span>
+              <span class="card-link">Ver no canal <span aria-hidden="true">→</span></span>
             </div>
           </a>
 
