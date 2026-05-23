@@ -1,4 +1,3 @@
-HTML
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -117,15 +116,6 @@ HTML
       opacity: 0.9;
     }
 
-    .button-secondary {
-      background: rgba(255, 255, 255, 0.65);
-      color: #334155;
-    }
-
-    .button-secondary:hover {
-      background: rgba(255, 255, 255, 0.88);
-    }
-
     .section {
       margin-bottom: 28px;
     }
@@ -156,9 +146,8 @@ HTML
       border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 20px;
       overflow: hidden;
-      cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      position: relative;
+      height: 100%;
     }
 
     .card:hover {
@@ -166,7 +155,6 @@ HTML
       box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15);
     }
 
-    /* Wrapper do video para permitir clique e overlay se necessário */
     .video-container {
       position: relative;
       width: 100%;
@@ -179,8 +167,18 @@ HTML
       display: block;
     }
 
+    /* ESTILIZAÇÃO DAS IMAGENS DAS THUMBNAILS */
+    .thumb-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+      display: block;
+      background-color: rgba(0,0,0,0.1);
+    }
+
     .card-content {
       padding: 20px;
+      cursor: pointer;
     }
 
     .card-title {
@@ -213,7 +211,6 @@ HTML
       font-weight: 700;
     }
 
-    /* Estilo para indicar que o texto é clicável */
     .click-hint {
       display: block;
       margin-top: 10px;
@@ -222,6 +219,85 @@ HTML
       font-weight: 600;
     }
 
+    /* ESTRUTURA REFEITA DO CARROSSEL */
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .carousel-container {
+      width: 100%;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 10px 0;
+    }
+
+    /* Esconde a barra de rolagem padrão para ficar limpo */
+    .carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel-container {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .carousel-slide {
+      flex: 0 0 calc(33.333% - 14px); /* 3 itens por linha */
+      min-width: 280px;
+    }
+
+    /* BOTÕES DO CARROSSEL */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #4338ca;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .carousel-btn:hover {
+      background: #4338ca;
+      color: #fff;
+    }
+    
+    .carousel-btn:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    .carousel-btn.prev {
+      left: -20px;
+    }
+
+    .carousel-btn.next {
+      right: -20px;
+    }
+
+    /* MODAL */
     .modal {
       display: none;
       position: fixed;
@@ -298,113 +374,35 @@ HTML
       background: #4f46e5;
     }
 
-    /* ESTILOS DO CARROSSEL */
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      margin-top: 20px;
-      overflow: hidden; /* Importante para esconder as outras thumbnails */
-    }
-
-    .carousel-track-container {
-      padding: 10px 0; /* Espaço para sombra */
-    }
-
-    .carousel-track {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .carousel-slide {
-      flex: 0 0 calc(33.333% - 13.33px); /* 3 itens visíveis menos o gap */
-      margin-right: 20px; /* Gap entre itens */
-    }
-
-    .carousel-slide:last-child {
-      margin-right: 0;
-    }
-
-    /* Ajuste específico para a "div" de Thumbnail dentro do slide */
-    .carousel-slide .card {
-      width: 100%;
-    }
-
-    /* BOTÕES DE NAVEGAÇÃO DO CARROSSEL */
-    .carousel-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      color: #4338ca;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 10;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .carousel-button:hover {
-      background: #fff;
-      color: #1d4ed8;
-    }
-
-    .carousel-button.prev {
-      left: 10px;
-    }
-
-    .carousel-button.next {
-      right: 10px;
-    }
-
-    /* Esconde o botão se não houver mais slides para mostrar */
-    .carousel-button.hidden {
-      display: none;
-    }
-
-    /* MEDIA QUERIES PARA CARROSSEL RESPONSIVO */
+    /* RESPONSIVIDADE DO CARROSSEL */
     @media (max-width: 900px) {
       .carousel-slide {
-        flex: 0 0 calc(50% - 10px); /* 2 itens visíveis */
+        flex: 0 0 calc(50% - 10px); /* 2 itens por linha */
       }
+      .carousel-btn.prev { left: -10px; }
+      .carousel-btn.next { right: -10px; }
     }
 
     @media (max-width: 640px) {
       body {
         padding: 16px 12px 40px;
       }
-
       .hero {
         padding: 24px;
       }
-
       .grid {
         grid-template-columns: 1fr;
       }
-
-      .modal-content {
-        padding: 20px;
-        margin: 20px;
-      }
-
-      /* Ajuste carrossel para mobile */
       .carousel-slide {
-        flex: 0 0 100%; /* 1 item visível por vez */
-        margin-right: 0;
+        flex: 0 0 100%; /* 1 item por linha no celular */
       }
-      
-      .carousel-track {
-        gap: 0; /* Remove gap para mobile se necessário, ajustado pelo JS */
+      .carousel-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
       }
+      .carousel-btn.prev { left: -5px; }
+      .carousel-btn.next { right: -5px; }
     }
   </style>
 </head>
@@ -481,63 +479,68 @@ HTML
       <h2 class="section-title">🎨 Thumbnail Design</h2>
       <p class="section-desc">Thumbnails profissionais para YouTube com alto impacto visual, criadas no Photoshop e Canva.</p>
       
-      <div class="carousel-container">
-        <button class="carousel-button prev hidden" id="prevBtn">‹</button>
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev" id="slidePrev">‹</button>
         
-        <div class="carousel-track-container">
-          <ul class="carousel-track" id="carouselTrack">
+        <div class="carousel-container" id="carouselContainer">
+          <ul class="carousel-track">
+            
             <li class="carousel-slide">
               <div class="card">
+                <img src="Sem Título-1.jpg" alt="Configuração e Playlist Kovaaks" class="thumb-img">
                 <div class="card-content" onclick="openModal('thumb1')" role="button" tabindex="0">
-                  <div style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 12px; margin-bottom: 12px;">🎬 Thumbnail</div>
-                  <h3 class="card-title">Thumbnail #1</h3>
-                  <p class="card-text">Composição vibrante e contraste alto</p>
+                  <h3 class="card-title">Aim Tracking Guide</h3>
+                  <p class="card-text">Configuração e playlist de alto rendimento para Kovaaks.</p>
                   <div class="tools">
                     <span class="tool">Photoshop</span>
-                    <span class="tool">Canva</span>
+                    <span class="tool">Kovaaks</span>
                   </div>
+                  <span class="click-hint">Clique para detalhes ↗</span>
                 </div>
               </div>
             </li>
             
             <li class="carousel-slide">
               <div class="card">
+                <img src="THUMNNAIWDL.jpg" alt="Thumbnail Cypher Valorant" class="thumb-img">
                 <div class="card-content" onclick="openModal('thumb2')" role="button" tabindex="0">
-                  <div style="background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 12px; margin-bottom: 12px;">🎨 Design</div>
-                  <h3 class="card-title">Thumbnail #2</h3>
-                  <p class="card-text">Identidade visual e tipografia</p>
+                  <h3 class="card-title">Valorant High Elo</h3>
+                  <p class="card-text">Identidade visual e composição com foco no agente Cypher.</p>
                   <div class="tools">
                     <span class="tool">Photoshop</span>
-                    <span class="tool">Canva</span>
+                    <span class="tool">Valorant</span>
                   </div>
+                  <span class="click-hint">Clique para detalhes ↗</span>
                 </div>
               </div>
             </li>
             
             <li class="carousel-slide">
               <div class="card">
+                <img src="wallpaper.jpg" alt="Jett Crossover" class="thumb-img">
                 <div class="card-content" onclick="openModal('thumb3')" role="button" tabindex="0">
-                  <div style="background: linear-gradient(135deg, #34d399 0%, #38bdf8 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 12px; margin-bottom: 12px;">🌈 Visual</div>
-                  <h3 class="card-title">Thumbnail #3</h3>
-                  <p class="card-text">Gradientes e direção de arte</p>
+                  <h3 class="card-title">Jett Anime Style</h3>
+                  <p class="card-text">Direção de arte unindo o universo de Valorant e Naruto.</p>
                   <div class="tools">
                     <span class="tool">Photoshop</span>
-                    <span class="tool">Canva</span>
+                    <span class="tool">Design Visual</span>
                   </div>
+                  <span class="click-hint">Clique para detalhes ↗</span>
                 </div>
               </div>
             </li>
             
             <li class="carousel-slide">
               <div class="card">
-                <div class="card-content" onclick="openModal('thumb1')" role="button" tabindex="0">
-                  <div style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 12px; margin-bottom: 12px;">🔥 Impacto</div>
-                  <h3 class="card-title">Thumbnail #4</h3>
-                  <p class="card-text">Composição dramática para cliques</p>
+                <img src="grupo dos vaqueiro.jpg" alt="Cartaz Vaqueiros de Bermuda" class="thumb-img">
+                <div class="card-content" onclick="openModal('thumb4')" role="button" tabindex="0">
+                  <h3 class="card-title">Vaqueiros de Bermuda</h3>
+                  <p class="card-text">Design de cartaz temático estilo rústico/envelhecido.</p>
                   <div class="tools">
                     <span class="tool">Photoshop</span>
-                    <span class="tool">CapCut</span>
+                    <span class="tool">Identidade</span>
                   </div>
+                  <span class="click-hint">Clique para detalhes ↗</span>
                 </div>
               </div>
             </li>
@@ -545,7 +548,7 @@ HTML
           </ul>
         </div>
         
-        <button class="carousel-button next" id="nextBtn">›</button>
+        <button class="carousel-btn next" id="slideNext">›</button>
       </div>
     </section>
 
@@ -630,10 +633,9 @@ HTML
   <div id="thumb1Modal" class="modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('thumb1')">×</button>
-      <h2 class="modal-title">Thumbnail Design #1</h2>
-      <p class="modal-desc"><strong>O que é:</strong> Uma thumbnail profissional com composição vibrante e alto contraste visual.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Aumentar o CTR (Taxa de Cliques) dos vídeos através de design atrativo e chamativo.</p>
-      <p class="modal-desc"><strong>Ferramentas:</strong> Photoshop, Canva</p>
+      <h2 class="modal-title">Aim Tracking Guide</h2>
+      <p class="modal-desc"><strong>O que é:</strong> Thumbnail criada para guias de treino de mira de alto desempenho.</p>
+      <p class="modal-desc"><strong>Ferramentas:</strong> Photoshop</p>
       <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="modal-link">Ver no Canal →</a>
     </div>
   </div>
@@ -641,10 +643,9 @@ HTML
   <div id="thumb2Modal" class="modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('thumb2')">×</button>
-      <h2 class="modal-title">Thumbnail Design #2</h2>
-      <p class="modal-desc"><strong>O que é:</strong> Thumbnail com identidade visual única, tipografia forte e direção de arte coerente.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Criar reconhecimento de marca e consistência visual em toda a biblioteca de vídeos.</p>
-      <p class="modal-desc"><strong>Ferramentas:</strong> Photoshop, Canva</p>
+      <h2 class="modal-title">Valorant High Elo</h2>
+      <p class="modal-desc"><strong>O que é:</strong> Thumbnail com design forte, identidade visual limpa e foco nos destaques das partidas de Cypher.</p>
+      <p class="modal-desc"><strong>Ferramentas:</strong> Photoshop</p>
       <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="modal-link">Ver no Canal →</a>
     </div>
   </div>
@@ -652,11 +653,20 @@ HTML
   <div id="thumb3Modal" class="modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('thumb3')">×</button>
-      <h2 class="modal-title">Thumbnail Design #3</h2>
-      <p class="modal-desc"><strong>O que é:</strong> Thumbnail com gradientes sofisticados e composição visual estratégica.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Oferecer conteúdo visualmente atraente que reforça a identidade estética do canal.</p>
-      <p class="modal-desc"><strong>Ferramentas:</strong> Photoshop, Canva</p>
+      <h2 class="modal-title">Jett Anime Style</h2>
+      <p class="modal-desc"><strong>O que é:</strong> Crossover visual estilizado aplicando referências estéticas de anime no universo tático.</p>
+      <p class="modal-desc"><strong>Ferramentas:</strong> Photoshop</p>
       <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="modal-link">Ver no Canal →</a>
+    </div>
+  </div>
+
+  <div id="thumb4Modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('thumb4')">×</button>
+      <h2 class="modal-title">Vaqueiros de Bermuda</h2>
+      <p class="modal-desc"><strong>O que é:</strong> Cartaz temático com manipulação de texturas envelhecidas e rústicas.</p>
+      <p class="modal-desc"><strong>Ferramentas:</strong> Photoshop</p>
+      <a href="#" class="modal-link">Fechar Janela</a>
     </div>
   </div>
 
@@ -665,7 +675,6 @@ HTML
       <button class="modal-close" onclick="closeModal('prog1')">×</button>
       <h2 class="modal-title">Este Site (Portfolio)</h2>
       <p class="modal-desc"><strong>O que é:</strong> Um site portfólio responsivo e otimizado, desenvolvido com HTML5, CSS3 e JavaScript.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Apresentar seus projetos de forma profissional, acessível e com excelente performance.</p>
       <p class="modal-desc"><strong>Ferramentas:</strong> HTML5, CSS3, JavaScript, Git</p>
       <a href="https://github.com/KayqueOlimpio" target="_blank" class="modal-link">Ver Repositório →</a>
     </div>
@@ -676,7 +685,6 @@ HTML
       <button class="modal-close" onclick="closeModal('prog2')">×</button>
       <h2 class="modal-title">Canal YouTube</h2>
       <p class="modal-desc"><strong>O que é:</strong> Integração com a plataforma YouTube e otimização para SEO e descoberta orgânica.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Maximizar alcance, melhorar recomendações e impulsionar crescimento orgânico do canal.</p>
       <p class="modal-desc"><strong>Ferramentas:</strong> YouTube Analytics, SEO, Tags e Metadados</p>
       <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="modal-link">Visitar Canal →</a>
     </div>
@@ -687,7 +695,6 @@ HTML
       <button class="modal-close" onclick="closeModal('prog3')">×</button>
       <h2 class="modal-title">Otimização Web</h2>
       <p class="modal-desc"><strong>O que é:</strong> Otimizações de performance, responsividade mobile e acessibilidade do site.</p>
-      <p class="modal-desc"><strong>Para que serve:</strong> Garantir carregamento rápido, funcionamento perfeito em todos os dispositivos e acesso para todos.</p>
       <p class="modal-desc"><strong>Técnicas:</strong> Minificação, Cache, Lazy Loading, Mobile-First Design</p>
       <a href="https://github.com/KayqueOlimpio" target="_blank" class="modal-link">Ver Código →</a>
     </div>
@@ -703,96 +710,39 @@ HTML
       document.getElementById(id + 'Modal').classList.remove('active');
     }
 
-    // Fechar modal ao clicar fora
     window.addEventListener('click', function(e) {
       if (e.target.classList.contains('modal')) {
         e.target.classList.remove('active');
       }
     });
 
-    // Fechar com ESC
     window.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
       }
     });
 
-    // LÓGICA DO CARROSSEL
+    // SISTEMA DE CARROSSEL VIA SCROLL
     document.addEventListener('DOMContentLoaded', function() {
-      const track = document.getElementById('carouselTrack');
-      const slides = Array.from(track.children);
-      const nextBtn = document.getElementById('nextBtn');
-      const prevBtn = document.getElementById('prevBtn');
-      
-      let currentSlideIndex = 0;
-      
-      // Função para calcular quantos slides estão visíveis por vez
-      function getVisibleSlidesCount() {
-        if (window.innerWidth <= 640) return 1;
-        if (window.innerWidth <= 900) return 2;
-        return 3;
+      const container = document.getElementById('carouselContainer');
+      const prevBtn = document.getElementById('slidePrev');
+      const nextBtn = document.getElementById('slideNext');
+
+      if (container && prevBtn && nextBtn) {
+        // Define o quanto ele vai rolar a cada clique (largura de 1 card completo)
+        const getScrollAmount = () => {
+          const firstSlide = container.querySelector('.carousel-slide');
+          return firstSlide ? firstSlide.offsetWidth + 20 : 300; 
+        };
+
+        nextBtn.addEventListener('click', () => {
+          container.scrollLeft += getScrollAmount();
+        });
+
+        prevBtn.addEventListener('click', () => {
+          container.scrollLeft -= getScrollAmount();
+        });
       }
-
-      // Função para calcular o tamanho de "pulo" ao clicar em avançar/voltar
-      function getSlideWidth() {
-        if (slides.length === 0) return 0;
-        const slide = slides;
-        const style = window.getComputedStyle(slide);
-        const margin = parseFloat(style.marginRight);
-        return slide.offsetWidth + margin;
-      }
-
-      // Função para atualizar a posição do carrossel e visibilidade dos botões
-      function updateCarousel() {
-        const visibleSlides = getVisibleSlidesCount();
-        const slideWidth = getSlideWidth();
-        
-        // Calcula a posição de transform baseado no index atual e tamanho do slide
-        track.style.transform = 'translateX(-' + (currentSlideIndex * slideWidth) + 'px)';
-        
-        // Controla a visibilidade dos botões
-        if (currentSlideIndex === 0) {
-          prevBtn.classList.add('hidden');
-        } else {
-          prevBtn.classList.remove('hidden');
-        }
-        
-        // Mostra botão 'próximo' apenas se houver mais slides escondidos à direita
-        if (currentSlideIndex >= slides.length - visibleSlides) {
-          nextBtn.classList.add('hidden');
-        } else {
-          nextBtn.classList.remove('hidden');
-        }
-      }
-
-      // Evento de clique no botão 'Avançar'
-      nextBtn.addEventListener('click', () => {
-        const visibleSlides = getVisibleSlidesCount();
-        if (currentSlideIndex < slides.length - visibleSlides) {
-          currentSlideIndex++;
-          updateCarousel();
-        }
-      });
-
-      // Evento de clique no botão 'Voltar'
-      prevBtn.addEventListener('click', () => {
-        if (currentSlideIndex > 0) {
-          currentSlideIndex--;
-          updateCarousel();
-        }
-      });
-
-      // Atualiza o carrossel se a janela for redimensionada (para reajustar visibilidade)
-      window.addEventListener('resize', () => {
-        // Reinicia para o começo se mudar muito de tamanho para evitar bugs visuais
-        if (currentSlideIndex > slides.length - getVisibleSlidesCount()) {
-            currentSlideIndex = Math.max(0, slides.length - getVisibleSlidesCount());
-        }
-        updateCarousel();
-      });
-
-      // Inicializa o carrossel na primeira carga
-      updateCarousel();
     });
   </script>
 </body>
