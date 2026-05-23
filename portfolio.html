@@ -167,11 +167,10 @@
       display: block;
     }
 
-    /* ESTILIZAÇÃO DAS IMAGENS DAS THUMBNAILS */
     .thumb-img {
       width: 100%;
       height: 200px;
-      object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+      object-fit: cover;
       display: block;
       background-color: rgba(0,0,0,0.1);
     }
@@ -219,7 +218,7 @@
       font-weight: 600;
     }
 
-    /* ESTRUTURA REFEITA DO CARROSSEL */
+    /* CARROSSEL STRUCTURE */
     .carousel-wrapper {
       position: relative;
       width: 100%;
@@ -235,7 +234,6 @@
       padding: 10px 0;
     }
 
-    /* Esconde a barra de rolagem padrão para ficar limpo */
     .carousel-container::-webkit-scrollbar {
       display: none;
     }
@@ -253,11 +251,10 @@
     }
 
     .carousel-slide {
-      flex: 0 0 calc(33.333% - 14px); /* 3 itens por linha */
+      flex: 0 0 calc(33.333% - 14px);
       min-width: 280px;
     }
 
-    /* BOTÕES DO CARROSSEL */
     .carousel-btn {
       position: absolute;
       top: 50%;
@@ -289,13 +286,8 @@
       transform: translateY(-50%) scale(0.95);
     }
 
-    .carousel-btn.prev {
-      left: -20px;
-    }
-
-    .carousel-btn.next {
-      right: -20px;
-    }
+    .carousel-btn.prev { left: -20px; }
+    .carousel-btn.next { right: -20px; }
 
     /* MODAL */
     .modal {
@@ -374,33 +366,20 @@
       background: #4f46e5;
     }
 
-    /* RESPONSIVIDADE DO CARROSSEL */
     @media (max-width: 900px) {
       .carousel-slide {
-        flex: 0 0 calc(50% - 10px); /* 2 itens por linha */
+        flex: 0 0 calc(50% - 10px);
       }
       .carousel-btn.prev { left: -10px; }
       .carousel-btn.next { right: -10px; }
     }
 
     @media (max-width: 640px) {
-      body {
-        padding: 16px 12px 40px;
-      }
-      .hero {
-        padding: 24px;
-      }
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      .carousel-slide {
-        flex: 0 0 100%; /* 1 item por linha no celular */
-      }
-      .carousel-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 18px;
-      }
+      body { padding: 16px 12px 40px; }
+      .hero { padding: 24px; }
+      .grid { grid-template-columns: 1fr; }
+      .carousel-slide { flex: 0 0 100%; }
+      .carousel-btn { width: 38px; height: 38px; font-size: 18px; }
       .carousel-btn.prev { left: -5px; }
       .carousel-btn.next { right: -5px; }
     }
@@ -487,7 +466,7 @@
             
             <li class="carousel-slide">
               <div class="card">
-                <img src="Sem Título-1.jpg" alt="Configuração e Playlist Kovaaks" class="thumb-img">
+                <img src="Sem_Título-1.jpg" alt="Configuração e Playlist Kovaaks" class="thumb-img">
                 <div class="card-content" onclick="openModal('thumb1')" role="button" tabindex="0">
                   <h3 class="card-title">Aim Tracking Guide</h3>
                   <p class="card-text">Configuração e playlist de alto rendimento para Kovaaks.</p>
@@ -532,7 +511,7 @@
             
             <li class="carousel-slide">
               <div class="card">
-                <img src="grupo dos vaqueiro.jpg" alt="Cartaz Vaqueiros de Bermuda" class="thumb-img">
+                <img src="grupo_dos_vaqueiro.jpg" alt="Cartaz Vaqueiros de Bermuda" class="thumb-img">
                 <div class="card-content" onclick="openModal('thumb4')" role="button" tabindex="0">
                   <h3 class="card-title">Vaqueiros de Bermuda</h3>
                   <p class="card-text">Design de cartaz temático estilo rústico/envelhecido.</p>
@@ -701,7 +680,6 @@
   </div>
 
   <script>
-    // FUNÇÕES DO MODAL
     function openModal(id) {
       document.getElementById(id + 'Modal').classList.add('active');
     }
@@ -729,7 +707,6 @@
       const nextBtn = document.getElementById('slideNext');
 
       if (container && prevBtn && nextBtn) {
-        // Define o quanto ele vai rolar a cada clique (largura de 1 card completo)
         const getScrollAmount = () => {
           const firstSlide = container.querySelector('.carousel-slide');
           return firstSlide ? firstSlide.offsetWidth + 20 : 300; 
