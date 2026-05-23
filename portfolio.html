@@ -116,6 +116,16 @@
       opacity: 0.9;
     }
 
+    .button-secondary {
+      background: linear-gradient(135deg, #ec4899, #f97316);
+      color: #fff;
+      margin-left: 12px;
+    }
+
+    .button-secondary:hover {
+      opacity: 0.9;
+    }
+
     .section {
       margin-bottom: 28px;
     }
@@ -366,6 +376,65 @@
       background: #4f46e5;
     }
 
+    /* FOOTER CONTACT SECTION */
+    .contact-section {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 2px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      margin: 0 0 20px;
+      font-size: clamp(1.3rem, 2vw, 1.8rem);
+      color: #1e1b4b;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #ec4899, #f97316);
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      text-decoration: none;
+    }
+
+    .contact-link:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .contact-email {
+      display: block;
+      margin-top: 16px;
+      font-size: 1.1rem;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .contact-email a {
+      color: #4338ca;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-email a:hover {
+      color: #6366f1;
+      text-decoration: underline;
+    }
+
     @media (max-width: 900px) {
       .carousel-slide {
         flex: 0 0 calc(50% - 10px);
@@ -382,6 +451,8 @@
       .carousel-btn { width: 38px; height: 38px; font-size: 18px; }
       .carousel-btn.prev { left: -5px; }
       .carousel-btn.next { right: -5px; }
+      .button-secondary { margin-left: 0; margin-top: 8px; }
+      .contact-buttons { flex-direction: column; }
     }
   </style>
 </head>
@@ -399,7 +470,10 @@
     <header class="hero">
       <h1>Portfolio Criativo</h1>
       <p>Exploração de 3 áreas: Edição de Vídeo, Thumbnail Design e Programação. Desenvolvidas com Photoshop, After Effects, Adobe Premiere, Canva e CapCut.</p>
-      <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="button button-primary">Visitar Canal</a>
+      <div>
+        <a href="https://www.youtube.com/@Kayquewrld" target="_blank" class="button button-primary">Visitar Canal</a>
+        <a href="https://www.instagram.com/kayquewrld/" target="_blank" class="button button-secondary">📸 Instagram</a>
+      </div>
     </header>
 
     <section class="section">
@@ -572,6 +646,17 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+      <h2>Entre em Contato</h2>
+      <div class="contact-buttons">
+        <a href="https://www.instagram.com/kayquewrld/" target="_blank" class="contact-link">📸 Instagram</a>
+      </div>
+      <div class="contact-email">
+        📧 Email: <a href="mailto:kayquewrld@icloud.com">kayquewrld@icloud.com</a>
       </div>
     </section>
   </div>
