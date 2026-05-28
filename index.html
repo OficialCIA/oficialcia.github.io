@@ -35,43 +35,106 @@
       font-family: 'Quicksand', sans-serif;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 24px 16px;
+      gap: 24px;
+      padding: 24px;
       background: linear-gradient(135deg, #d1fae5 0%, #bfdbfe 50%, #ddd6fe 100%);
       background-attachment: fixed;
       color: #4b5563;
     }
 
-    /* Otimização: Usar will-change apenas onde necessário */
-    nav {
-      width: 100%;
-      max-width: 680px;
-      margin-bottom: 24px;
+    .sidebar-toggle {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 30;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 6px 18px rgba(99, 102, 241, 0.16);
+      color: #4338ca;
+      font-size: 1.35rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     }
 
-    nav ul {
+    .sidebar-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(99, 102, 241, 0.2);
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .sidebar {
+      width: 240px;
+      min-height: calc(100vh - 48px);
+      background: rgba(255, 255, 255, 0.42);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.58);
+      border-radius: 24px;
+      box-shadow: 0 12px 36px rgba(99, 102, 241, 0.12);
+      padding: 68px 16px 24px;
+      overflow: hidden;
+      transition: width 0.3s ease, padding 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .sidebar ul {
       list-style: none;
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    nav ul li a {
+    .sidebar ul li a {
+      display: block;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
       color: #4b5563;
-      padding: 6px 14px;
-      border-radius: 20px;
+      padding: 10px 14px;
+      border-radius: 14px;
       transition: background 0.25s, color 0.25s;
     }
 
-    nav ul li a:hover {
+    .sidebar ul li a:hover {
       background: rgba(255, 255, 255, 0.6);
       color: #1d4ed8;
+    }
+
+    .content-area {
+      flex: 1;
+      width: min(100%, 980px);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    body.sidebar-collapsed .sidebar {
+      width: 0;
+      padding-left: 0;
+      padding-right: 0;
+      border-width: 0;
+      opacity: 0;
+      transform: translateX(-16px);
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.42);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+      z-index: 20;
     }
 
     .card {
@@ -314,6 +377,46 @@
     }
 
     /* Otimização mobile-first */
+    @media (max-width: 900px) {
+      body {
+        padding: 16px;
+      }
+
+      .content-area {
+        width: 100%;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 72px;
+        left: 16px;
+        bottom: 16px;
+        min-height: auto;
+        width: min(280px, calc(100% - 32px));
+        z-index: 25;
+        transform: translateX(-110%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      body.sidebar-collapsed .sidebar {
+        width: min(280px, calc(100% - 32px));
+        padding: 68px 16px 24px;
+        border-width: 1px;
+      }
+
+      body.sidebar-open .sidebar {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      body.sidebar-open .sidebar-overlay {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
     @media (max-width: 480px) {
       .buttons {
         flex-direction: column;
@@ -342,7 +445,9 @@
 </head>
 <body>
 
-  <nav aria-label="Navegação principal">
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Abrir ou fechar menu lateral" aria-controls="site-sidebar" aria-expanded="true">☰</button>
+
+  <nav id="site-sidebar" class="sidebar" aria-label="Navegação principal">
     <ul>
       <li><a href="about.html">Sobre</a></li>
       <li><a href="projects.html">Projetos</a></li>
@@ -354,7 +459,10 @@
     </ul>
   </nav>
 
-  <main class="card">
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div class="content-area">
+    <main class="card">
 
     <div class="avatar-wrapper">
       <img src="https://i.pinimg.com/1200x/95/c9/b2/95c9b288e2ea7c5d6ff3a04a49c31c16.jpg" alt="Avatar de Kayque Olimpio" class="avatar" width="110" height="110" loading="lazy" onerror="this.style.display='none'">
@@ -379,28 +487,29 @@
 
     <a href="mailto:kayque@olimpio.me" class="email-link">kayque@olimpio.me</a>
 
-  </main>
+    </main>
 
-  <section class="explore-section" aria-label="Explorar seções">
-    <p class="explore-title">Explore</p>
-    <div class="explore-grid">
-      <a href="blog.html" class="explore-card explore-card-blog">
-        <span class="explore-card-emoji" aria-hidden="true">✍️</span>
-        <span class="explore-card-title">Blog</span>
-        <span class="explore-card-desc">Reflexões sobre arte, política, design e filosofia</span>
-      </a>
-      <a href="biblioteca.html" class="explore-card explore-card-biblioteca">
-        <span class="explore-card-emoji" aria-hidden="true">📚</span>
-        <span class="explore-card-title">Biblioteca</span>
-        <span class="explore-card-desc">Recursos recomendados: livros, artigos e ferramentas</span>
-      </a>
-      <a href="timeline.html" class="explore-card explore-card-timeline">
-        <span class="explore-card-emoji" aria-hidden="true">🗓️</span>
-        <span class="explore-card-title">Timeline</span>
-        <span class="explore-card-desc">Minha trajetória em arte, design e vida</span>
-      </a>
-    </div>
-  </section>
+    <section class="explore-section" aria-label="Explorar seções">
+      <p class="explore-title">Explore</p>
+      <div class="explore-grid">
+        <a href="blog.html" class="explore-card explore-card-blog">
+          <span class="explore-card-emoji" aria-hidden="true">✍️</span>
+          <span class="explore-card-title">Blog</span>
+          <span class="explore-card-desc">Reflexões sobre arte, política, design e filosofia</span>
+        </a>
+        <a href="biblioteca.html" class="explore-card explore-card-biblioteca">
+          <span class="explore-card-emoji" aria-hidden="true">📚</span>
+          <span class="explore-card-title">Biblioteca</span>
+          <span class="explore-card-desc">Recursos recomendados: livros, artigos e ferramentas</span>
+        </a>
+        <a href="timeline.html" class="explore-card explore-card-timeline">
+          <span class="explore-card-emoji" aria-hidden="true">🗓️</span>
+          <span class="explore-card-title">Timeline</span>
+          <span class="explore-card-desc">Minha trajetória em arte, design e vida</span>
+        </a>
+      </div>
+    </section>
+  </div>
 
   <script>
     // Otimização: Executar tipagem apenas uma vez, não em loop
@@ -423,6 +532,58 @@
       } else {
         setTimeout(type, 400);
       }
+    }());
+
+    (function () {
+      const body = document.body;
+      const toggle = document.getElementById('sidebar-toggle');
+      const overlay = document.getElementById('sidebar-overlay');
+      const navLinks = document.querySelectorAll('#site-sidebar a');
+      const mobile = window.matchMedia('(max-width: 900px)');
+
+      function updateAria() {
+        const expanded = mobile.matches
+          ? body.classList.contains('sidebar-open')
+          : !body.classList.contains('sidebar-collapsed');
+        toggle.setAttribute('aria-expanded', String(expanded));
+      }
+
+      function syncLayout() {
+        if (mobile.matches) {
+          body.classList.add('sidebar-collapsed');
+          body.classList.remove('sidebar-open');
+        } else {
+          body.classList.remove('sidebar-collapsed');
+          body.classList.remove('sidebar-open');
+        }
+        updateAria();
+      }
+
+      toggle.addEventListener('click', function () {
+        if (mobile.matches) {
+          body.classList.toggle('sidebar-open');
+        } else {
+          body.classList.toggle('sidebar-collapsed');
+        }
+        updateAria();
+      });
+
+      overlay.addEventListener('click', function () {
+        body.classList.remove('sidebar-open');
+        updateAria();
+      });
+
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (mobile.matches) {
+            body.classList.remove('sidebar-open');
+            updateAria();
+          }
+        });
+      });
+
+      mobile.addEventListener('change', syncLayout);
+      syncLayout();
     }());
   </script>
 
