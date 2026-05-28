@@ -234,8 +234,11 @@ function setupRegisterPage() {
 
     if (fullName.length < 3) setFieldError("fullName", "fullNameError", "Informe seu nome completo.");
     if (!email) setFieldError("email", "emailError", "Informe o email.");
-    if (password.length < 6) setFieldError("password", "passwordError", "A senha precisa de pelo menos 6 caracteres.");
-    if (strength < 2) setFieldError("password", "passwordError", "Use uma senha mais forte (maiúsculas, números e símbolos).");
+    if (password.length < 6) {
+      setFieldError("password", "passwordError", "A senha precisa de pelo menos 6 caracteres.");
+    } else if (strength < 2) {
+      setFieldError("password", "passwordError", "Use uma senha mais forte (maiúsculas, números e símbolos).");
+    }
     if (confirmPassword !== password) setFieldError("confirmPassword", "confirmPasswordError", "As senhas não coincidem.");
     if (!termsInput.checked) setFieldError("terms", "termsError", "Você precisa aceitar os termos.");
 
