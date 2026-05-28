@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | Kayque Olimpio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Quicksand', sans-serif; min-height: 100vh; display: flex; gap: 24px; padding: 24px; background: linear-gradient(135deg, #d1fae5 0%, #bfdbfe 50%, #ddd6fe 100%); color: #334155; }
+    .sidebar-toggle { position: fixed; top: 18px; left: 18px; z-index: 30; width: 44px; height: 44px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); color: #4338ca; font-size: 1.35rem; cursor: pointer; }
+    .sidebar { width: 240px; min-height: calc(100vh - 48px); background: rgba(255,255,255,0.42); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.58); border-radius: 24px; box-shadow: 0 12px 36px rgba(99,102,241,0.12); padding: 68px 16px 24px; transition: width 0.3s ease, padding 0.3s ease, opacity 0.3s ease, transform 0.3s ease; }
+    .sidebar ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .sidebar a { display: block; text-decoration: none; font-weight: 600; color: #475569; padding: 10px 14px; border-radius: 14px; transition: background .2s,color .2s; }
+    .sidebar a:hover, .sidebar a.active { background: rgba(255,255,255,.7); color: #1d4ed8; }
+    .sidebar-overlay { position: fixed; inset: 0; background: rgba(15,23,42,.42); opacity: 0; pointer-events: none; transition: opacity .28s ease; z-index: 20; }
+    body.sidebar-collapsed .sidebar { width: 0; padding-left: 0; padding-right: 0; border-width: 0; opacity: 0; transform: translateX(-16px); }
+    .content-area { flex: 1; width: min(100%, 980px); margin: 0 auto; display: flex; justify-content: center; align-items: center; }
+    .card { width: 100%; max-width: 460px; background: rgba(255,255,255,0.35); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.5); border-radius: 24px; box-shadow: 0 8px 32px rgba(99,102,241,.1); padding: 30px; animation: reveal .7s ease both; }
+    @keyframes reveal { from { opacity:0; transform: translateY(20px);} to { opacity:1; transform: translateY(0);} }
+    h1 { font-size: 1.6rem; color: #1e1b4b; margin-bottom: 6px; }
+    .subtitle { color:#475569; font-size:.92rem; margin-bottom: 20px; }
+    form { display: grid; gap: 14px; }
+    label { font-weight: 600; color:#334155; font-size: .9rem; }
+    input { width: 100%; margin-top: 6px; padding: 12px 14px; border-radius: 12px; border: 1px solid #cbd5e1; background: rgba(255,255,255,.85); font: inherit; transition: border-color .2s, box-shadow .2s; }
+    input:focus { outline: none; border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.15); }
+    input.invalid { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,.12); }
+    .field-error { min-height: 16px; font-size: .78rem; color: #dc2626; margin-top: 4px; }
+    .btn { width: 100%; padding: 12px 16px; border: none; border-radius: 999px; background: linear-gradient(135deg, #6366f1, #3b82f6); color: #fff; font-weight: 700; font-size: .95rem; cursor: pointer; transition: transform .2s, box-shadow .2s; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(99,102,241,.28); }
+    .btn:disabled { opacity: .7; cursor: wait; transform: none; }
+    .links { display:flex; justify-content: space-between; gap: 12px; margin-top: 4px; flex-wrap: wrap; }
+    .links a { font-size: .86rem; font-weight: 600; color: #4f46e5; text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+    .message { min-height: 20px; margin-top: 8px; font-weight: 600; font-size: .86rem; }
+    .message.success { color: #15803d; }
+    .message.error { color: #dc2626; }
+    @media (max-width: 900px) {
+      body { padding: 16px; }
+      .sidebar { position: fixed; top: 72px; left: 16px; bottom: 16px; min-height: auto; width: min(280px, calc(100% - 32px)); z-index: 25; transform: translateX(-110%); opacity: 0; pointer-events: none; }
+      body.sidebar-collapsed .sidebar { width: min(280px, calc(100% - 32px)); padding: 68px 16px 24px; border-width: 1px; }
+      body.sidebar-open .sidebar { transform: translateX(0); opacity: 1; pointer-events: auto; }
+      body.sidebar-open .sidebar-overlay { opacity: 1; pointer-events: auto; }
+    }
+  </style>
+</head>
+<body data-page="login">
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Abrir ou fechar menu lateral" aria-controls="site-sidebar" aria-expanded="true">☰</button>
+
+  <nav id="site-sidebar" class="sidebar" aria-label="Navegação principal">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="about.html">Sobre</a></li>
+      <li><a href="projects.html">Projetos</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="biblioteca.html">Biblioteca</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="drawings.html">Desenhos</a></li>
+      <li><a href="login.html" class="active" aria-current="page">Entrar</a></li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <main class="content-area">
+    <section class="card" aria-labelledby="login-title">
+      <h1 id="login-title">Entrar</h1>
+      <p class="subtitle">Acesse sua conta para continuar.</p>
+
+      <form id="loginForm" novalidate>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="voce@email.com">
+          <p class="field-error" id="emailError"></p>
+        </div>
+        <div>
+          <label for="password">Senha</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Sua senha">
+          <p class="field-error" id="passwordError"></p>
+        </div>
+        <button class="btn" id="loginButton" type="submit">Entrar</button>
+      </form>
+
+      <div class="links">
+        <a href="register.html">Criar conta</a>
+        <a href="#" id="forgotPasswordLink">Esqueci a senha</a>
+      </div>
+      <p class="message" id="formMessage" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>
