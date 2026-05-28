@@ -62,6 +62,20 @@
         <button onclick="limpar()" class="text-red-400 font-bold text-xs px-3 py-1.5 rounded-full bg-red-50 hover:bg-red-100 transition-colors">🗑 Limpar</button>
         <button onclick="desfazer()" class="text-gray-500 font-bold text-xs px-3 py-1.5 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors">↩ Desfazer</button>
       </div>
+      <div class="mb-3 flex items-center justify-center gap-3 flex-wrap">
+        <label class="flex items-center gap-2 text-xs text-gray-500">
+          Fundo:
+          <select id="bgType" class="text-xs border border-slate-300 rounded-lg px-2 py-1 bg-white">
+            <option value="transparent">Transparente</option>
+            <option value="white">Branco</option>
+            <option value="custom">Cor personalizada</option>
+          </select>
+        </label>
+        <label id="bgColorWrap" class="hidden flex items-center gap-1 text-xs text-gray-500">
+          Cor:
+          <input type="color" id="bgColorPicker" value="#f8fafc" class="w-8 h-8 cursor-pointer rounded-lg border-0">
+        </label>
+      </div>
       <canvas id="canvas"></canvas>
     </div>
 
@@ -169,6 +183,8 @@
     let uploadedImage = null; // HTMLImageElement when a photo is loaded
     let historyDraw = [];
     let historyUpload = [];
+    let drawBackgroundType = 'transparent';
+    let drawBackgroundColor = '#f8fafc';
 
     // ---- TOAST ----
     function showToast(msg, type = 'info') {
@@ -199,6 +215,29 @@
       ctxUp.lineWidth = e.target.value;
       document.getElementById('brushSizeUploadLabel').textContent = e.target.value;
     });
+
+    // ---- DRAW BACKGROUND ----
+    function getDrawBackgroundColor() {
+      if (drawBackgroundType === 'transparent') return null;
+      if (drawBackgroundType === 'custom') return drawBackgroundColor;
+      return '#ffffff';
+    }
+
+    function updateDrawBackground() {
+      const bgColor = getDrawBackgroundColor();
+      canvas.style.backgroundColor = bgColor || 'transparent';
+      document.getElementById('bgColorWrap').classList.toggle('hidden', drawBackgroundType !== 'custom');
+    }
+
+    document.getElementById('bgType').addEventListener('change', (e) => {
+      drawBackgroundType = e.target.value;
+      updateDrawBackground();
+    });
+    document.getElementById('bgColorPicker').addEventListener('input', (e) => {
+      drawBackgroundColor = e.target.value;
+      if (drawBackgroundType === 'custom') updateDrawBackground();
+    });
+    updateDrawBackground();
 
     // ---- ADMIN LOGIN ----
     window.fazerLogin = () => {
@@ -370,13 +409,19 @@
     };
 
     // ---- COMPRESS + PUBLISH ----
-    function compressCanvas(sourceCanvas, quality = COMPRESS_QUALITY, maxW = COMPRESS_MAX_WIDTH) {
+    function compressCanvas(sourceCanvas, { background = null, quality = COMPRESS_QUALITY, maxW = COMPRESS_MAX_WIDTH } = {}) {
       const offscreen = document.createElement('canvas');
       let w = sourceCanvas.width, h = sourceCanvas.height;
       if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
       offscreen.width = w;
       offscreen.height = h;
-      offscreen.getContext('2d').drawImage(sourceCanvas, 0, 0, w, h);
+      const offCtx = offscreen.getContext('2d');
+      if (background) {
+        offCtx.fillStyle = background;
+        offCtx.fillRect(0, 0, w, h);
+      }
+      offCtx.drawImage(sourceCanvas, 0, 0, w, h);
+      if (!background) return offscreen.toDataURL('image/png');
       return offscreen.toDataURL('image/jpeg', quality);
     }
 
@@ -406,10 +451,10 @@
         const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
         const hasContent = pixels.some((v, i) => i % 4 === 3 && v > 0);
         if (!hasContent) { showToast('Canvas está vazio! Desenhe algo primeiro.', 'error'); return; }
-        dataURL = compressCanvas(canvas);
+        dataURL = compressCanvas(canvas, { background: getDrawBackgroundColor() });
       } else {
         if (!uploadedImage) { showToast('Selecione uma foto primeiro!', 'error'); return; }
-        dataURL = compressCanvas(mergeCanvases());
+        dataURL = compressCanvas(mergeCanvases(), { background: '#ffffff' });
       }
 
       btn.innerHTML = '<span class="spinner"></span> Enviando...';
