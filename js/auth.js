@@ -304,7 +304,7 @@ function setupDashboardPage() {
       const profileRef = doc(db, "users", user.uid);
       const profileSnapshot = await getDoc(profileRef);
       profileData = profileSnapshot.exists() ? profileSnapshot.data() : undefined;
-    } catch (_error) {
+    } catch {
       setMessage("dashboardMessage", "Não foi possível carregar todos os dados do perfil.", "error");
     }
 
