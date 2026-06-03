@@ -1,1 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHAPA OLIMPO | Grêmio Estudantil</title>
+  <meta name="theme-color" content="#6d28d9">
+  <meta name="description" content="Conheça a CHAPA OLIMPO para o grêmio estudantil: valores, propostas e plano de ação para representar estudantes com responsabilidade, criatividade e resultado.">
 
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="CHAPA OLIMPO | Grêmio Estudantil">
+  <meta property="og:description" content="Uma campanha estudantil com propostas reais para melhorar cultura, escuta ativa, esporte, bem-estar e oportunidades para todos.">
+  <meta property="og:url" content="https://olimpio.me/olimpo.html">
+  <meta property="og:image" content="https://olimpio.me/img/img.png">
+  <meta property="og:image:alt" content="Identidade visual da CHAPA OLIMPO em tons de roxo e lilás">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CHAPA OLIMPO | Grêmio Estudantil">
+  <meta name="twitter:description" content="Conheça as ideias da CHAPA OLIMPO e participe do futuro da escola com voto consciente.">
+  <meta name="twitter:image" content="https://olimpio.me/img/img.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #140724;
+      --bg-soft: #23103b;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.18);
+      --text: #f5f3ff;
+      --text-soft: #ddd6fe;
+      --accent: #a855f7;
+      --accent-2: #c084fc;
+      --accent-3: #e879f9;
+      --highlight: #f5d0fe;
+      --max: 1080px;
+      --radius: 24px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(192, 132, 252, 0.3) 0 18%, transparent 40%),
+        radial-gradient(circle at 85% 5%, rgba(168, 85, 247, 0.28) 0 22%, transparent 50%),
+        linear-gradient(160deg, #0f061d 0%, #1b0b30 45%, #2a1244 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .orb {
+      position: fixed;
+      z-index: 0;
+      border-radius: 50%;
+      filter: blur(2px);
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    .orb-1 {
+      width: 280px;
+      height: 280px;
+      border: 1px solid rgba(221, 214, 254, 0.35);
+      top: 12%;
+      right: -90px;
+    }
+
+    .orb-2 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid rgba(245, 208, 254, 0.4);
+      bottom: 10%;
+      left: -70px;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(var(--max), 92vw);
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    .hero {
+      background: linear-gradient(150deg, rgba(168, 85, 247, 0.18), rgba(245, 208, 254, 0.08));
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 36px;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -30% auto auto -10%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.3), transparent 65%);
+      z-index: -1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 208, 254, 0.6);
+      background: rgba(245, 208, 254, 0.14);
+      color: var(--highlight);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4.8vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      margin: 18px 0 0;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--text-soft);
+      max-width: 56ch;
+    }
+
+    .sticker-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .sticker {
+      border: 1px dashed rgba(245, 208, 254, 0.75);
+      background: rgba(35, 16, 59, 0.65);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      color: #f3e8ff;
+      font-size: 0.92rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 10px 35px rgba(6, 3, 15, 0.35);
+    }
+
+    .col-7 { grid-column: span 7; }
+    .col-5 { grid-column: span 5; }
+    .col-4 { grid-column: span 4; }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      letter-spacing: -0.01em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--text-soft);
+    }
+
+    .list li + li { margin-top: 9px; }
+
+    .pillars {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .pillar {
+      border: 1px solid rgba(192, 132, 252, 0.45);
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: rgba(167, 139, 250, 0.09);
+    }
+
+    .pillar strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .cta {
+      margin-top: 24px;
+      text-align: center;
+      background: linear-gradient(145deg, rgba(168, 85, 247, 0.2), rgba(244, 114, 182, 0.18));
+      border: 1px solid rgba(244, 114, 182, 0.45);
+      border-radius: 20px;
+      padding: 26px 20px;
+    }
+
+    .cta h2 { margin-bottom: 8px; }
+
+    .vote-note {
+      margin: 0;
+      color: #f5d0fe;
+      font-weight: 500;
+    }
+
+    footer {
+      margin-top: 18px;
+      text-align: center;
+      color: #c4b5fd;
+      font-size: 0.9rem;
+      opacity: 0.95;
+    }
+
+    @media (max-width: 860px) {
+      .hero { padding: 28px 22px; }
+      section { padding: 20px; }
+      .col-7, .col-5, .col-4 { grid-column: 1 / -1; }
+      .page { padding-top: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+
+  <main class="page">
+    <header class="hero" aria-labelledby="titulo-campanha">
+      <span class="badge">⚡ CHAPA OLIMPO • Grêmio Estudantil</span>
+      <h1 id="titulo-campanha">Voz estudantil forte, criativa e presente.</h1>
+      <p>
+        A CHAPA OLIMPO nasce para unir ideias, transformar diálogo em ação e construir uma escola com mais oportunidades,
+        acolhimento e protagonismo para todos os estudantes.
+      </p>
+
+      <div class="sticker-row" aria-label="Destaques da campanha">
+        <span class="sticker">#JuntosPeloGrêmio</span>
+        <span class="sticker">#EscutaAtiva</span>
+        <span class="sticker">#AçãoDeVerdade</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="col-7" aria-labelledby="sobre-olimpo">
+        <h2 id="sobre-olimpo">O que é a OLIMPO?</h2>
+        <p class="lead">
+          A OLIMPO é uma chapa formada por estudantes que acreditam em representação real: ouvir, planejar e executar.
+          Nosso compromisso é ser uma ponte entre turmas, coordenação e comunidade escolar para que cada demanda importante
+          tenha espaço, transparência e resposta.
+        </p>
+      </section>
+
+      <section class="col-5" aria-labelledby="valores-olimpo">
+        <h2 id="valores-olimpo">Nossos valores</h2>
+        <div class="pillars">
+          <div class="pillar"><strong>Respeito</strong>Diálogo aberto com todas as turmas e opiniões.</div>
+          <div class="pillar"><strong>Responsabilidade</strong>Compromissos públicos e acompanhamento das ações.</div>
+          <div class="pillar"><strong>União</strong>Mais participação estudantil nas decisões da escola.</div>
+        </div>
+      </section>
+
+      <section class="col-4" aria-labelledby="propostas-1">
+        <h2 id="propostas-1">Cultura e expressão</h2>
+        <ul class="list">
+          <li>Calendário de eventos estudantis com protagonismo das turmas.</li>
+          <li>Espaços para música, arte, dança e talentos da escola.</li>
+          <li>Campanhas temáticas para fortalecer pertencimento.</li>
+        </ul>
+      </section>
+
+      <section class="col-4" aria-labelledby="propostas-2">
+        <h2 id="propostas-2">Bem-estar e convivência</h2>
+        <ul class="list">
+          <li>Ações de acolhimento e integração entre séries.</li>
+          <li>Canal de escuta para sugestões e demandas urgentes.</li>
+          <li>Projetos contra bullying e incentivo ao respeito mútuo.</li>
+        </ul>
+      </section>
+
+      <section class="col-4" aria-labelledby="propostas-3">
+        <h2 id="propostas-3">Esporte e oportunidades</h2>
+        <ul class="list">
+          <li>Torneios internos com organização e divulgação antecipada.</li>
+          <li>Parcerias para oficinas, feiras e atividades formativas.</li>
+          <li>Mais visibilidade para iniciativas acadêmicas dos alunos.</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="cta" aria-labelledby="cta-voto">
+      <h2 id="cta-voto">Seu voto constrói o próximo capítulo da nossa escola.</h2>
+      <p class="vote-note">
+        Vote com consciência. Vote em uma chapa que quer trabalhar junto com você, com propostas possíveis e compromisso de verdade.
+      </p>
+    </section>
+
+    <footer>
+      CHAPA OLIMPO • Grêmio Estudantil
+    </footer>
+  </main>
+</body>
+</html>
