@@ -3,35 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#6d28d9">
-  <meta name="description" content="Conheça a CHAPA OLIMPO: ideias, valores e propostas para um grêmio estudantil mais participativo, criativo e próximo dos estudantes.">
-  <meta property="og:title" content="CHAPA OLIMPO | Grêmio Estudantil">
-  <meta property="og:description" content="Uma campanha estudantil com propostas reais para representar, incluir e transformar a vida escolar com responsabilidade.">
-  <meta property="og:image" content="https://olimpio.me/img/img3.png">
+  <meta name="theme-color" content="#7041b3">
+  
+  <!-- SEO Padrão -->
+  <title>CHAPA OLIMPO | EREM Frei Caneca</title>
+  <meta name="description" content="A CHAPA OLIMPO nasce para representar todos os estudantes com diálogo, organização e atitude. Conheça nosso projeto 'Integral Sem Tédio'!">
+
+  <!-- PREVIEW PARA WHATSAPP, INSTAGRAM, FACEBOOK (Open Graph) -->
+  <meta property="og:title" content="CHAPA OLIMPO | Grêmio Estudantil ⚡">
+  <meta property="og:description" content="A Chapa da Inovação chegou no EREM Frei Caneca! Conheça nosso projeto 'Integral Sem Tédio', torneios esportivos e propostas reais.">
+  <meta property="og:image" content="https://olimpio.me/img/3.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://olimpio.me/olimpo.html">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
+
+  <!-- PREVIEW PARA X / TWITTER -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CHAPA OLIMPO | Grêmio Estudantil">
-  <meta name="twitter:description" content="Conheça a proposta da CHAPA OLIMPO para um grêmio mais presente, inovador e conectado com os estudantes.">
-  <meta name="twitter:image" content="https://olimpio.me/img/img3.png">
-  <title>CHAPA OLIMPO | Grêmio Estudantil</title>
+  <meta name="twitter:title" content="CHAPA OLIMPO | Grêmio Estudantil ⚡">
+  <meta name="twitter:description" content="Transformando ideias em ações reais. Conheça as propostas da CHAPA OLIMPO para movimentar nossa rotina escolar.">
+  <meta name="twitter:image" content="https://olimpio.me/img/3.png">
+
+  <!-- Fontes do Projeto -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg: #170829;
-      --bg-soft: #230e3a;
-      --card: rgba(132, 84, 213, 0.14);
-      --stroke: rgba(220, 196, 255, 0.32);
-      --primary: #d5b4ff;
-      --secondary: #b78bfa;
-      --text: #f6eeff;
-      --muted: #decffd;
-      --accent: #f4a8ff;
-      --good: #c2ffea;
-      --shadow: 0 18px 42px rgba(9, 2, 18, 0.44);
+      --bg: #decffd; /* Lilás claro de fundo */
+      --purple-dark: #4c2582; /* Roxo escuro */
+      --purple-medium: #7041b3;
+      --purple-light: #eedfff;
+      --white: #ffffff;
+      --accent: #f4a8ff; /* Rosa destaque */
+      --shadow-pop: 6px 6px 0px #4c2582; /* Sombra Pop-Art */
+      --stroke-thick: 3px solid #4c2582;
     }
 
     * {
@@ -46,348 +55,568 @@
 
     body {
       font-family: 'Quicksand', sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 8% 12%, rgba(180, 92, 255, 0.24), transparent 30%),
-        radial-gradient(circle at 85% 4%, rgba(243, 177, 255, 0.2), transparent 28%),
-        radial-gradient(circle at 75% 80%, rgba(96, 59, 170, 0.45), transparent 32%),
-        linear-gradient(150deg, #12051f 0%, #2a0d4d 50%, #130622 100%);
+      color: var(--purple-dark);
+      background-color: var(--bg);
       min-height: 100vh;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     .wrap {
-      width: min(1100px, calc(100% - 2.4rem));
+      width: min(1000px, calc(100% - 2rem));
       margin: 0 auto;
-      padding: 2rem 0 3.2rem;
+      padding: 2rem 0;
     }
 
+    /* --- HERO BANNER --- */
     .hero {
       position: relative;
+      background: var(--white);
+      border: var(--stroke-thick);
+      border-radius: 24px;
+      padding: clamp(1.5rem, 5vw, 3rem);
+      box-shadow: var(--shadow-pop);
       overflow: hidden;
-      border: 1px solid var(--stroke);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: clamp(1.6rem, 5vw, 3rem);
-      background:
-        linear-gradient(140deg, rgba(16, 3, 28, 0.92) 0%, rgba(62, 27, 117, 0.85) 48%, rgba(152, 78, 210, 0.48) 100%),
-        url('img/img.png') center/cover no-repeat;
-      isolation: isolate;
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 2rem;
+      align-items: center;
     }
 
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      border: 1px solid rgba(236, 215, 255, 0.25);
-      z-index: -1;
-    }
-
-    .hero::before {
-      width: 240px;
-      height: 240px;
-      top: -120px;
-      right: -70px;
-    }
-
-    .hero::after {
-      width: 180px;
-      height: 180px;
-      bottom: -82px;
-      left: -55px;
-      box-shadow: inset 0 0 0 40px rgba(255, 255, 255, 0.02);
+    .hero-content {
+      z-index: 5;
     }
 
     .sticker {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      border: 1px dashed rgba(255, 255, 255, 0.45);
+      gap: 0.5rem;
+      border: var(--stroke-thick);
       border-radius: 999px;
-      padding: 0.25rem 0.8rem;
+      padding: 0.4rem 1.2rem;
       font-weight: 700;
-      font-size: 0.84rem;
-      letter-spacing: 0.03em;
+      font-size: 0.85rem;
       text-transform: uppercase;
-      background: rgba(238, 224, 255, 0.12);
-      margin-bottom: 1rem;
+      background: var(--bg);
+      color: var(--purple-dark);
+      margin-bottom: 1.5rem;
     }
 
     h1 {
-      font-size: clamp(2rem, 6vw, 3.8rem);
-      line-height: 1.06;
-      margin-bottom: 1rem;
-      text-wrap: balance;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      color: var(--purple-dark);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
     }
 
     .hero p {
-      max-width: 60ch;
-      color: var(--muted);
-      font-size: clamp(1rem, 2.1vw, 1.2rem);
-      margin-bottom: 1.2rem;
+      color: var(--purple-dark);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      margin-bottom: 2rem;
+      font-weight: 500;
     }
 
+    /* BOTÃO INTERATIVO DO INSTAGRAM */
     .hero-cta {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      background: linear-gradient(135deg, #f8d3ff, #d7beff);
-      color: #2b0f4b;
-      font-weight: 700;
-      border-radius: 999px;
-      padding: 0.78rem 1.2rem;
-      border: none;
-      box-shadow: 0 8px 20px rgba(23, 4, 35, 0.35);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.42);
-      padding: 0.78rem 1.2rem;
-      font-weight: 700;
-      color: #f7e8ff;
+      gap: 0.6rem;
+      background: var(--purple-dark);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      border-radius: 12px;
+      padding: 1rem 2rem;
+      border: var(--stroke-thick);
+      box-shadow: 4px 4px 0px var(--bg);
+      letter-spacing: 0.05em;
       text-decoration: none;
-      background: rgba(7, 2, 14, 0.28);
-      transition: transform 0.2s ease, background 0.2s ease;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      cursor: pointer;
     }
 
-    .social-link:hover,
-    .social-link:focus-visible {
-      transform: translateY(-1px);
-      background: rgba(27, 7, 45, 0.5);
+    .hero-cta:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--bg);
     }
 
+    .hero-cta:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0px 0px 0px var(--bg);
+    }
+
+    .hero-illustration {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 350px;
+    }
+
+    .zeus-img {
+      width: 320px;
+      height: 320px;
+      object-fit: cover;
+      z-index: 3;
+      border-radius: 50%;
+      border: var(--stroke-thick);
+      box-shadow: 4px 4px 0px var(--purple-dark);
+    }
+
+    .spinning-container {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      z-index: 1;
+      animation: rotateText 35s linear infinite;
+    }
+
+    @keyframes rotateText {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* --- SEÇÕES --- */
     main {
-      margin-top: 1.35rem;
+      margin-top: 2.5rem;
       display: grid;
-      gap: 1rem;
+      gap: 2rem;
     }
 
     section {
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      border-radius: 22px;
-      padding: clamp(1.1rem, 2.4vw, 1.7rem);
-      backdrop-filter: blur(4px);
+      background: var(--white);
+      border: var(--stroke-thick);
+      border-radius: 20px;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      box-shadow: var(--shadow-pop);
     }
 
     h2 {
-      font-size: clamp(1.32rem, 3.2vw, 1.8rem);
-      margin-bottom: 0.55rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
     }
 
     .lead {
-      color: var(--muted);
-      margin-bottom: 0.35rem;
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
     }
 
+    /* --- DESTAQUE DAS PROPOSTAS --- */
+    .propostas-container {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .propostas-block {
+      border: var(--stroke-thick);
+      border-radius: 16px;
+      padding: 1.5rem;
+      background: var(--purple-light);
+    }
+
+    .propostas-block h3 {
+      color: var(--purple-dark);
+      border-bottom: 2px dashed var(--purple-dark);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .propostas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .proposta-card {
+      background: var(--white);
+      border: 2px solid var(--purple-dark);
+      border-radius: 12px;
+      padding: 1.2rem;
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      box-shadow: 3px 3px 0px var(--purple-dark);
+    }
+
+    .proposta-card.anti-tedio {
+      background: #fff8eb;
+      border-color: var(--purple-dark);
+    }
+
+    .proposta-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .proposta-card p {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    /* Grid Comum de Valores e Passos */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.85rem;
-      margin-top: 0.8rem;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
     }
 
     .item {
-      border: 1px solid rgba(225, 207, 252, 0.2);
+      border: var(--stroke-thick);
       border-radius: 16px;
-      padding: 0.95rem;
-      background: rgba(255, 255, 255, 0.03);
+      padding: 1.4rem;
+      background: var(--purple-light);
     }
 
-    .item h3 {
-      font-size: 1.03rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .item p,
-    li {
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    ul {
-      margin-top: 0.6rem;
-      list-style: none;
-      display: grid;
-      gap: 0.55rem;
-    }
-
-    li {
-      position: relative;
-      padding-left: 1.5rem;
-    }
-
-    li::before {
-      content: "⚡";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-    }
-
+    /* --- SEÇÃO VOTE --- */
     .cta {
-      background: linear-gradient(135deg, rgba(185, 105, 255, 0.35), rgba(98, 43, 156, 0.48));
+      background: var(--purple-dark);
+      color: var(--white);
       text-align: center;
-      padding: clamp(1.2rem, 3.2vw, 2.1rem);
+      padding: 3rem 2rem;
+    }
+
+    .cta h2 {
+      color: var(--white);
     }
 
     .cta p {
-      color: #f5e9ff;
-      max-width: 60ch;
-      margin: 0.6rem auto 0;
+      color: var(--purple-light);
+      max-width: 65ch;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
     }
 
     .vote-badge {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.45rem 1rem;
+      padding: 1rem 2.5rem;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.42);
-      color: var(--good);
-      font-weight: 700;
-      background: rgba(7, 2, 14, 0.25);
+      border: 3px solid var(--white);
+      color: var(--purple-dark);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      background: var(--white);
+      box-shadow: 5px 5px 0px var(--bg);
+      letter-spacing: 0.05em;
     }
 
+    /* --- RODAPÉ --- */
     footer {
-      margin-top: 1rem;
+      margin-top: 3rem;
       text-align: center;
-      color: #d8c1ff;
-      font-size: 0.9rem;
-      opacity: 0.9;
+      color: var(--purple-dark);
+      font-weight: 700;
+      font-size: 1rem;
     }
 
-    @media (max-width: 640px) {
-      .wrap {
-        width: min(1100px, calc(100% - 1rem));
+    /* -----------------------------------------------------------
+       ⚙️ SISTEMA DE CLASSES PARA ANIMAÇÃO DE ROLAGEM (SCROLL)
+    ----------------------------------------------------------- */
+    
+    /* Configuração padrão do estado oculto (antes do scroll) */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      /* cubic-bezier personalizado para dar um efeito leve de mola/reicochete bem profissional */
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity; /* Otimiza a renderização da GPU do aparelho */
+    }
+
+    /* Estado ativo (quando o elemento entra na tela) */
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- RESPONSIVIDADE --- */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 1.5rem;
+      }
+
+      .hero-illustration {
+        order: -1;
+        height: 350px;
+      }
+
+      .spinning-container {
+        width: 330px;
+        height: 330px;
+      }
+
+      .sticker {
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .hero-cta {
         width: 100%;
         justify-content: center;
       }
-
-      .social-link {
-        width: 100%;
-      }
     }
   </style>
 </head>
 <body>
+
   <div class="wrap">
+    
+    <!-- HEADER / BANNER PRINCIPAL (Sempre visível de início, sem delay prejudicial) -->
     <header class="hero" role="banner">
-      <span class="sticker">⚡ CHAPA OLIMPO 2026</span>
-      <h1>Uma nova energia para o nosso grêmio estudantil.</h1>
-      <p>
-        A CHAPA OLIMPO nasce para representar todos os estudantes com diálogo, organização e atitude.
-        Nosso compromisso é transformar ideias em ações reais, com respeito à escola e foco no que
-        melhora o dia a dia de quem vive o colégio.
-      </p>
-      <div class="hero-actions">
-        <div class="hero-cta" aria-label="Mensagem de campanha">Seu voto pode elevar a nossa escola.</div>
-        <a
-          class="social-link"
-          href="https://www.instagram.com/chapa.olimpo26/?utm_source=landing_page"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram oficial da CHAPA OLIMPO"
-        >
-          Instagram da campanha
+      <div class="hero-content">
+        <span class="sticker">⚡ CHAPA OLIMPO • EREM FREI CANECA</span>
+        <h1>É a sua chance de fazer a diferença.</h1>
+        <p>
+          A CHAPA OLIMPO nasce para representar todos os estudantes com diálogo, organização e atitude. 
+          Nosso compromisso é transformar ideias em ações reais, com respeito à escola e foco no que melhora 
+          o dia a dia de quem vive o colégio.
+        </p>
+        <a href="https://www.instagram.com/chapa.olimpo26/?utm_source=ig_web_button_share_sheet" target="_blank" class="hero-cta" aria-label="Acesse nosso Instagram">
+          Acompanhe no Instagram
         </a>
+      </div>
+      
+      <div class="hero-illustration">
+        <svg class="spinning-container" viewBox="0 0 100 100">
+          <path id="textCircle" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0" fill="none"/>
+          <text font-family="Montserrat" font-weight="900" font-size="3.2" fill="#4c2582" opacity="0.15">
+            <textPath href="#textCircle" letter-spacing="1.2">
+              INOVAÇÃO • PARTICIPAÇÃO • TRANSPARÊNCIA • UNIÃO • CHAPA OLIMPO • 
+            </textPath>
+          </text>
+        </svg>
+        <img src="https://olimpio.me/img/3.png" alt="Selo Chapa Olimpo" class="zeus-img">
       </div>
     </header>
 
+    <!-- CONTEÚDO DA PÁGINA (Com animação suave ao rolar) -->
     <main>
-      <section aria-labelledby="o-que-e-olimpo">
+      
+      <section class="scroll-reveal" aria-labelledby="o-que-e-olimpo">
         <h2 id="o-que-e-olimpo">O que é a OLIMPO?</h2>
         <p class="lead">
-          A OLIMPO é uma chapa para a candidatura do grêmio estudantil, formada por estudantes que
-          acreditam em protagonismo jovem, escuta ativa e trabalho em equipe.
-        </p>
-        <p class="lead">
-          Queremos um grêmio presente, transparente e criativo, que represente diferentes turmas,
-          projetos e talentos, aproximando os alunos das decisões escolares.
+          A OLIMPO é a <strong>Chapa da Inovação</strong>. Formada por estudantes determinados do EREM Frei Caneca que acreditam no protagonismo jovem, na escuta ativa e no compromisso real de transformar a rotina escolar em algo produtivo, leve e estimulante.
         </p>
       </section>
 
-      <section aria-labelledby="valores-olimpo">
-        <h2 id="valores-olimpo">Nossos valores</h2>
+      <!-- SEÇÃO: PROPOSTAS DA CAMPANHA -->
+      <section class="scroll-reveal" aria-labelledby="propostas-olimpo">
+        <h2 id="propostas-olimpo">⚡ Nossas Propostas para Transformar a Escola</h2>
+        <p class="lead" style="margin-bottom: 1.5rem;">
+          Sabemos o quanto passar o dia inteiro no colégio integral pode ser cansativo. Nossas propostas unem responsabilidade institucional com ações práticas para movimentar a rotina!
+        </p>
+
+        <div class="propostas-container">
+          
+          <!-- Bloco 1: Propostas Principais Institucionais -->
+          <div class="propostas-block">
+            <h3>Pilares de Representação</h3>
+            <div class="propostas-grid">
+              
+              <div class="proposta-card">
+                <span class="proposta-icon">📢</span>
+                <p><strong>Canais de escuta contínua:</strong> Criar meios fáceis e diretos para recolher sugestões, críticas e novas propostas dos alunos de forma permanente.</p>
+              </div>
+
+              <div class="proposta-card">
+                <span class="proposta-icon">🎨</span>
+                <p><strong>Cultura e Esporte interno:</strong> Fortalecer atividades culturais, esportivas e criativas que descobram e valorizem os talentos reais da escola.</p>
+              </div>
+
+              <div class="proposta-card">
+                <span class="proposta-icon">🤝</span>
+                <p><strong>Bem-estar e Acolhimento:</strong> Organizar campanhas constantes de bem-estar mental, acolhimento e integração real entre as turmas.</p>
+              </div>
+
+              <div class="proposta-card">
+                <span class="proposta-icon">📅</span>
+                <p><strong>Eventos com Propósito:</strong> Promover eventos estudantis bem planejados, com participação ativa dos alunos e propósito educativo/cultural.</p>
+              </div>
+
+              <div class="proposta-card">
+                <span class="proposta-icon">🏛️</span>
+                <p><strong>Diálogo com a Gestão:</strong> Representar as demandas urgentes dos estudantes junto à gestão da escola, sempre com diálogo firme e respeito mútuo.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Bloco 2: Movimento Integral Sem Tédio -->
+          <div class="propostas-block" style="border-color: var(--purple-medium);">
+            <h3 style="color: var(--purple-medium); border-bottom-color: var(--purple-medium);">🚀 Projeto "Integral Sem Tédio"</h3>
+            <div class="propostas-grid">
+              
+              <div class="proposta-card anti-tedio">
+                <span class="proposta-icon">🏆</span>
+                <p><strong>Olimpo nos Torneios Oficiais:</strong> Articular a inscrição e a preparação dos times da nossa escola em campeonatos de esporte estudantis a nível estadual e nacional.</p>
+              </div>
+
+              <div class="proposta-card anti-tedio">
+                <span class="proposta-icon">🚌</span>
+                <p><strong>Passeios e Aulas de Campo:</strong> Lutar junto à coordenação pela volta ou expansão de passeios escolares e visitas culturais interativas extraclasse.</p>
+              </div>
+
+              <div class="proposta-card anti-tedio">
+                <span class="proposta-icon">⚡</span>
+                <p><strong>Atividades no Dia a Dia e Intervalos:</strong> Desenvolver gincanas rápidas, desafios culturais e dinâmicas interativas integradas à rotina para movimentar o contraturno.</p>
+              </div>
+
+              <div class="proposta-card anti-tedio">
+                <span class="proposta-icon">🎮</span>
+                <p><strong>Torneios Rápidos de Jogos:</strong> Organizar campeonatos expressos (xadrez, ping-pong, tabuleiros ou e-sports de celular) focados inteiramente nos horários de intervalo.</p>
+              </div>
+
+              <div class="proposta-card anti-tedio">
+                <span class="proposta-icon">🛋️</span>
+                <p><strong>Zonas de Descompressão:</strong> Reivindicar e organizar espaços confortáveis e funcionais com jogos, puffs ou áreas de descanso para uso livre no contraturno.</p>
+              </div>
+
+              <div class="proposta-card anti-tedio">
+                <span class="proposta-icon">🎵</span>
+                <p><strong>Sexta Cultural com Som:</strong> Intervalos musicais interativos às sextas-feiras, com playlists abertas feitas pelos próprios alunos e apresentações livres.</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- VALORES -->
+      <section class="scroll-reveal" aria-labelledby="valores-olimpo">
+        <h2>Nossos valores</h2>
         <div class="grid">
           <article class="item">
-            <h3>Representatividade real</h3>
-            <p>Ouvir diferentes vozes e garantir que todos os estudantes sejam considerados.</p>
+            <h3>Representatividade</h3>
+            <p>Garantir voz ativa para todas as turmas e estudantes sem distinção.</p>
           </article>
           <article class="item">
-            <h3>Respeito e união</h3>
-            <p>Construir um ambiente escolar acolhedor, com convivência saudável e colaboração.</p>
+            <h3>Inovação</h3>
+            <p>Trazer novas ideias e soluções práticas para o dia a dia do nosso colégio.</p>
           </article>
           <article class="item">
             <h3>Transparência</h3>
-            <p>Comunicar decisões, ações e resultados com clareza para toda a comunidade escolar.</p>
+            <p>Prestar contas de tudo o que é feito diretamente para os estudantes.</p>
           </article>
           <article class="item">
-            <h3>Atitude com responsabilidade</h3>
-            <p>Planejar bem, executar melhor e agir com compromisso com o coletivo.</p>
+            <h3>Resultados</h3>
+            <p>Foco total em ações que gerem melhorias reais na estrutura e no ensino.</p>
           </article>
         </div>
       </section>
 
-      <section aria-labelledby="propostas-olimpo">
-        <h2 id="propostas-olimpo">Propostas da chapa</h2>
-        <ul>
-          <li>Criar canais de escuta contínua para sugestões, críticas e propostas dos alunos.</li>
-          <li>Fortalecer atividades culturais, esportivas e criativas que valorizem talentos da escola.</li>
-          <li>Organizar campanhas de bem-estar, acolhimento e integração entre turmas.</li>
-          <li>Promover eventos estudantis com planejamento, participação e propósito educativo.</li>
-          <li>Representar as demandas dos estudantes junto à gestão com diálogo e respeito.</li>
-        </ul>
-      </section>
-
-      <section aria-labelledby="plano-acao">
-        <h2 id="plano-acao">O que vamos fazer na prática</h2>
+      <!-- PLANO DE AÇÃO -->
+      <section class="scroll-reveal" aria-labelledby="plano-acao">
+        <h2 id="plano-acao">Plano de Ação na Prática</h2>
         <div class="grid">
           <article class="item">
-            <h3>1º passo: ouvir</h3>
-            <p>Levantamento inicial das prioridades por turma para definir um plano de ação realista.</p>
+            <h3>1. Ouvir</h3>
+            <p>Mapear as necessidades mais urgentes de cada sala de aula.</p>
           </article>
           <article class="item">
-            <h3>2º passo: organizar</h3>
-            <p>Cronograma de ações com responsáveis e divulgação clara para todos acompanharem.</p>
+            <h3>2. Organizar</h3>
+            <p>Montar cronogramas claros e transparentes de atuação.</p>
           </article>
           <article class="item">
-            <h3>3º passo: executar</h3>
-            <p>Projetos em andamento com acompanhamento constante e prestação de contas.</p>
+            <h3>3. Executar</h3>
+            <p>Tirar os projetos do papel com foco e acompanhamento constante.</p>
           </article>
           <article class="item">
-            <h3>4º passo: melhorar</h3>
-            <p>Avaliação contínua para ajustar rotas e garantir resultados para os estudantes.</p>
+            <h3>4. Melhorar</h3>
+            <p>Ajustar metas com base no que a comunidade estudantil reportar.</p>
           </article>
         </div>
       </section>
 
-      <section class="cta" aria-labelledby="chamada-final">
-        <h2 id="chamada-final">A OLIMPO quer construir esse futuro com você.</h2>
+      <!-- SEÇÃO FINAL DE CHAMADA -->
+      <section class="cta scroll-reveal" aria-labelledby="chamada-final">
+        <h2 id="chamada-final">O futuro da nossa escola está nas suas mãos.</h2>
         <p>
-          No dia da votação, escolha uma chapa comprometida com participação, respeito e transformação.
-          Vote com consciência. Vote por uma escola mais ativa, unida e inspiradora.
+          No dia da eleição, escolha a experiência, o compromisso e a inovação verdadeira. 
+          Vote com consciência por um grêmio presente e atuante.
         </p>
-        <span class="vote-badge">Vote CHAPA OLIMPO</span>
+        <span class="vote-badge">VOTE CHAPA OLIMPO</span>
       </section>
+
     </main>
 
     <footer>
       CHAPA OLIMPO • Grêmio Estudantil • Juntos por uma escola mais forte.
     </footer>
+
   </div>
+
+  <!-- -----------------------------------------------------------
+     🤖 INTERSECTION OBSERVER JAVASCRIPT (Animação de Alta Performance)
+  ----------------------------------------------------------- -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      // 1. Configura as seções gerais para surgirem suavemente
+      const generalObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            generalObserver.unobserve(entry.target); // Para de monitorar após surgir, economizando CPU
+          }
+        });
+      }, { threshold: 0.12 }); // Dispara quando 12% do bloco surgir na tela
+
+      document.querySelectorAll(".scroll-reveal").forEach(section => {
+        generalObserver.observe(section);
+      });
+
+      // 2. EFEITO CASCATA DE ALTA PERFORMANCE (Para sub-cards internos)
+      const cascadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Seleciona os sub-elementos (cards de propostas ou itens de valores)
+            const cards = entry.target.querySelectorAll(".proposta-card, .item");
+            
+            cards.forEach((card, index) => {
+              // Aplica o estado inicial oculto do CSS de forma dinâmica
+              card.style.opacity = "0";
+              card.style.transform = "translateY(30px)";
+              card.style.transition = "opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)";
+              
+              // Dispara o surgimento com um pequeno atraso (delay) matemático para cada card
+              setTimeout(() => {
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
+              }, index * 120); // 120ms de diferença entre um card e outro
+            });
+
+            cascadeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      // Aplica o monitoramento de cascata nas áreas de grids e blocos internos
+      document.querySelectorAll(".propostas-grid, .grid").forEach(grid => {
+        cascadeObserver.observe(grid);
+      });
+
+    });
+  </script>
+
 </body>
 </html>
