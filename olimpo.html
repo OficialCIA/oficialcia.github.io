@@ -141,6 +141,33 @@
       box-shadow: 0 8px 20px rgba(23, 4, 35, 0.35);
     }
 
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      padding: 0.78rem 1.2rem;
+      font-weight: 700;
+      color: #f7e8ff;
+      text-decoration: none;
+      background: rgba(7, 2, 14, 0.28);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible {
+      transform: translateY(-1px);
+      background: rgba(27, 7, 45, 0.5);
+    }
+
     main {
       margin-top: 1.35rem;
       display: grid;
@@ -249,6 +276,10 @@
         width: 100%;
         justify-content: center;
       }
+
+      .social-link {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -262,7 +293,18 @@
         Nosso compromisso é transformar ideias em ações reais, com respeito à escola e foco no que
         melhora o dia a dia de quem vive o colégio.
       </p>
-      <div class="hero-cta" aria-label="Mensagem de campanha">Seu voto pode elevar a nossa escola.</div>
+      <div class="hero-actions">
+        <div class="hero-cta" aria-label="Mensagem de campanha">Seu voto pode elevar a nossa escola.</div>
+        <a
+          class="social-link"
+          href="https://www.instagram.com/chapa.olimpo26/?utm_source=landing_page"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram oficial da CHAPA OLIMPO"
+        >
+          Instagram da campanha
+        </a>
+      </div>
     </header>
 
     <main>
