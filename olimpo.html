@@ -1,1 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6d28d9">
+  <meta name="description" content="OLIMPO é a chapa para o grêmio estudantil com propostas reais para escuta ativa, bem-estar, cultura e oportunidades para todos os estudantes.">
+  <meta name="robots" content="index,follow">
 
+  <meta property="og:title" content="OLIMPO — Chapa para o Grêmio Estudantil">
+  <meta property="og:description" content="Conheça as ideias da OLIMPO para fortalecer a voz dos estudantes com ações reais, diálogo e inovação.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://oficialcia.github.io/olimpo.html">
+  <meta property="og:image" content="https://oficialcia.github.io/img/img.png">
+  <meta property="og:image:alt" content="Identidade visual da campanha OLIMPO para o grêmio estudantil">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OLIMPO — Chapa para o Grêmio Estudantil">
+  <meta name="twitter:description" content="Uma chapa feita por estudantes, para estudantes: propostas objetivas, escuta ativa e compromisso com resultados.">
+  <meta name="twitter:image" content="https://oficialcia.github.io/img/img.png">
+
+  <title>OLIMPO | Chapa para o Grêmio Estudantil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f0820;
+      --surface: rgba(27, 17, 52, 0.72);
+      --surface-soft: rgba(47, 29, 85, 0.55);
+      --text: #f6f2ff;
+      --muted: #d4c9f8;
+      --primary: #a855f7;
+      --primary-strong: #7e22ce;
+      --accent: #c084fc;
+      --border: rgba(214, 193, 255, 0.26);
+      --shadow: 0 20px 50px rgba(11, 7, 24, 0.45);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(192, 132, 252, 0.2), transparent 35%),
+        radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.24), transparent 40%),
+        radial-gradient(circle at 50% 100%, rgba(79, 36, 158, 0.28), transparent 45%),
+        var(--bg);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      padding: 24px 0 60px;
+    }
+
+    .hero {
+      margin-top: 10px;
+      padding: 56px 30px;
+      border-radius: calc(var(--radius) + 6px);
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(130deg, rgba(168, 85, 247, 0.3), rgba(76, 29, 149, 0.45)),
+        var(--surface);
+      box-shadow: var(--shadow);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(192, 132, 252, 0.4), transparent 70%);
+      top: -90px;
+      right: -70px;
+      pointer-events: none;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      margin: 16px 0 12px;
+      font-size: clamp(2rem, 4.3vw, 3.6rem);
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 700px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+    }
+
+    .hero-cta {
+      margin-top: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      color: #1f0a3a;
+      padding: 12px 20px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .hero-cta:hover,
+    .hero-cta:focus-visible {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    main {
+      margin-top: 28px;
+      display: grid;
+      gap: 18px;
+    }
+
+    section {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(5px);
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+      letter-spacing: -0.02em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      max-width: 72ch;
+    }
+
+    .grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(228, 213, 255, 0.16);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 1.02rem;
+    }
+
+    .card p,
+    .proposal-list li,
+    .closing p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .proposal-list {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .closing {
+      text-align: center;
+      padding: 28px;
+      background: linear-gradient(140deg, rgba(168, 85, 247, 0.25), rgba(56, 24, 111, 0.45));
+    }
+
+    .closing strong {
+      color: #f6e9ff;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #c8b7ed;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 640px) {
+      .container { padding-top: 18px; }
+      .hero, section, .closing { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero" aria-labelledby="titulo-olimpo">
+      <span class="pill">GRÊMIO ESTUDANTIL • CHAPA OLIMPO</span>
+      <h1 id="titulo-olimpo">OLIMPO</h1>
+      <p>
+        Uma chapa feita por estudantes, para estudantes: com diálogo real, propostas viáveis e energia para transformar a experiência escolar com responsabilidade.
+      </p>
+      <a class="hero-cta" href="#votar" aria-label="Conheça por que votar na chapa OLIMPO">Conheça nossa visão</a>
+    </header>
+
+    <main>
+      <section aria-labelledby="o-que-e">
+        <h2 id="o-que-e">O que é a OLIMPO?</h2>
+        <p class="lead">
+          A OLIMPO é uma chapa candidata ao grêmio estudantil que acredita em representação de verdade: ouvir, organizar e agir para melhorar o dia a dia de todos os alunos.
+        </p>
+      </section>
+
+      <section aria-labelledby="valores">
+        <h2 id="valores">Nossos valores</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Escuta ativa</h3>
+            <p>Decisões construídas com as turmas, com abertura para sugestões e críticas.</p>
+          </article>
+          <article class="card">
+            <h3>Transparência</h3>
+            <p>Compromisso com comunicação clara sobre prioridades, ações e resultados.</p>
+          </article>
+          <article class="card">
+            <h3>União e respeito</h3>
+            <p>Valorização da diversidade e fortalecimento de um ambiente escolar mais acolhedor.</p>
+          </article>
+          <article class="card">
+            <h3>Atitude</h3>
+            <p>Menos promessa vazia, mais iniciativa prática para fazer acontecer.</p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="propostas">
+        <h2 id="propostas">Propostas da chapa</h2>
+        <ul class="proposal-list">
+          <li><strong>Canal direto com os alunos:</strong> formulário e reuniões periódicas para ouvir demandas reais.</li>
+          <li><strong>Mais cultura e integração:</strong> eventos, gincanas e ações que aproximem as turmas.</li>
+          <li><strong>Apoio à vida acadêmica:</strong> iniciativas de organização de estudos, monitorias e compartilhamento de materiais.</li>
+          <li><strong>Bem-estar estudantil:</strong> campanhas de acolhimento, saúde mental e convivência positiva.</li>
+          <li><strong>Projetos com impacto:</strong> ações sociais e ambientais com participação ativa dos estudantes.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="intencao">
+        <h2 id="intencao">O que queremos construir</h2>
+        <p class="lead">
+          Nossa intenção é transformar o grêmio em uma ponte entre estudantes e escola, com presença, responsabilidade e resultado. Queremos um ambiente mais participativo, criativo e justo para todo mundo.
+        </p>
+      </section>
+
+      <section id="votar" class="closing" aria-labelledby="chamada-final">
+        <h2 id="chamada-final">Seu voto fortalece essa ideia</h2>
+        <p>
+          Se você acredita em uma representação estudantil com <strong>voz, ação e compromisso</strong>, venha com a OLIMPO nessa construção.
+          <strong>Vote consciente. Vote em quem está pronto para fazer junto.</strong>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      OLIMPO • Chapa para o Grêmio Estudantil
+    </footer>
+  </div>
+</body>
+</html>
