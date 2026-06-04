@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#7041b3">
   
-  <!-- SEO Padrão -->
+  <!-- SEO Otimizado para EREM Frei Caneca -->
   <title>CHAPA OLIMPO | EREM Frei Caneca</title>
-  <meta name="description" content="A CHAPA OLIMPO nasce para representar todos os estudantes com diálogo, organização e atitude. Conheça nosso projeto 'Integral Sem Tédio'!">
+  <meta name="description" content="A CHAPA OLIMPO nasce para representar os estudantes do EREM Frei Caneca com diálogo e atitude. Conheça as propostas contra o tédio na escola integral!">
+  <meta name="keywords" content="Chapa Olimpo, EREM Frei Caneca, Gremio Estudantil, Escola Integral, Chapa da Inovacao">
 
   <!-- PREVIEW PARA WHATSAPP, INSTAGRAM, FACEBOOK (Open Graph) -->
   <meta property="og:title" content="CHAPA OLIMPO | Grêmio Estudantil ⚡">
@@ -58,14 +59,14 @@
       color: var(--purple-dark);
       background-color: var(--bg);
       min-height: 100vh;
-      line-height: 1.6;
+      line-height: 1.5;
       overflow-x: hidden;
     }
 
     .wrap {
-      width: min(1000px, calc(100% - 2rem));
+      width: min(1000px, calc(100% - 1rem));
       margin: 0 auto;
-      padding: 2rem 0;
+      padding: 1rem 0;
     }
 
     /* --- HERO BANNER --- */
@@ -74,7 +75,7 @@
       background: var(--white);
       border: var(--stroke-thick);
       border-radius: 24px;
-      padding: clamp(1.5rem, 5vw, 3rem);
+      padding: clamp(1.2rem, 4vw, 3rem);
       box-shadow: var(--shadow-pop);
       overflow: hidden;
       display: grid;
@@ -93,55 +94,73 @@
       gap: 0.5rem;
       border: var(--stroke-thick);
       border-radius: 999px;
-      padding: 0.4rem 1.2rem;
+      padding: 0.3rem 1rem;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
       background: var(--bg);
       color: var(--purple-dark);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     h1 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
       color: var(--purple-dark);
       line-height: 1.1;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       text-transform: uppercase;
     }
 
     .hero p {
       color: var(--purple-dark);
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      margin-bottom: 2rem;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      margin-bottom: 1.5rem;
       font-weight: 500;
     }
 
-    /* BOTÃO INTERATIVO DO INSTAGRAM */
+    /* CONTAINER DE BOTÕES */
+    .hero-buttons-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
     .hero-cta {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      justify-content: center;
+      gap: 0.5rem;
       background: var(--purple-dark);
       color: var(--white);
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
       text-transform: uppercase;
       border-radius: 12px;
-      padding: 1rem 2rem;
+      padding: 0.9rem 1.5rem;
       border: var(--stroke-thick);
       box-shadow: 4px 4px 0px var(--bg);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
+      font-size: 0.85rem;
       text-decoration: none;
       transition: transform 0.1s ease, box-shadow 0.1s ease;
       cursor: pointer;
     }
 
+    .hero-cta.secondary-btn {
+      background: var(--white);
+      color: var(--purple-dark);
+      box-shadow: 4px 4px 0px var(--purple-dark);
+    }
+
     .hero-cta:hover {
       transform: translate(-2px, -2px);
       box-shadow: 6px 6px 0px var(--bg);
+    }
+
+    .hero-cta.secondary-btn:hover {
+      box-shadow: 6px 6px 0px var(--purple-dark);
     }
 
     .hero-cta:active {
@@ -180,76 +199,96 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* --- ESTILIZAÇÃO EXCLUSIVA PARA O GIBI --- */
+    .gibi-container {
+      text-align: center;
+      background: var(--white);
+      border: var(--stroke-thick);
+      border-radius: 20px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow-pop);
+      overflow: hidden;
+    }
+
+    .gibi-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 2px solid var(--purple-dark);
+      display: block;
+      margin: 0 auto;
+    }
+
     /* --- SEÇÕES --- */
     main {
-      margin-top: 2.5rem;
+      margin-top: 1.5rem;
       display: grid;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     section {
       background: var(--white);
       border: var(--stroke-thick);
       border-radius: 20px;
-      padding: clamp(1.5rem, 4vw, 2.5rem);
+      padding: clamp(1.2rem, 4vw, 2.5rem);
       box-shadow: var(--shadow-pop);
     }
 
     h2 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      margin-bottom: 1.2rem;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      margin-bottom: 1rem;
       text-transform: uppercase;
     }
 
     h3 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
       text-transform: uppercase;
     }
 
     .lead {
-      font-size: 1.15rem;
-      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      margin-bottom: 0.8rem;
       font-weight: 500;
     }
 
-    /* --- DESTAQUE DAS PROPOSTAS --- */
+    /* --- CONTAINER DAS PROPOSTAS OTIMIZADO --- */
     .propostas-container {
       display: grid;
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
 
     .propostas-block {
       border: var(--stroke-thick);
       border-radius: 16px;
-      padding: 1.5rem;
+      padding: 1.2rem;
       background: var(--purple-light);
     }
 
     .propostas-block h3 {
       color: var(--purple-dark);
       border-bottom: 2px dashed var(--purple-dark);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.8rem;
     }
 
     .propostas-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
+      gap: 0.8rem;
     }
 
     .proposta-card {
       background: var(--white);
       border: 2px solid var(--purple-dark);
       border-radius: 12px;
-      padding: 1.2rem;
+      padding: 1rem;
       display: flex;
-      gap: 0.8rem;
+      gap: 0.7rem;
       align-items: flex-start;
       box-shadow: 3px 3px 0px var(--purple-dark);
     }
@@ -260,28 +299,76 @@
     }
 
     .proposta-icon {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       line-height: 1;
     }
 
     .proposta-card p {
       font-weight: 500;
-      font-size: 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* --- ABA DE COMUNIDADE --- */
+    .comunidade-box {
+      background: #fffbfa;
+      border: var(--stroke-thick);
+      border-radius: 16px;
+      padding: 1.2rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .comunidade-icon {
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+
+    .comunidade-content p {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--white);
+      background: var(--purple-medium);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: 2px solid var(--purple-dark);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 3px 3px 0px var(--purple-dark);
+    }
+
+    .card-link:hover {
+      background: var(--purple-dark);
     }
 
     /* Grid Comum de Valores e Passos */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.2rem;
-      margin-top: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
     }
 
     .item {
       border: var(--stroke-thick);
       border-radius: 16px;
-      padding: 1.4rem;
+      padding: 1.2rem;
       background: var(--purple-light);
+    }
+
+    .item p {
+      font-size: 0.95rem;
     }
 
     /* --- SEÇÃO VOTE --- */
@@ -289,7 +376,7 @@
       background: var(--purple-dark);
       color: var(--white);
       text-align: center;
-      padding: 3rem 2rem;
+      padding: 2.5rem 1.2rem;
     }
 
     .cta h2 {
@@ -299,79 +386,105 @@
     .cta p {
       color: var(--purple-light);
       max-width: 65ch;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
+      margin: 0 auto 1.5rem;
+      font-size: 1rem;
     }
 
     .vote-badge {
       display: inline-block;
-      padding: 1rem 2.5rem;
+      padding: 0.8rem 2rem;
       border-radius: 999px;
       border: 3px solid var(--white);
       color: var(--purple-dark);
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       text-transform: uppercase;
       background: var(--white);
-      box-shadow: 5px 5px 0px var(--bg);
+      box-shadow: 4px 4px 0px var(--bg);
       letter-spacing: 0.05em;
     }
 
     /* --- RODAPÉ --- */
     footer {
-      margin-top: 3rem;
+      margin-top: 2rem;
       text-align: center;
       color: var(--purple-dark);
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
     }
 
-    /* -----------------------------------------------------------
-       ⚙️ SISTEMA DE CLASSES PARA ANIMAÇÃO DE ROLAGEM (SCROLL)
-    ----------------------------------------------------------- */
-    
-    /* Configuração padrão do estado oculto (antes do scroll) */
+    /* --- ANIMAÇÕES --- */
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(40px);
-      /* cubic-bezier personalizado para dar um efeito leve de mola/reicochete bem profissional */
-      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform, opacity; /* Otimiza a renderização da GPU do aparelho */
+      transform: translateY(30px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
     }
 
-    /* Estado ativo (quando o elemento entra na tela) */
     .scroll-reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* --- RESPONSIVIDADE --- */
+    /* 📱 OTIMIZAÇÕES MOBILE */
     @media (max-width: 768px) {
+      .wrap {
+        width: min(1000px, calc(100% - 1rem));
+        padding: 1rem 0;
+      }
+
       .hero {
         grid-template-columns: 1fr;
         text-align: center;
-        padding: 1.5rem;
+        padding: 1.2rem 1rem;
+        gap: 1.2rem;
       }
 
       .hero-illustration {
         order: -1;
-        height: 350px;
+        height: 240px;
+      }
+
+      .zeus-img {
+        width: 210px;
+        height: 210px;
       }
 
       .spinning-container {
-        width: 330px;
-        height: 330px;
+        width: 250px;
+        height: 250px;
       }
 
-      .sticker {
-        margin-left: auto;
-        margin-right: auto;
+      .hero-buttons-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        width: 100%;
       }
 
       .hero-cta {
+        padding: 0.8rem 0.5rem;
+        font-size: 0.75rem;
+        border-radius: 10px;
         width: 100%;
-        justify-content: center;
+      }
+
+      .propostas-block {
+        padding: 1rem 0.8rem;
+      }
+
+      .proposta-card {
+        padding: 0.9rem;
+      }
+
+      .comunidade-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        padding: 1rem;
+        gap: 0.8rem;
       }
     }
   </style>
@@ -380,7 +493,7 @@
 
   <div class="wrap">
     
-    <!-- HEADER / BANNER PRINCIPAL (Sempre visível de início, sem delay prejudicial) -->
+    <!-- HEADER / BANNER PRINCIPAL -->
     <header class="hero" role="banner">
       <div class="hero-content">
         <span class="sticker">⚡ CHAPA OLIMPO • EREM FREI CANECA</span>
@@ -390,14 +503,20 @@
           Nosso compromisso é transformar ideias em ações reais, com respeito à escola e foco no que melhora 
           o dia a dia de quem vive o colégio.
         </p>
-        <a href="https://www.instagram.com/chapa.olimpo26/?utm_source=ig_web_button_share_sheet" target="_blank" class="hero-cta" aria-label="Acesse nosso Instagram">
-          Acompanhe no Instagram
-        </a>
+        
+        <div class="hero-buttons-container">
+          <a href="https://www.instagram.com/chapa.olimpo26/?utm_source=ig_web_button_share_sheet" target="_blank" class="hero-cta" aria-label="Acesse nosso Instagram">
+            Instagram
+          </a>
+          <a href="https://forms.gle/7Tuy98RpcET3SgQE9" target="_blank" class="hero-cta secondary-btn" aria-label="Envie sua sugestão">
+            📢 Sugestão
+          </a>
+        </div>
       </div>
       
       <div class="hero-illustration">
         <svg class="spinning-container" viewBox="0 0 100 100">
-          <path id="textCircle" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0" fill="none"/>
+          <path id="textCircle" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -86,0" fill="none"/>
           <text font-family="Montserrat" font-weight="900" font-size="3.2" fill="#4c2582" opacity="0.15">
             <textPath href="#textCircle" letter-spacing="1.2">
               INOVAÇÃO • PARTICIPAÇÃO • TRANSPARÊNCIA • UNIÃO • CHAPA OLIMPO • 
@@ -408,7 +527,7 @@
       </div>
     </header>
 
-    <!-- CONTEÚDO DA PÁGINA (Com animação suave ao rolar) -->
+    <!-- CONTEÚDO DA PÁGINA -->
     <main>
       
       <section class="scroll-reveal" aria-labelledby="o-que-e-olimpo">
@@ -418,10 +537,17 @@
         </p>
       </section>
 
+      <!-- SEÇÃO EXCLUSIVA: GIBI DA CHAPA OLIMPO COM LINK ATUALIZADO -->
+      <section class="gibi-container scroll-reveal">
+        <h2>📚 Nossa História em Quadrinhos</h2>
+        <p class="lead" style="margin-bottom: 1rem;">Confira essa tirinha especial mostrando como a OLIMPO planeja movimentar nosso dia a dia!</p>
+        <img src="https://olimpio.me/img/gibiolimpo.png" alt="Gibi Chapa Olimpo" class="gibi-img">
+      </section>
+
       <!-- SEÇÃO: PROPOSTAS DA CAMPANHA -->
       <section class="scroll-reveal" aria-labelledby="propostas-olimpo">
         <h2 id="propostas-olimpo">⚡ Nossas Propostas para Transformar a Escola</h2>
-        <p class="lead" style="margin-bottom: 1.5rem;">
+        <p class="lead" style="margin-bottom: 1.2rem;">
           Sabemos o quanto passar o dia inteiro no colégio integral pode ser cansativo. Nossas propostas unem responsabilidade institucional com ações práticas para movimentar a rotina!
         </p>
 
@@ -439,7 +565,7 @@
 
               <div class="proposta-card">
                 <span class="proposta-icon">🎨</span>
-                <p><strong>Cultura e Esporte interno:</strong> Fortalecer atividades culturais, esportivas e criativas que descobram e valorizem os talentos reais da escola.</p>
+                <p><strong>Cultura e Esporte interno:</strong> Fortalecer atividades culturais, esportivas e criativas que descubram e valorizem os talentos reais da escola.</p>
               </div>
 
               <div class="proposta-card">
@@ -462,7 +588,7 @@
 
           <!-- Bloco 2: Movimento Integral Sem Tédio -->
           <div class="propostas-block" style="border-color: var(--purple-medium);">
-            <h3 style="color: var(--purple-medium); border-bottom-color: var(--purple-medium);">🚀 Projeto "Integral Sem Tédio"</h3>
+            <h3>🚀 Projeto "Integral Sem Tédio"</h3>
             <div class="propostas-grid">
               
               <div class="proposta-card anti-tedio">
@@ -526,7 +652,7 @@
 
       <!-- PLANO DE AÇÃO -->
       <section class="scroll-reveal" aria-labelledby="plano-acao">
-        <h2 id="plano-acao">Plano de Ação na Prática</h2>
+        <h2>Plano de Ação na Prática</h2>
         <div class="grid">
           <article class="item">
             <h3>1. Ouvir</h3>
@@ -544,6 +670,23 @@
             <h3>4. Melhorar</h3>
             <p>Ajustar metas com base no que a comunidade estudantil reportar.</p>
           </article>
+        </div>
+      </section>
+
+      <!-- SEÇÃO: COMUNIDADE E REDES SOCIAIS -->
+      <section class="scroll-reveal" aria-labelledby="comunidade-titulo">
+        <h2 id="comunidade-titulo">📸 Nossa Comunidade Online</h2>
+        <div class="comunidade-box">
+          <span class="comunidade-icon">📸</span>
+          <div class="comunidade-content">
+            <h3>Participe das Decisões nos Stories</h3>
+            <p>
+              Não deixe de acompanhar nossa página oficial! É por lá que realizamos enquetes diárias e abrimos espaço direto para você definir os próximos passos do projeto "Integral Sem Tédio".
+            </p>
+            <a href="https://www.instagram.com/chapa.olimpo26/?utm_source=ig_web_button_share_sheet" target="_blank" class="card-link">
+              Ver Stories ⚡
+            </a>
+          </div>
         </div>
       </section>
 
@@ -565,44 +708,37 @@
 
   </div>
 
-  <!-- -----------------------------------------------------------
-     🤖 INTERSECTION OBSERVER JAVASCRIPT (Animação de Alta Performance)
-  ----------------------------------------------------------- -->
+  <!-- JAVASCRIPT DAS ANIMAÇÕES -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       
-      // 1. Configura as seções gerais para surgirem suavemente
       const generalObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("active");
-            generalObserver.unobserve(entry.target); // Para de monitorar após surgir, economizando CPU
+            generalObserver.unobserve(entry.target); 
           }
         });
-      }, { threshold: 0.12 }); // Dispara quando 12% do bloco surgir na tela
+      }, { threshold: 0.12 });
 
       document.querySelectorAll(".scroll-reveal").forEach(section => {
         generalObserver.observe(section);
       });
 
-      // 2. EFEITO CASCATA DE ALTA PERFORMANCE (Para sub-cards internos)
       const cascadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Seleciona os sub-elementos (cards de propostas ou itens de valores)
             const cards = entry.target.querySelectorAll(".proposta-card, .item");
             
             cards.forEach((card, index) => {
-              // Aplica o estado inicial oculto do CSS de forma dinâmica
               card.style.opacity = "0";
               card.style.transform = "translateY(30px)";
               card.style.transition = "opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)";
               
-              // Dispara o surgimento com um pequeno atraso (delay) matemático para cada card
               setTimeout(() => {
                 card.style.opacity = "1";
                 card.style.transform = "translateY(0)";
-              }, index * 120); // 120ms de diferença entre um card e outro
+              }, index * 120); 
             });
 
             cascadeObserver.unobserve(entry.target);
@@ -610,7 +746,6 @@
         });
       }, { threshold: 0.08 });
 
-      // Aplica o monitoramento de cascata nas áreas de grids e blocos internos
       document.querySelectorAll(".propostas-grid, .grid").forEach(grid => {
         cascadeObserver.observe(grid);
       });
