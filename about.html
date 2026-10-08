@@ -1,95 +1,101 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-PT">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#c2e9fb">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kayque Olimpio | Gestão Pública e Juventude</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
 
-    <title>Sobre Mim - Kayque Olimpio</title>
-    <meta name="title" content="Página de perfil de Kayque Olimpio">
-    <meta name="description" content="Página sobre Kayque Olimpio, com informações sobre seus interesses, experiência e competências.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    </head>
-<body class="bg-gradient-to-b from-blue-50 to-blue-200 min-h-screen flex flex-col items-center py-12 px-4">
+    /* Animação de entrada suave */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-    <header class="w-full max-w-4xl mb-8">
-        <nav>
-            <ul class="flex justify-center space-x-6 text-xl">
-                <li><a href="index.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Portfolio</a></li>
-                <li><a href="about.html" class="font-bold text-blue-500 hover:text-blue-600 transition-colors">Sobre Mim</a></li>
-                <li><a href="projects.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Projetos</a></li>
-                <li><a href="drawings.html" class="font-bold text-gray-700 hover:text-blue-600 transition-colors">Desenhos</a></li>
-            </ul>
-        </nav>
-    </header>
+    /* Animação de flutuação contínua para a fotografia */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
 
-    <main class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 w-full max-w-4xl flex flex-col items-center">
+    /* Classes utilitárias das animações */
+    .animate-fade-up {
+      animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Atrasos (delays) em cascata */
+    .delay-100 { animation-delay: 100ms; }
+    .delay-200 { animation-delay: 300ms; }
+    .delay-300 { animation-delay: 500ms; }
+    .delay-400 { animation-delay: 700ms; }
+    .delay-500 { animation-delay: 900ms; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center overflow-x-hidden">
+
+  <main class="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
+    <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+      
+      <!-- Coluna de Texto -->
+      <div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+        <span class="animate-fade-up delay-100 text-emerald-400 font-semibold tracking-wider uppercase text-sm mb-2">
+          Gestão Pública & Movimento Estudantil
+        </span>
         
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-500 mb-4 tracking-tight">Sobre Mim</h1>
+        <h1 class="animate-fade-up delay-200 text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+          Kayque Olimpio
+        </h1>
         
-        <img src="https://placehold.co/150x150/e0f2fe/1c313a?text=Foto" alt="Foto de Perfil de Kayque" class="w-32 h-32 rounded-full mb-6 shadow-md">
-        
-        <p class="text-gray-700 text-lg sm:text-xl leading-relaxed mb-6 font-medium text-center max-w-2xl">
-            Minha experiência profissional, que teve início em 2020 como designer gráfico, se destaca pela minha capacidade de comunicação e liderança. Sou proativo e comunicativo, com grande facilidade para trabalhar em equipe, o que me permite atuar como um líder eficaz. Atualmente, estou em busca de uma oportunidade como Jovem Aprendiz para aplicar e aprimorar minhas habilidades, além de contribuir de forma significativa para o crescimento de uma empresa.
+        <p class="animate-fade-up delay-300 text-lg text-slate-300 mb-8 leading-relaxed max-w-lg">
+          Construindo pontes entre a juventude e o debate político. Acredito na gestão pública como ferramenta de transformação social e na participação ativa para desenhar o futuro.
         </p>
+        
+        <!-- Botões -->
+        <div class="animate-fade-up delay-400 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <!-- Coloque o link real do seu Instagram no href abaixo -->
+          <a href="https://instagram.com/seu_usuario" target="_blank" class="px-8 py-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold transition-all duration-300 shadow-lg hover:shadow-emerald-500/50 hover:-translate-y-1 text-center">
+            Aceder ao Instagram
+          </a>
+          <!-- Link do Lattes -->
+          <a href="http://lattes.cnpq.br/seu_lattes" target="_blank" class="px-8 py-3 rounded-full border border-slate-600 hover:border-slate-300 text-slate-300 hover:text-white transition-all duration-300 hover:-translate-y-1 text-center">
+            Currículo Lattes
+          </a>
+        </div>
+      </div>
 
-        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mt-4 mb-4">Experiência Profissional</h2>
-        <ul class="text-gray-600 text-md sm:text-lg text-left w-full max-w-md space-y-4">
-            <li class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 mt-1 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.182 1.832.707 2.228.995.422 2.247.422 3.242 0M10 14a2 2 0 100-4 2 2 0 000 4zm5 0a2 2 0 100-4 2 2 0 000 4zm-9 3.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                </svg>
-                <div>
-                    <p class="font-semibold text-gray-800">Assistente de Vendas Freelance</p>
-                    <p class="text-sm text-gray-500">Agosto de 2023</p>
-                    <p class="text-sm mt-1">Atuação na área de vendas, com foco em atendimento ao público e organização de estoque.</p>
-                </div>
-            </li>
-            <li class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 mt-1 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z" />
-                </svg>
-                <div>
-                    <p class="font-semibold text-gray-800">Designer Gráfico Freelance</p>
-                    <p class="text-sm text-gray-500">Setembro - Outubro de 2022</p>
-                    <p class="text-sm mt-1">Responsável pela criação de materiais visuais, incluindo imagens, miniaturas (thumbnails) e banners.</p>
-                </div>
-            </li>
-        </ul>
+      <!-- Coluna da Fotografia -->
+      <div class="animate-fade-up delay-500 w-full md:w-1/2 flex justify-center md:justify-end">
+        <div class="relative w-64 h-64 md:w-96 md:h-96 animate-float">
+          <!-- Efeito de brilho no fundo da fotografia -->
+          <div class="absolute inset-0 bg-emerald-500 rounded-full blur-3xl opacity-20 transition-opacity duration-700 hover:opacity-40"></div>
+          
+          <!-- Contentor da Fotografia -->
+          <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-700/50 hover:border-emerald-500/50 transition-colors duration-500 shadow-2xl">
+            
+            <!-- A ligação para o seu ficheiro de imagem -->
+            <img src="foto-kayque.jpg" alt="Fotografia de Kayque Olimpio" class="w-full h-full object-cover">
+            
+          </div>
+        </div>
+      </div>
 
-        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mt-8 mb-4">Competências</h2>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-600 w-full max-w-md">
-            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                <span class="text-gray-800 font-medium">Proatividade</span>
-            </li>
-            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
-                <span class="text-gray-800 font-medium">Comunicação</span>
-            </li>
-            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.974 2.887a1 1 0 00-.363 1.118l1.519 4.674c.3.921-.755 1.688-1.54 1.118l-3.974-2.887a1 1 0 00-1.176 0l-3.974 2.887c-.784.57-1.838-.197-1.539-1.118l1.518-4.674a1 1 0 00-.363-1.118L2.983 9.702c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
-                <span class="text-gray-800 font-medium">Liderança</span>
-            </li>
-            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197M15 11a4 4 0 110-5.292" /></svg>
-                <span class="text-gray-800 font-medium">Trabalho em Equipe</span>
-            </li>
-            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9 12l-2.828-2.828-2.829 2.829 2.829 2.828L9 12zm0 0l2.828 2.828 2.829-2.829-2.829-2.828L18 3z" /></svg>
-                <span class="text-gray-800 font-medium">Atendimento ao Cliente</span>
-            </li>
-            <li class="flex items-center p-3 bg-blue-50 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-1.586-1.586a2 2 0 01-2.828 0L6 14m6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                <span class="text-gray-800 font-medium">Design de Imagens</span>
-            </li>
-        </ul>
-    </main>
+    </div>
+  </main>
 
 </body>
 </html>
