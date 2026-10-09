@@ -9,73 +9,112 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
     body { font-family: 'Inter', sans-serif; }
 
-    /* Animação de entrada suave */
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Animação de flutuação contínua para a foto */
-    @keyframes float {
+    /* Animação contínua e suave da foto */
+    @keyframes floatEffect {
       0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
+      50% { transform: translateY(-12px); }
       100% { transform: translateY(0px); }
     }
+    .floating-box {
+      animation: floatEffect 6s ease-in-out infinite;
+    }
 
-    /* Classes utilitárias das animações */
-    .animate-fade-up {
-      animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    /* Transformação das listras do menu */
+    .menu-btn {
+      width: 32px;
+      height: 24px;
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      z-index: 100;
+    }
+
+    .bar {
+      height: 3px;
+      width: 100%;
+      background-color: #cbd5e1;
+      border-radius: 4px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Quando o menu está aberto (Vira X) */
+    .menu-btn.open .bar-1 {
+      transform: translateY(10.5px) rotate(45deg);
+      background-color: #34d399;
+    }
+    .menu-btn.open .bar-2 {
       opacity: 0;
+      transform: translateX(-15px);
+    }
+    .menu-btn.open .bar-3 {
+      transform: translateY(-10.5px) rotate(-45deg);
+      background-color: #34d399;
     }
 
-    .animate-float {
-      animation: float 6s ease-in-out infinite;
+    /* Caixa do Dropdown */
+    .dropdown-box {
+      position: fixed;
+      top: 80px;
+      right: 32px;
+      z-index: 90;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-15px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Delays em cascata */
-    .delay-100 { animation-delay: 100ms; }
-    .delay-200 { animation-delay: 300ms; }
-    .delay-300 { animation-delay: 500ms; }
-    .delay-400 { animation-delay: 700ms; }
-    .delay-500 { animation-delay: 900ms; }
+    .dropdown-box.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
   </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center overflow-x-hidden">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center overflow-x-hidden relative">
+
+  <!-- Botão Menu Hamburguer (Canto Superior Direito) -->
+  <button id="menuToggle" class="menu-btn fixed top-8 right-8 md:right-12 focus:outline-none" aria-label="Abrir Menu">
+    <span class="bar bar-1"></span>
+    <span class="bar bar-2"></span>
+    <span class="bar bar-3"></span>
+  </button>
+
+  <!-- Caixa Dropdown com o link do Blog -->
+  <div id="dropdownMenu" class="dropdown-box">
+    <a href="https://olimpio.me/blog.html" class="flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-slate-800 border border-slate-700 hover:border-emerald-500 shadow-2xl text-emerald-400 hover:text-emerald-300 font-semibold transition-all duration-200">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15" />
+      </svg>
+      Blog
+    </a>
+  </div>
 
   <main class="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
     <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
       
       <!-- Coluna de Texto -->
       <div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
-        <span class="animate-fade-up delay-100 text-emerald-400 font-semibold tracking-wider uppercase text-sm mb-2">
+        <span class="text-emerald-400 font-semibold tracking-wider uppercase text-sm mb-2">
           Gestão Pública & Movimento Estudantil
         </span>
         
-        <h1 class="animate-fade-up delay-200 text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
           Kayque Olimpio
         </h1>
         
-        <p class="animate-fade-up delay-300 text-lg text-slate-300 mb-8 leading-relaxed max-w-lg">
-          Construindo pontes entre a juventude e o debate político. Acredito na gestão pública como ferramenta de transformação social e na participação ativa para desenhar o futuro.
+        <!-- Nova Biografia -->
+        <p class="text-lg text-slate-300 mb-8 leading-relaxed max-w-xl">
+          Tenho 19 anos, nasci em Camaragibe e cresci em São Lourenço da Mata. Desde cedo que a política despertou o meu interesse, por acreditar que é um pilar fundamental que deve ser estudado e ocupado, sobretudo pela juventude atual. Estudo Gestão Pública e, na prática, construo pontes entre os jovens e o debate político: sou membro da JSB, Diretor de Comunicação do GRE Chico Science e atuo como Diretor de Juventude.
         </p>
         
-        <!-- Botões -->
-        <div class="animate-fade-up delay-400 flex flex-wrap justify-center md:justify-start gap-4 w-full">
-          <!-- Botão do Instagram -->
+        <!-- Botões principais -->
+        <div class="flex flex-wrap justify-center md:justify-start gap-4 w-full">
           <a href="https://www.instagram.com/kayqueolimpio/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold transition-all duration-300 shadow-lg hover:shadow-emerald-500/50 hover:-translate-y-1 text-center">
             Instagram
           </a>
-          <!-- Botão do Blog -->
-          <a href="#blog" class="px-6 py-3 rounded-full border border-slate-600 hover:border-slate-300 text-slate-300 hover:text-white transition-all duration-300 hover:-translate-y-1 text-center">
-            Blog
-          </a>
-          <!-- Botão do Lattes -->
           <a href="https://buscatextual.cnpq.br/buscatextual/visualizacv.do;jsessionid=C2957863E16CF8BE97A0DA88A4B226F3.buscatextual_0" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full border border-slate-600 hover:border-slate-300 text-slate-300 hover:text-white transition-all duration-300 hover:-translate-y-1 text-center">
             Currículo Lattes
           </a>
@@ -83,22 +122,41 @@
       </div>
 
       <!-- Coluna da Foto -->
-      <div class="animate-fade-up delay-500 w-full md:w-1/2 flex justify-center md:justify-end">
-        <div class="relative w-64 h-64 md:w-96 md:h-96 animate-float">
-          <!-- Efeito de brilho no fundo da foto -->
-          <div class="absolute inset-0 bg-emerald-500 rounded-full blur-3xl opacity-20 transition-opacity duration-700 hover:opacity-40"></div>
+      <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+        <div class="relative w-64 h-64 md:w-80 md:h-80 floating-box">
+          <!-- Brilho ao fundo -->
+          <div class="absolute inset-0 bg-emerald-500/20 rounded-full blur-2xl"></div>
           
-          <!-- Container da Foto -->
-          <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-700/50 hover:border-emerald-500/50 transition-colors duration-500 shadow-2xl">
-            
+          <!-- Moldura e Foto -->
+          <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-700 shadow-2xl bg-slate-800">
+            <!-- Confirme se o arquivo da imagem na sua pasta está com este mesmo nome exato -->
             <img src="https://cdn.discordapp.com/attachments/1002490298963865681/1557906025313599558/69b16e39-5fa3-42c8-8206-623a412cccf7.png?ex=6ac9808c&is=6ac82f0c&hm=0908a0de9de02109e8ba0a6cbfed766e99315f67d00595c0d7049d841b6d952b&" alt="Foto de Kayque Olimpio" class="w-full h-full object-cover">
-            
           </div>
         </div>
       </div>
 
     </div>
   </main>
+
+  <!-- JavaScript Puro e Direto -->
+  <script>
+    const btn = document.getElementById('menuToggle');
+    const menu = document.getElementById('dropdownMenu');
+
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      btn.classList.toggle('open');
+      menu.classList.toggle('show');
+    });
+
+    // Fecha o menu ao clicar fora dele
+    document.addEventListener('click', function(e) {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        btn.classList.remove('open');
+        menu.classList.remove('show');
+      }
+    });
+  </script>
 
 </body>
 </html>
