@@ -3,589 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#6366f1">
-  <meta name="author" content="Kayque Olimpio">
-  <meta name="description" content="Site oficial de Kayque Olimpio com links para projetos, portfólio, blog, biblioteca e redes sociais.">
-  <meta property="og:title" content="Kayque Olimpio | Site Oficial">
-  <meta property="og:description" content="Conheça o site oficial de Kayque Olimpio com projetos, portfólio, blog e links sociais.">
-  <meta property="og:image" content="https://i.pinimg.com/1200x/95/c9/b2/95c9b288e2ea7c5d6ff3a04a49c31c16.jpg">
-  <meta property="og:url" content="https://olimpio.me/">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="pt_BR">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Kayque Olimpio | Site Oficial">
-  <meta name="twitter:description" content="Conheça o site oficial de Kayque Olimpio com projetos, portfólio, blog e links sociais.">
-  <meta name="twitter:image" content="https://i.pinimg.com/1200x/95/c9/b2/95c9b288e2ea7c5d6ff3a04a49c31c16.jpg">
-  <title>Kayque Olimpio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Kayque Olimpio | Gestão Pública e Juventude</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Quicksand', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 24px;
-      padding: 24px;
-      background: linear-gradient(135deg, #d1fae5 0%, #bfdbfe 50%, #ddd6fe 100%);
-      background-attachment: fixed;
-      color: #4b5563;
-    }
-
-    .sidebar-toggle {
-      position: fixed;
-      top: 18px;
-      left: 18px;
-      z-index: 30;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 6px 18px rgba(99, 102, 241, 0.16);
-      color: #4338ca;
-      font-size: 1.35rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-    }
-
-    .sidebar-toggle:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(99, 102, 241, 0.2);
-      background: rgba(255, 255, 255, 0.82);
-    }
-
-    .sidebar {
-      width: 240px;
-      min-height: calc(100vh - 48px);
-      background: rgba(255, 255, 255, 0.42);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.58);
-      border-radius: 24px;
-      box-shadow: 0 12px 36px rgba(99, 102, 241, 0.12);
-      padding: 68px 16px 24px;
-      overflow: hidden;
-      transition: width 0.3s ease, padding 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .sidebar ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .sidebar ul li a {
-      display: block;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #4b5563;
-      padding: 10px 14px;
-      border-radius: 14px;
-      transition: background 0.25s, color 0.25s;
-    }
-
-    .sidebar ul li a:hover {
-      background: rgba(255, 255, 255, 0.6);
-      color: #1d4ed8;
-    }
-
-    .content-area {
-      flex: 1;
-      width: min(100%, 980px);
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    body.sidebar-collapsed .sidebar {
-      width: 0;
-      padding-left: 0;
-      padding-right: 0;
-      border-width: 0;
-      opacity: 0;
-      transform: translateX(-16px);
-    }
-
-    .sidebar-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.42);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.28s ease;
-      z-index: 20;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 24px;
-      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);
-      padding: 40px 32px;
-      width: 100%;
-      max-width: 480px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: reveal 0.7s ease both;
-    }
-
-    @keyframes reveal {
-      from {
+    /* Animação de entrada suave */
+    @keyframes fadeInUp {
+      0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
       }
-      to {
+      100% {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    /* Otimização: Remover animação float infinita, usar apenas on-load */
-    .avatar-wrapper {
-      margin-bottom: 20px;
-      will-change: auto;
+    /* Animação de flutuação contínua para a foto */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
     }
 
-    .avatar {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(255, 255, 255, 0.7);
-      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
-      display: block;
-      background: linear-gradient(135deg, #e0e7ff, #f0f4ff);
-    }
-
-    .name {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: #1e1b4b;
-      margin-bottom: 12px;
-      min-height: 2.2rem;
-      letter-spacing: 0.01em;
-    }
-
-    /* Otimização: Usar opacity em vez de transform para cursor */
-    .typewriter-cursor {
-      display: inline-block;
-      width: 2px;
-      background: #6366f1;
-      margin-left: 2px;
-      animation: blink-opt 0.75s step-end infinite;
-      vertical-align: text-bottom;
-      height: 1.6rem;
-    }
-
-    @keyframes blink-opt {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .quote {
-      font-size: 0.85rem;
-      font-style: italic;
-      color: #4b5563;
-      text-align: center;
-      margin-bottom: 28px;
-      line-height: 1.6;
-      max-width: 380px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      width: 100%;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 24px;
-      border-radius: 50px;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-      will-change: transform;
-    }
-
-    /* Otimização: Apenas animar ::after no hover, não infinitamente */
-    .btn::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -75%;
-      width: 50%;
-      height: 200%;
-      background: rgba(255, 255, 255, 0.35);
-      transform: skewX(-20deg);
+    /* Classes utilitárias das animações */
+    .animate-fade-up {
+      animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       opacity: 0;
     }
 
-    .btn:hover::after {
-      animation: btn-shine-opt 1.5s ease-in-out;
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
     }
 
-    @keyframes btn-shine-opt {
-      0% { left: -75%; opacity: 1; }
-      100% { left: 125%; opacity: 0; }
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .btn-instagram {
-      background: linear-gradient(135deg, #f9a8d4, #fb7185);
-      color: #fff;
-    }
-
-    .btn-lattes {
-      background: linear-gradient(135deg, #93c5fd, #6366f1);
-      color: #fff;
-    }
-
-    .email-link {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #4b5563;
-      text-decoration: none;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .email-link:hover {
-      color: #6366f1;
-      border-color: #6366f1;
-    }
-
-    /* Explore section */
-    .explore-section {
-      width: 100%;
-      max-width: 900px;
-      margin-top: 32px;
-    }
-
-    .explore-title {
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #6b7280;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .explore-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .explore-card {
-      background: rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 20px;
-      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.08);
-      padding: 28px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.25s, box-shadow 0.25s;
-      animation: reveal 0.7s ease both;
-      will-change: transform;
-    }
-
-    .explore-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15);
-    }
-
-    .explore-card-emoji {
-      font-size: 2.2rem;
-      margin-bottom: 12px;
-      line-height: 1;
-    }
-
-    .explore-card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #1e1b4b;
-    }
-
-    .explore-card-desc {
-      font-size: 0.82rem;
-      color: #4b5563;
-      line-height: 1.5;
-    }
-
-    .explore-card-blog {
-      background: linear-gradient(135deg, rgba(232, 210, 255, 0.4) 0%, rgba(255, 200, 220, 0.4) 100%);
-      border-color: rgba(196, 160, 255, 0.4);
-    }
-
-    .explore-card-biblioteca {
-      background: linear-gradient(135deg, rgba(187, 247, 208, 0.4) 0%, rgba(191, 219, 254, 0.4) 100%);
-      border-color: rgba(110, 231, 183, 0.4);
-    }
-
-    .explore-card-timeline {
-      background: linear-gradient(135deg, rgba(254, 240, 138, 0.4) 0%, rgba(253, 186, 116, 0.4) 100%);
-      border-color: rgba(252, 211, 77, 0.4);
-    }
-
-    /* Otimização mobile-first */
-    @media (max-width: 900px) {
-      body {
-        padding: 16px;
-      }
-
-      .content-area {
-        width: 100%;
-      }
-
-      .sidebar {
-        position: fixed;
-        top: 72px;
-        left: 16px;
-        bottom: 16px;
-        min-height: auto;
-        width: min(280px, calc(100% - 32px));
-        z-index: 25;
-        transform: translateX(-110%);
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      body.sidebar-collapsed .sidebar {
-        width: min(280px, calc(100% - 32px));
-        padding: 68px 16px 24px;
-        border-width: 1px;
-      }
-
-      body.sidebar-open .sidebar {
-        transform: translateX(0);
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      body.sidebar-open .sidebar-overlay {
-        opacity: 1;
-        pointer-events: auto;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-      }
-
-      .card {
-        padding: 32px 20px;
-      }
-
-      .name {
-        font-size: 1.5rem;
-      }
-
-      .explore-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    /* Delays em cascata */
+    .delay-100 { animation-delay: 100ms; }
+    .delay-200 { animation-delay: 300ms; }
+    .delay-300 { animation-delay: 500ms; }
+    .delay-400 { animation-delay: 700ms; }
+    .delay-500 { animation-delay: 900ms; }
   </style>
 </head>
-<body>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center overflow-x-hidden">
 
-  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Abrir ou fechar menu lateral" aria-controls="site-sidebar" aria-expanded="true">☰</button>
-
-  <nav id="site-sidebar" class="sidebar" aria-label="Navegação principal">
-    <ul>
-      <li><a href="about.html">Sobre</a></li>
-      <li><a href="projects.html">Projetos</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="biblioteca.html">Biblioteca</a></li>
-      <li><a href="timeline.html">Timeline</a></li>
-      <li><a href="drawings.html">Desenhos</a></li>
-    </ul>
-  </nav>
-
-  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
-
-  <div class="content-area">
-    <main class="card">
-
-    <div class="avatar-wrapper">
-      <img src="https://i.pinimg.com/1200x/95/c9/b2/95c9b288e2ea7c5d6ff3a04a49c31c16.jpg" alt="Avatar de Kayque Olimpio" class="avatar" width="110" height="110" loading="lazy" onerror="this.style.display='none'">
-    </div>
-
-    <h1 class="name"><span id="typed-name"></span><span class="typewriter-cursor"></span></h1>
-
-    <p class="quote">
-      "A história de todas as sociedades até hoje existentes é a história das lutas de classes."
-    </p>
-
-    <div class="buttons">
-      <a href="https://www.instagram.com/kayquewrld/" target="_blank" rel="noopener noreferrer" class="btn btn-instagram" aria-label="Instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
-        Instagram
-      </a>
-      <a href="http://lattes.cnpq.br/5363150253158209" target="_blank" rel="noopener noreferrer" class="btn btn-lattes" aria-label="Lattes">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        Lattes
-      </a>
-    </div>
-
-    <a href="mailto:kayque@olimpio.me" class="email-link">kayque@olimpio.me</a>
-
-    </main>
-
-    <section class="explore-section" aria-label="Explorar seções">
-      <p class="explore-title">Explore</p>
-      <div class="explore-grid">
-        <a href="blog.html" class="explore-card explore-card-blog">
-          <span class="explore-card-emoji" aria-hidden="true">✍️</span>
-          <span class="explore-card-title">Blog</span>
-          <span class="explore-card-desc">Reflexões sobre arte, política, design e filosofia</span>
-        </a>
-        <a href="biblioteca.html" class="explore-card explore-card-biblioteca">
-          <span class="explore-card-emoji" aria-hidden="true">📚</span>
-          <span class="explore-card-title">Biblioteca</span>
-          <span class="explore-card-desc">Recursos recomendados: livros, artigos e ferramentas</span>
-        </a>
-        <a href="timeline.html" class="explore-card explore-card-timeline">
-          <span class="explore-card-emoji" aria-hidden="true">🗓️</span>
-          <span class="explore-card-title">Timeline</span>
-          <span class="explore-card-desc">Minha trajetória em arte, design e vida</span>
-        </a>
+  <main class="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
+    <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+      
+      <!-- Coluna de Texto -->
+      <div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+        <span class="animate-fade-up delay-100 text-emerald-400 font-semibold tracking-wider uppercase text-sm mb-2">
+          Gestão Pública & Movimento Estudantil
+        </span>
+        
+        <h1 class="animate-fade-up delay-200 text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+          Kayque Olimpio
+        </h1>
+        
+        <p class="animate-fade-up delay-300 text-lg text-slate-300 mb-8 leading-relaxed max-w-lg">
+          Construindo pontes entre a juventude e o debate político. Acredito na gestão pública como ferramenta de transformação social e na participação ativa para desenhar o futuro.
+        </p>
+        
+        <!-- Botões -->
+        <div class="animate-fade-up delay-400 flex flex-wrap justify-center md:justify-start gap-4 w-full">
+          <!-- Botão do Instagram -->
+          <a href="https://www.instagram.com/kayqueolimpio/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold transition-all duration-300 shadow-lg hover:shadow-emerald-500/50 hover:-translate-y-1 text-center">
+            Instagram
+          </a>
+          <!-- Botão do Blog -->
+          <a href="#blog" class="px-6 py-3 rounded-full border border-slate-600 hover:border-slate-300 text-slate-300 hover:text-white transition-all duration-300 hover:-translate-y-1 text-center">
+            Blog
+          </a>
+          <!-- Botão do Lattes -->
+          <a href="https://buscatextual.cnpq.br/buscatextual/visualizacv.do;jsessionid=C2957863E16CF8BE97A0DA88A4B226F3.buscatextual_0" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full border border-slate-600 hover:border-slate-300 text-slate-300 hover:text-white transition-all duration-300 hover:-translate-y-1 text-center">
+            Currículo Lattes
+          </a>
+        </div>
       </div>
-    </section>
-  </div>
 
-  <script>
-    // Otimização: Executar tipagem apenas uma vez, não em loop
-    (function () {
-      const fullName = 'Kayque Olimpio';
-      const el = document.getElementById('typed-name');
-      let i = 0;
-      
-      function type() {
-        if (i < fullName.length) {
-          el.textContent += fullName[i];
-          i++;
-          setTimeout(type, 100);
-        }
-      }
-      
-      // Evitar redraw desnecessário: aguardar primeiro paint
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => setTimeout(type, 400));
-      } else {
-        setTimeout(type, 400);
-      }
-    }());
+      <!-- Coluna da Foto -->
+      <div class="animate-fade-up delay-500 w-full md:w-1/2 flex justify-center md:justify-end">
+        <div class="relative w-64 h-64 md:w-96 md:h-96 animate-float">
+          <!-- Efeito de brilho no fundo da foto -->
+          <div class="absolute inset-0 bg-emerald-500 rounded-full blur-3xl opacity-20 transition-opacity duration-700 hover:opacity-40"></div>
+          
+          <!-- Container da Foto -->
+          <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-700/50 hover:border-emerald-500/50 transition-colors duration-500 shadow-2xl">
+            
+            <img src="https://cdn.discordapp.com/attachments/1002490298963865681/1557906025313599558/69b16e39-5fa3-42c8-8206-623a412cccf7.png?ex=6ac9808c&is=6ac82f0c&hm=0908a0de9de02109e8ba0a6cbfed766e99315f67d00595c0d7049d841b6d952b&" alt="Foto de Kayque Olimpio" class="w-full h-full object-cover">
+            
+          </div>
+        </div>
+      </div>
 
-    (function () {
-      const body = document.body;
-      const toggle = document.getElementById('sidebar-toggle');
-      const overlay = document.getElementById('sidebar-overlay');
-      const navLinks = document.querySelectorAll('#site-sidebar a');
-      const mobile = window.matchMedia('(max-width: 900px)');
-
-      function updateAria() {
-        const expanded = mobile.matches
-          ? body.classList.contains('sidebar-open')
-          : !body.classList.contains('sidebar-collapsed');
-        toggle.setAttribute('aria-expanded', String(expanded));
-      }
-
-      function syncLayout() {
-        if (mobile.matches) {
-          body.classList.add('sidebar-collapsed');
-          body.classList.remove('sidebar-open');
-        } else {
-          body.classList.remove('sidebar-collapsed');
-          body.classList.remove('sidebar-open');
-        }
-        updateAria();
-      }
-
-      toggle.addEventListener('click', function () {
-        if (mobile.matches) {
-          body.classList.toggle('sidebar-open');
-        } else {
-          body.classList.toggle('sidebar-collapsed');
-        }
-        updateAria();
-      });
-
-      overlay.addEventListener('click', function () {
-        body.classList.remove('sidebar-open');
-        updateAria();
-      });
-
-      navLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-          if (mobile.matches) {
-            body.classList.remove('sidebar-open');
-            updateAria();
-          }
-        });
-      });
-
-      mobile.addEventListener('change', syncLayout);
-      syncLayout();
-    }());
-  </script>
+    </div>
+  </main>
 
 </body>
 </html>
